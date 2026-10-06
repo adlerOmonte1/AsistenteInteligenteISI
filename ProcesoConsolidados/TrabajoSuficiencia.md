@@ -8,9 +8,9 @@
 
 # 1. DESCRIPCIÓN GENERAL DEL PROCESO
 
-El presente documento organiza el proceso para optar el **Título Profesional mediante la modalidad de Trabajo de Suficiencia Profesional**, considerando el **prerrequisito** y las **Fases 1 a 7** representadas en los diagramas de secuencia.
+El presente documento organiza el proceso para optar el **Título Profesional mediante la modalidad de Trabajo de Suficiencia Profesional**, considerando el **prerrequisito** y las **Fases 1 a 8** representadas en los diagramas de secuencia.
 
-El procedimiento comprende la acreditación inicial de la experiencia profesional del bachiller, la designación del docente asesor y de los jurados, la aprobación y ejecución del trabajo, la revisión y aprobación del informe final, la declaración de aptitud para sustentación y, finalmente, la programación de la fecha y hora de sustentación.
+El procedimiento comprende la acreditación inicial de la experiencia profesional del bachiller, la designación del docente asesor y de los jurados, la aprobación y ejecución del trabajo, la revisión y aprobación del informe final, la declaración de aptitud para sustentación, la programación de la fecha y hora de sustentación y, finalmente, el trámite para **optar el Título Profesional**.
 
 Los principales actores que intervienen son:
 
@@ -20,6 +20,8 @@ Los principales actores que intervienen son:
 - **Plataforma**
 - **Programa Académico**
 - **Facultad de Ingeniería**
+- **Repositorio Institucional**
+- **Consejo de Facultad**
 
 ---
 
@@ -33,6 +35,8 @@ Los principales actores que intervienen son:
 | **Plataforma** | Medio utilizado por el bachiller para generar los trámites administrativos y efectuar los pagos correspondientes. |
 | **Programa Académico** | Procesa los expedientes y emite los oficios correspondientes hacia la Facultad de Ingeniería. |
 | **Facultad de Ingeniería** | Recibe los oficios emitidos por el Programa Académico y emite las resoluciones correspondientes. |
+| **Repositorio Institucional** | Atiende y verifica los requisitos vinculados con la inscripción al repositorio institucional para el trámite de título. |
+| **Consejo de Facultad** | Atiende el trámite de optar título cuando las áreas previas han completado su atención, conforme al cronograma correspondiente. |
 
 > **Consideración administrativa:** dentro de los diagramas, el **Programa Académico** interviene mediante la emisión del **oficio**, mientras que la **Facultad de Ingeniería** interviene mediante la emisión de la **resolución**.
 
@@ -576,7 +580,144 @@ sequenceDiagram
 
 ---
 
-# 11. TABLA CONSOLIDADA DEL PROCESO
+# 11. FASE 8 — OPTAR TÍTULO PROFESIONAL DEL TRABAJO DE SUFICIENCIA PROFESIONAL
+
+Después de la programación y realización de la sustentación, corresponde continuar con el trámite en línea para **optar el Título Profesional mediante Trabajo de Suficiencia Profesional**.
+
+## 11.1. Información de la fase
+
+| Elemento | Detalle |
+|---|---|
+| **Trámite** | Optar Título Profesional |
+| **Responsable** | Bachiller |
+| **Medio** | Login UDH / trámite en línea |
+| **Pago** | **S/ 5.00** |
+| **Requisito principal** | Constancia de Inscripción al Repositorio Institucional |
+| **Seguimiento** | Trámite Seguimiento y Consulta Registro de Grados y Títulos |
+| **Área del Programa Académico** | Emisión de oficio |
+| **Facultad de Ingeniería** | Emisión de resolución |
+| **Condición para Consejo de Facultad** | El trámite debe estar atendido por todas las áreas |
+| **Consejo de Facultad** | Primera semana de cada mes |
+| **Entrega del título** | Aproximadamente dentro de **2 meses** |
+| **Medio de comunicación** | Correo institucional |
+
+## 11.2. Trámite en línea
+
+El Bachiller debe ingresar a su **Login UDH** y realizar el trámite:
+
+- **OPTAR TÍTULO PROFESIONAL**.
+- Realizar el pago de **S/ 5.00**.
+- Revisar permanentemente el estado mediante la opción **Trámite Seguimiento**.
+- Realizar seguimiento adicional desde **Consulta Registro de Grados y Títulos**.
+
+> [!IMPORTANT]
+> Todos los trámites deben tener seguimiento en línea desde el **Login UDH**, principalmente mediante la opción **Trámite Seguimiento**.
+
+## 11.3. Requisitos y consideraciones
+
+El Bachiller debe considerar lo siguiente:
+
+1. Contar con la **Constancia de Inscripción al Repositorio Institucional**.
+2. La constancia se genera de forma automática con el trámite **Optar Título Profesional**.
+3. Revisar en **Trámite Seguimiento** cuáles son los requisitos que deben remitirse a la Oficina de Repositorio.
+4. Atender cualquier requisito u observación del **Repositorio Institucional**.
+5. Presentar en la Coordinación **2 fotografías tamaño pasaporte**, con vestimenta formal.
+6. Verificar que el trámite se encuentre **atendido por todas las áreas** antes de su ingreso a Consejo de Facultad.
+7. Continuar el seguimiento mediante **Consulta Registro de Grados y Títulos**.
+
+### Contacto del Repositorio Institucional
+
+- **Correo:** [repositorio@udh.edu.pe](mailto:repositorio@udh.edu.pe)
+- **Teléfono de consulta:** **952 068 664**
+
+> [!WARNING]
+> Para que el trámite **Optar Título Profesional** ingrese a **Consejo de Facultad**, debe encontrarse atendido por todas las áreas correspondientes.
+
+## 11.4. Áreas de atención
+
+| Orden | Área | Documento / acción |
+|---:|---|---|
+| 1 | **Repositorio Institucional** | Atención de los requisitos relacionados con la inscripción al repositorio |
+| 2 | **Programa Académico** | Emisión del **oficio** |
+| 3 | **Facultad de Ingeniería** | Emisión de la **resolución** |
+| 4 | **Consejo de Facultad** | Atención del trámite cuando las áreas anteriores se encuentran conformes |
+
+> [!IMPORTANT]
+> El **Consejo de Facultad se realiza la primera semana de cada mes**.
+
+## 11.5. Plazo y entrega del título
+
+| Hito | Plazo / condición |
+|---|---|
+| Ingreso a Consejo de Facultad | Cuando todas las áreas hayan atendido el trámite |
+| Consejo de Facultad | Primera semana de cada mes |
+| Entrega del Título Profesional | Aproximadamente dentro de **2 meses** |
+| Comunicación de la entrega | Mediante **correo institucional** |
+
+La fecha de entrega del Título Profesional será comunicada al Bachiller mediante su **correo institucional**.
+
+## 11.6. Procedimiento detallado
+
+1. El Bachiller ingresa a su **Login UDH**.
+2. Selecciona el trámite **Optar Título Profesional**.
+3. Realiza el pago de **S/ 5.00**.
+4. El sistema genera la **Constancia de Inscripción al Repositorio Institucional**.
+5. El Bachiller ingresa a **Trámite Seguimiento** y revisa los requisitos solicitados por el Repositorio Institucional.
+6. Remite o presenta los requisitos que correspondan al Repositorio Institucional.
+7. Verifica que las áreas involucradas registren la atención del trámite.
+8. El **Programa Académico** atiende el expediente y emite el **oficio** correspondiente.
+9. La **Facultad de Ingeniería** continúa con el trámite y emite la **resolución** correspondiente.
+10. El Bachiller presenta en la Coordinación **2 fotografías tamaño pasaporte con vestimenta formal**.
+11. Cuando todas las áreas han atendido el trámite, este puede ingresar a **Consejo de Facultad**.
+12. El Consejo de Facultad se realiza la **primera semana de cada mes**.
+13. El Bachiller realiza seguimiento desde **Consulta Registro de Grados y Títulos**.
+14. La fecha de entrega del título se comunica mediante el **correo institucional**.
+15. La entrega se efectúa aproximadamente dentro de **2 meses**.
+
+## 11.7. Diagrama de secuencia
+
+```mermaid
+sequenceDiagram
+    actor B as Bachiller
+    participant PL as Login UDH / Plataforma
+    participant RI as Repositorio Institucional
+    participant PA as Programa Académico
+    participant FI as Facultad de Ingeniería
+    participant CF as Consejo de Facultad
+
+    B->>PL: Ingresa al Login UDH
+    B->>PL: Solicita OPTAR TÍTULO PROFESIONAL
+    B->>PL: Realiza pago de S/ 5.00
+    PL-->>B: Genera Constancia de Inscripción al Repositorio
+
+    B->>PL: Revisa Trámite Seguimiento
+    PL-->>B: Muestra requisitos del Repositorio
+    B->>RI: Remite / presenta requisitos solicitados
+    RI-->>PL: Registra atención correspondiente
+
+    B->>PA: Continúa seguimiento del trámite
+    PA->>FI: Emite oficio
+    FI-->>PL: Registra resolución / atención
+
+    Note over B,FI: El Bachiller presenta 2 fotografías tamaño pasaporte<br/>con vestimenta formal en la Coordinación
+
+    Note over PL,CF: El trámite debe estar atendido por todas las áreas
+    FI->>CF: Deriva trámite para Consejo de Facultad
+    Note over CF: Consejo de Facultad<br/>Primera semana de cada mes
+    CF-->>PL: Registra atención del trámite
+
+    B->>PL: Consulta Registro de Grados y Títulos
+    PL-->>B: Muestra estado actualizado
+
+    Note over B,PL: Entrega aproximada del título: 2 meses
+    PL-->>B: Comunica fecha mediante correo institucional
+```
+
+**Salida:** Trámite para **optar el Título Profesional** atendido y en seguimiento hasta la comunicación de la fecha de entrega.
+
+---
+
+# 12. TABLA CONSOLIDADA DEL PROCESO
 
 | Etapa | Trámite principal | Requisitos principales | Pago | Resultado |
 |---|---|---|---:|---|
@@ -588,10 +729,11 @@ sequenceDiagram
 | **Fase 5** | Aprobación del informe final | Aprobación de jurados + originalidad + informe final PDF | **S/ 5.00** | Resolución de aprobación del informe final |
 | **Fase 6** | Declarar apto para sustentación | Grado de bachiller + informe final Word + DNI + certificado judicial + boleta | **S/ 3,212.00** | Resolución de apto para sustentación |
 | **Fase 7** | Programación de fecha y hora | Resolución de aprobación del informe final PDF + informe final Word | **S/ 5.00** | Resolución de fecha y hora |
+| **Fase 8** | Optar Título Profesional | Constancia de Inscripción al Repositorio + requisitos solicitados en seguimiento + 2 fotos tamaño pasaporte | **S/ 5.00** | Trámite de título atendido y seguimiento hasta la entrega |
 
 ---
 
-# 12. TABLA CONSOLIDADA DE PLAZOS Y CONDICIONES
+# 13. TABLA CONSOLIDADA DE PLAZOS Y CONDICIONES
 
 | Etapa | Plazo o condición |
 |---|---|
@@ -604,10 +746,11 @@ sequenceDiagram
 | **Fase 5** | No se especifica un plazo en el diagrama proporcionado |
 | **Fase 6** | No se especifica un plazo en el diagrama proporcionado |
 | **Fase 7** | No se especifica un plazo en el diagrama proporcionado |
+| **Fase 8** | Consejo de Facultad: **primera semana de cada mes**; entrega del título: aproximadamente **2 meses** |
 
 ---
 
-# 13. TABLA DE DOCUMENTOS GENERADOS
+# 14. TABLA DE DOCUMENTOS GENERADOS
 
 | Etapa | Documento generado por el Programa Académico | Documento generado por la Facultad de Ingeniería |
 |---|---|---|
@@ -619,10 +762,11 @@ sequenceDiagram
 | **Fase 5** | Oficio de aprobación del informe final | Resolución de aprobación del informe final |
 | **Fase 6** | Oficio de conformidad de apto para sustentación | Resolución de apto para sustentación |
 | **Fase 7** | Oficio de programación de fecha y hora | Resolución de fecha y hora de sustentación |
+| **Fase 8** | Oficio correspondiente al trámite de título | Resolución correspondiente al trámite de título |
 
 ---
 
-# 14. CHECKLIST GENERAL DEL BACHILLER
+# 15. CHECKLIST GENERAL DEL BACHILLER
 
 ## Prerrequisito
 
@@ -708,9 +852,25 @@ sequenceDiagram
 - [ ] Obtener resolución de fecha y hora.
 - [ ] Presentarse a la sustentación en la fecha programada.
 
+## Fase 8
+
+- [ ] Ingresar al Login UDH.
+- [ ] Solicitar **Optar Título Profesional**.
+- [ ] Pagar **S/ 5.00**.
+- [ ] Verificar la generación de la Constancia de Inscripción al Repositorio Institucional.
+- [ ] Revisar los requisitos en **Trámite Seguimiento**.
+- [ ] Cumplir los requisitos solicitados por el Repositorio Institucional.
+- [ ] Verificar la atención del Programa Académico.
+- [ ] Verificar la atención de la Facultad de Ingeniería.
+- [ ] Presentar **2 fotografías tamaño pasaporte con vestimenta formal** en la Coordinación.
+- [ ] Verificar que todas las áreas hayan atendido el trámite.
+- [ ] Revisar el ingreso a Consejo de Facultad.
+- [ ] Realizar seguimiento mediante **Consulta Registro de Grados y Títulos**.
+- [ ] Revisar el correo institucional para conocer la fecha de entrega.
+
 ---
 
-# 15. FLUJO GENERAL DEL PROCESO
+# 16. FLUJO GENERAL DEL PROCESO
 
 ```mermaid
 flowchart TD
@@ -735,6 +895,10 @@ flowchart TD
 
     J["SUSTENTACIÓN"]
 
+    K["FASE 8<br/>Optar Título Profesional"]
+
+    L["ENTREGA DEL TÍTULO<br/>Aprox. 2 meses"]
+
     A --> B
     B --> C
     C --> D
@@ -744,11 +908,13 @@ flowchart TD
     G --> H
     H --> I
     I --> J
+    J --> K
+    K --> L
 ```
 
 ---
 
-# 16. FLUJO ADMINISTRATIVO GENERAL
+# 17. FLUJO ADMINISTRATIVO GENERAL
 
 De manera general, las fases administrativas siguen la siguiente estructura:
 
@@ -778,11 +944,11 @@ flowchart LR
 Este esquema permite identificar dos rutas paralelas iniciadas por el Bachiller:
 
 1. **Ruta del trámite:** Bachiller → Plataforma.
-2. **Ruta documental:** Bachiller → Secretaría del Programa Académico → Programa Académico → Facultad de Ingeniería → Bachiller.
+2. **Ruta documental:** Bachiller → Secretaría del Programa Académico → Programa Académico → Facultad de Ingeniería → Bachiller. En la **Fase 8** también intervienen el **Repositorio Institucional** y el **Consejo de Facultad**.
 
 ---
 
-# 17. RESUMEN GENERAL DEL PROCESO
+# 18. RESUMEN GENERAL DEL PROCESO
 
 El procedimiento comienza con un **prerrequisito**, mediante el cual el Bachiller debe acreditar **2 años de experiencia profesional**. Para ello reúne contratos, boletas y documentación relacionada con su continuidad y experiencia laboral, remitiendo estos documentos a la Secretaría del Programa Académico.
 
@@ -800,9 +966,11 @@ Con el informe final aprobado, el Bachiller continúa con la **Fase 6**, denomin
 
 Finalmente, en la **Fase 7**, el Bachiller solicita la **programación de fecha y hora de sustentación**. Presenta la resolución de aprobación del informe final en PDF y el informe final en Word, además de realizar el pago indicado de **S/ 5.00**. El Programa Académico procesa la solicitud y emite el oficio de programación, mientras que la Facultad de Ingeniería emite la resolución mediante la cual se establece formalmente la fecha y hora de sustentación.
 
+Después de la sustentación, en la **Fase 8**, el Bachiller realiza el trámite en línea **Optar Título Profesional**, con un pago de **S/ 5.00**. La Constancia de Inscripción al Repositorio Institucional se genera de forma automática con el trámite y el Bachiller debe revisar en **Trámite Seguimiento** los requisitos que correspondan al Repositorio. Asimismo, debe presentar **2 fotografías tamaño pasaporte con vestimenta formal**, verificar que todas las áreas hayan atendido el trámite y realizar seguimiento mediante **Consulta Registro de Grados y Títulos**. El trámite puede ingresar a **Consejo de Facultad** cuando las áreas se encuentran atendidas; dicho Consejo se realiza la **primera semana de cada mes**. La fecha de entrega del título se comunica mediante el correo institucional y se indica un plazo aproximado de **2 meses**.
+
 ---
 
-# 18. RESUMEN SECUENCIAL
+# 19. RESUMEN SECUENCIAL
 
 El proceso completo puede sintetizarse de la siguiente manera:
 
@@ -852,15 +1020,25 @@ El proceso completo puede sintetizarse de la siguiente manera:
 > ↓  
 >
 > **SUSTENTACIÓN**
+>
+> ↓
+>
+> **FASE 8**  
+> Optar Título Profesional  
+>
+> ↓
+>
+> **ENTREGA DEL TÍTULO PROFESIONAL**  
+> Aproximadamente dentro de 2 meses
 
 ---
 
-# 19. RESULTADO FINAL DEL PROCESO
+# 20. RESULTADO FINAL DEL PROCESO
 
-Al completar satisfactoriamente el **prerrequisito y las siete fases**, el Bachiller habrá realizado la secuencia administrativa necesaria para llegar a la **sustentación del Trabajo de Suficiencia Profesional**.
+Al completar satisfactoriamente el **prerrequisito y las ocho fases**, el Bachiller habrá realizado la secuencia administrativa necesaria desde la acreditación de experiencia hasta el trámite para **optar el Título Profesional mediante Trabajo de Suficiencia Profesional**.
 
 La lógica general del procedimiento es:
 
-**Acreditar experiencia → Obtener asesor → Obtener jurados → Aprobar el trabajo → Ejecutar el trabajo → Obtener jurados para el informe final → Aprobar el informe final → Ser declarado apto → Obtener fecha y hora → Sustentar.**
+**Acreditar experiencia → Obtener asesor → Obtener jurados → Aprobar el trabajo → Ejecutar el trabajo → Obtener jurados para el informe final → Aprobar el informe final → Ser declarado apto → Obtener fecha y hora → Sustentar → Optar Título Profesional → Recibir comunicación para la entrega del título.**
 
-El flujo administrativo mantiene como estructura general que el **Bachiller inicia los trámites y presenta los requisitos**, la **Secretaría del Programa Académico recibe y canaliza la documentación**, el **Programa Académico procesa el expediente y emite el oficio**, y la **Facultad de Ingeniería emite la resolución correspondiente**.
+El flujo administrativo mantiene como estructura general que el **Bachiller inicia los trámites y presenta los requisitos**, la **Secretaría del Programa Académico recibe y canaliza la documentación**, el **Programa Académico procesa el expediente y emite el oficio**, y la **Facultad de Ingeniería emite la resolución correspondiente**. En la Fase 8 se incorporan además el **Repositorio Institucional** y el **Consejo de Facultad**, junto con el seguimiento en línea hasta la comunicación de la entrega del título.
