@@ -1,0 +1,124 @@
+# Intents del proceso: Convalidación de PPP por experiencia laboral (prefijo CPP_)
+# Fuente de todas las respuestas: fichas/CPP_F01 a CPP_F05
+
+- intent: CPP_condiciones
+  descripcion: Quién puede convalidar la PPP por experiencia laboral (ciclo mínimo, tipo de trabajo, tiempo)
+  entidades: []
+  ejemplos:
+    - "quién puede convalidar las prácticas preprofesionales"
+    - "puedo convalidar mi ppp con mi trabajo"
+    - "cuántos meses de trabajo necesito para convalidar"
+    - "qué ciclo debo haber terminado para convalidar la ppp"
+    - "mi trabajo tiene que ser de mi carrera para convalidar"
+    - "sirve trabajar en una empresa privada para convalidar"
+    - "convalidación de ppp por experiencia laboral condiciones"
+    - "cuál es el tiempo mínimo de trabajo para convalidar"
+    - "necesito ser nombrado o contratado para convalidar"
+    - "en qué casos se convalida la práctica preprofesional"
+    - "puedo convalidar si trabajé en una entidad pública"
+    - "es obligatorio hacer prácticas o puedo convalidarlas"
+  ficha_relacionada: CPP_F01
+
+- intent: CPP_requisitos
+  descripcion: Documentos que se deben presentar para solicitar la convalidación
+  entidades: []
+  ejemplos:
+    - "qué documentos necesito para convalidar mi ppp"
+    - "requisitos para la convalidación de prácticas"
+    - "qué debo presentar para convalidar las prácticas preprofesionales"
+    - "qué es el anexo 08"
+    - "qué es el anexo 09"
+    - "necesito boletas de pago para convalidar"
+    - "piden constancia de trabajo para convalidar"
+    - "quién firma la ficha de evaluación"
+    - "qué lleva el informe técnico de convalidación"
+    - "lista de documentos de convalidación de ppp"
+    - "tengo que presentar mi contrato original"
+    - "qué papeles piden para convalidar por trabajo"
+  ficha_relacionada: CPP_F02
+
+- intent: CPP_pasos_proceso
+  descripcion: Pasos generales del trámite y qué hace cada área
+  entidades: [etapa]
+  ejemplos:
+    - "cómo es el proceso de convalidación de ppp"
+    - "cuáles son los pasos para convalidar mis prácticas"
+    - "qué hago primero para convalidar la ppp"
+    - "cómo inicio el trámite de convalidación"
+    - "qué área revisa mi expediente de convalidación"
+    - "quién evalúa mi convalidación de ppp"
+    - "qué hace la comisión de ppp"
+    - "qué hace el programa académico en la convalidación"
+    - "qué pasa después de enviar mis documentos"
+    - "en qué etapa está el trámite de convalidación"
+    - "tengo que sustentar para convalidar"
+    - "cuántas etapas tiene la convalidación"
+  ficha_relacionada: [CPP_F02, CPP_F03, CPP_F04, CPP_F05]
+  si_falta_entidad: "¿Quieres el resumen del proceso completo o de una etapa específica? (1 solicitud, 2 verificación, 3 comisión, 4 resolución)"
+
+- intent: CPP_donde_enviar
+  descripcion: Dónde y cómo se presenta la solicitud
+  entidades: []
+  ejemplos:
+    - "a qué correo envío los documentos de convalidación"
+    - "dónde presento mi solicitud de convalidación"
+    - "a quién va dirigida la solicitud de convalidación"
+    - "cómo solicito la convalidación en el sistema udh"
+    - "cuál es el correo de secretaría de sistemas"
+    - "se presenta en físico o por correo"
+    - "dónde mando mi informe técnico"
+    - "a quién dirijo la solicitud del anexo 08"
+    - "por dónde se inicia el trámite de convalidación"
+    - "qué correo uso para enviar los requisitos"
+    - "hay que registrar algo en el sistema udh"
+  ficha_relacionada: CPP_F02
+
+- intent: CPP_plazo
+  descripcion: Plazos del trámite (presentación del informe y tiempo de trabajo exigido)
+  entidades: []
+  ejemplos:
+    - "cuántos días tengo para presentar el informe de ppp"
+    - "plazo máximo para presentar el informe de convalidación"
+    - "cuánto demora la convalidación de ppp"
+    - "hasta cuándo puedo presentar mis documentos"
+    - "cuántos días me dan para entregar el informe"
+    - "tiempo que tarda la resolución de convalidación"
+    - "cuánto tiempo de trabajo debo acreditar"
+    - "hay fecha límite para convalidar"
+    - "en cuánto tiempo responde la comisión"
+    - "cuándo sale la resolución de convalidación"
+    - "cuántos días dura el trámite"
+  ficha_relacionada: [CPP_F02, CPP_F04, CPP_F05]
+
+- intent: CPP_costo
+  descripcion: Costo o pago del trámite de convalidación
+  entidades: []
+  ejemplos:
+    - "cuánto cuesta convalidar la ppp"
+    - "hay que pagar para convalidar las prácticas"
+    - "costo del trámite de convalidación"
+    - "cuánto se paga por la convalidación de ppp"
+    - "la convalidación tiene algún pago"
+    - "monto para convalidar prácticas preprofesionales"
+    - "dónde pago la convalidación"
+    - "es gratis convalidar la ppp"
+    - "qué derecho de pago tiene la convalidación"
+    - "cuánto cuesta la resolución de convalidación"
+  ficha_relacionada: CPP_F02
+
+- intent: CPP_resolucion
+  descripcion: "Resultado final: aprobación mediante resolución de la Facultad"
+  entidades: []
+  ejemplos:
+    - "cómo se aprueba la convalidación de ppp"
+    - "quién emite la resolución de convalidación"
+    - "qué pasa cuando me aprueban la convalidación"
+    - "cuándo me dan la resolución de ppp"
+    - "qué hace la facultad en la convalidación"
+    - "la comisión me da una constancia de aprobación"
+    - "para qué sirve la resolución de convalidación"
+    - "ya aprobaron mi convalidación qué sigue"
+    - "cómo sé si mi convalidación fue aprobada"
+    - "después de convalidar puedo pedir el bachiller"
+    - "qué documento acredita que convalidé mi ppp"
+  ficha_relacionada: [CPP_F04, CPP_F05]
