@@ -1,0 +1,75 @@
+# Entidades del proceso E (Bachiller y Convalidación de PPP).
+# Cada valor canónico mapea a una ficha; los sinónimos alimentan el reconocedor de entidades.
+
+- entidad: paso_bachiller
+  descripcion: Paso del trámite virtual del Grado de Bachiller (1 a 6)
+  valores:
+    - valor: 1
+      ficha: BAC_P01
+      sinonimos: ["paso 1", "primer paso", "plataforma", "registro", "inicio", "solicitud"]
+    - valor: 2
+      ficha: BAC_P02
+      sinonimos: ["paso 2", "segundo paso", "fotos", "foto", "subir foto"]
+    - valor: 3
+      ficha: BAC_P03
+      sinonimos: ["paso 3", "tercer paso", "correo", "DNI", "enviar DNI"]
+    - valor: 4
+      ficha: BAC_P04
+      sinonimos: ["paso 4", "cuarto paso", "verificación", "oficinas", "seguimiento", "consulta registro"]
+    - valor: 5
+      ficha: BAC_P05
+      sinonimos: ["paso 5", "quinto paso", "comisión", "expediente digital", "consejo de facultad"]
+    - valor: 6
+      ficha: BAC_P06
+      sinonimos: ["paso 6", "sexto paso", "último paso", "consejo universitario", "resolución"]
+
+- entidad: tipo_foto
+  descripcion: Tipo de foto requerida en el paso 2 del Bachiller
+  valores:
+    - valor: digital
+      ficha: BAC_P02
+      sinonimos: ["digital", "virtual", "subir", "sistema", "pasaporte"]
+    - valor: fisica
+      ficha: BAC_P02
+      sinonimos: ["física", "fisica", "impresa", "4x5", "4 x 5", "entregar"]
+
+- entidad: etapa_cpp
+  descripcion: Etapa de la convalidación de PPP por experiencia laboral (0 a 4)
+  valores:
+    - valor: 0
+      ficha: CPP_E00
+      sinonimos: ["etapa 0", "condiciones", "quién puede", "requisitos para acceder"]
+    - valor: 1
+      ficha: CPP_E01
+      sinonimos: ["etapa 1", "primera etapa", "solicitud", "expediente", "envío"]
+    - valor: 2
+      ficha: CPP_E02
+      sinonimos: ["etapa 2", "segunda etapa", "verificación", "programa académico", "P.A.", "derivación"]
+    - valor: 3
+      ficha: CPP_E03
+      sinonimos: ["etapa 3", "tercera etapa", "comisión", "evaluación", "sustentación", "exposición"]
+    - valor: 4
+      ficha: CPP_E04
+      sinonimos: ["etapa 4", "cuarta etapa", "última etapa", "facultad", "resolución"]
+
+- entidad: documento_cpp
+  descripcion: Documento del expediente de convalidación (Art. 32)
+  valores:
+    - valor: solicitud_anexo08
+      ficha: CPP_E01
+      sinonimos: ["solicitud", "anexo 08", "anexo 8"]
+    - valor: constancia_contrato
+      ficha: CPP_E01
+      sinonimos: ["constancia de trabajo", "contrato", "constancias"]
+    - valor: boletas
+      ficha: CPP_E01
+      sinonimos: ["boletas", "boletas de pago", "haberes"]
+    - valor: ficha_evaluacion
+      ficha: CPP_E01
+      sinonimos: ["ficha de evaluación", "evaluación del jefe"]
+    - valor: informe_tecnico_anexo09
+      ficha: CPP_E01
+      sinonimos: ["informe técnico", "anexo 09", "anexo 9"]
+    - valor: recibo_pago
+      ficha: CPP_E01
+      sinonimos: ["recibo", "pago", "derecho de trámite"]
