@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "esquema_metadatos.schema.json",
+  "title": "Encabezado de ficha de conocimiento — Asistente Inteligente P.A. ISI",
+  "type": "object",
+  "required": ["id", "facultad", "programa", "proceso", "fase", "titulo", "fuente", "vigencia", "estado"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(TES|TSP|PPP|BAC|CPP|TRA|GEN)_[A-Z][0-9]{2}$"
+    },
+    "facultad": { "const": "Ingeniería" },
+    "programa": { "const": "Ingeniería de Sistemas e Informática" },
+    "proceso": {
+      "enum": ["titulo_tesis", "titulo_tsp", "ppp", "bachiller_conv_ppp", "traslados_generales"]
+    },
+    "fase": { "type": "integer", "minimum": 0 },
+    "titulo": { "type": "string", "minLength": 3 },
+    "fuente": { "type": "string", "minLength": 3 },
+    "vigencia": {
+      "anyOf": [
+        { "type": "string", "format": "date" },
+        { "const": "no indicada" }
+      ]
+    },
+    "estado": { "enum": ["confirmado", "pendiente"] },
+
+    "version": { "type": "integer", "minimum": 1 },
+    "actualizado": { "type": "string", "format": "date" },
+    "actualizado_por": { "type": "string" },
+    "reemplazada_por": { "type": "string", "pattern": "^(TES|TSP|PPP|BAC|CPP|TRA|GEN)_[A-Z][0-9]{2}$" },
+    "pendientes": { "type": "array", "items": { "type": "string" } },
+    "palabras_clave": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    { "if": { "properties": { "id": { "pattern": "^TES_" } } }, "then": { "properties": { "proceso": { "const": "titulo_tesis" } } } },
+    { "if": { "properties": { "id": { "pattern": "^TSP_" } } }, "then": { "properties": { "proceso": { "const": "titulo_tsp" } } } },
+    { "if": { "properties": { "id": { "pattern": "^PPP_" } } }, "then": { "properties": { "proceso": { "const": "ppp" } } } },
+    { "if": { "properties": { "id": { "pattern": "^(BAC|CPP)_" } } }, "then": { "properties": { "proceso": { "const": "bachiller_conv_ppp" } } } },
+    { "if": { "properties": { "id": { "pattern": "^(TRA|GEN)_" } } }, "then": { "properties": { "proceso": { "const": "traslados_generales" } } } }
+  ]
+}

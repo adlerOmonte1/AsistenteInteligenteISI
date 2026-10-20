@@ -1,0 +1,289 @@
+# Intents del proceso E: Grado de Bachiller (BAC_) y Convalidación de PPP por experiencia laboral (CPP_)
+# Entidades definidas en entidades.yaml. Derivación transversal: GEN_derivar_humano (integrante F).
+# Formato según el contrato común, sección 3.4.
+
+# ───────────────────────────── GRADO DE BACHILLER ─────────────────────────────
+
+- intent: BAC_info_general
+  descripcion: Visión general del trámite virtual para optar el Grado de Bachiller (pasos 1 a 6)
+  entidades: []
+  ejemplos:
+    - "cómo saco mi bachiller"
+    - "cuál es el proceso para obtener el grado de bachiller"
+    - "pasos para optar el grado académico de bachiller"
+    - "quiero tramitar mi bachiller, qué hago"
+    - "cómo es el trámite virtual de bachiller"
+    - "explícame el trámite del grado de bachiller"
+    - "dónde inicio el trámite de bachiller"
+    - "qué tengo que hacer para ser bachiller"
+    - "ya terminé la carrera, cómo pido el bachiller"
+    - "proceso de bachiller en ingeniería de sistemas"
+    - "cuántos pasos tiene el trámite de bachiller"
+    - "en qué plataforma se pide el bachiller"
+  ficha_relacionada: BAC_P01
+  si_falta_entidad: "No requiere entidad. Si la consulta dice solo «grado» o «título»: «¿Te refieres al Grado de Bachiller o al Título Profesional?»"
+
+- intent: BAC_requisitos_paso
+  descripcion: Requisitos y acciones de un paso concreto del trámite de Bachiller
+  entidades: [paso_bachiller]
+  ejemplos:
+    - "qué necesito para el paso 2 del bachiller"
+    - "qué se hace en el paso 4 del trámite de bachiller"
+    - "requisitos del paso 1 de bachiller"
+    - "qué sigue después de enviar mi DNI para el bachiller"
+    - "qué hago en el paso de verificación de oficinas"
+    - "qué pasa en el paso 5 del bachiller"
+    - "en qué consiste el último paso del bachiller"
+    - "qué me piden en el primer paso del bachiller"
+    - "qué hace la comisión en el trámite de bachiller"
+    - "requisitos de la etapa de fotos del bachiller"
+    - "qué paso viene después de subir la foto"
+  ficha_relacionada: BAC_P*
+  si_falta_entidad: "¿De qué paso del trámite de Bachiller necesitas información? (1 plataforma, 2 fotos, 3 correo con DNI, 4 verificación de oficinas, 5 Comisión y Consejo de Facultad, 6 Consejo Universitario)"
+
+- intent: BAC_fotos
+  descripcion: Características y entrega de las fotos (digital y física) para el Bachiller
+  entidades: [tipo_foto]
+  ejemplos:
+    - "cómo debe ser la foto para el bachiller"
+    - "qué medida tienen las fotos del bachiller"
+    - "cuántas fotos necesito para el bachiller"
+    - "la foto del bachiller es con fondo blanco"
+    - "dónde entrego las fotos físicas del bachiller"
+    - "tengo que ir con terno para la foto de bachiller"
+    - "fotos 4x5 para bachiller"
+    - "dónde subo la foto para el grado de bachiller"
+    - "la foto es tamaño pasaporte o carnet"
+    - "las fotos físicas se entregan o se mandan por correo"
+    - "requisitos de foto para el trámite de bachiller"
+  ficha_relacionada: BAC_P02
+  si_falta_entidad: "¿Te refieres a la foto digital que se sube al sistema o a las fotos físicas que se entregan en la oficina? (Si no responde, se muestran ambas.)"
+
+- intent: BAC_envio_correo
+  descripcion: Correo, asunto y adjuntos para enviar el DNI y la foto del Bachiller
+  entidades: []
+  ejemplos:
+    - "a qué correo mando mi DNI para el bachiller"
+    - "qué asunto pongo en el correo del bachiller"
+    - "dónde envío el DNI y la foto del bachiller"
+    - "correo de ana trujillo"
+    - "qué adjunto en el correo para el bachiller"
+    - "el DNI tiene que ser ampliado"
+    - "a quién le escribo para el trámite de bachiller"
+    - "correo para enviar documentos del grado de bachiller"
+    - "cómo se escribe el asunto DNI foto para bachiller"
+    - "mando el DNI escaneado por correo para el bachiller"
+    - "qué correo es el del bachiller"
+  ficha_relacionada: BAC_P03
+  si_falta_entidad: "No requiere entidad. Si la consulta dice solo «a qué correo envío»: «¿El correo es para el trámite de Bachiller o para la convalidación de PPP?»"
+
+- intent: BAC_seguimiento
+  descripcion: Cómo consultar el estado del trámite de Bachiller y qué hacer con documentos recibidos
+  entidades: []
+  ejemplos:
+    - "cómo veo el estado de mi trámite de bachiller"
+    - "dónde reviso si las oficinas atendieron mis requisitos"
+    - "cómo hago seguimiento a mi bachiller"
+    - "consulta registro de grados y títulos"
+    - "una oficina me mandó un documento al correo, qué hago"
+    - "cómo sé en qué va mi bachiller"
+    - "mi trámite de bachiller está en trámite documentario, qué significa"
+    - "qué requisitos me generó el sistema para el bachiller"
+    - "a dónde reenvío el documento que me llegó al correo"
+    - "cómo saber si ya me aprobaron los requisitos del bachiller"
+    - "dónde veo el avance de mi grado"
+  ficha_relacionada: BAC_P04
+  si_falta_entidad: "No requiere entidad. Si no está claro el trámite: «¿Quieres hacer seguimiento al Grado de Bachiller o a otro trámite?»"
+
+- intent: BAC_plazos_consejo
+  descripcion: Plazos del Bachiller y fechas del Consejo de Facultad y Consejo Universitario
+  entidades: []
+  ejemplos:
+    - "cuánto demora el trámite de bachiller"
+    - "cuándo es el consejo de facultad"
+    - "cuándo aprueban mi bachiller"
+    - "cada cuánto sesiona el consejo de facultad"
+    - "en cuánto tiempo me dan el bachiller"
+    - "qué pasa después del consejo de facultad"
+    - "cuándo pasa mi trámite al consejo universitario"
+    - "si no llego al consejo de este mes qué pasa"
+    - "tiempo de espera para el grado de bachiller"
+    - "cómo me entregan la resolución del bachiller"
+    - "en qué fecha sale mi resolución de bachiller"
+  ficha_relacionada: BAC_P05
+  si_falta_entidad: "No requiere entidad. Si pregunta por «el consejo» sin contexto: «¿Te refieres al Consejo de Facultad o al Consejo Universitario del trámite de Bachiller?»"
+
+- intent: BAC_costo
+  descripcion: Costo del trámite del Grado de Bachiller
+  entidades: []
+  ejemplos:
+    - "cuánto cuesta el bachiller"
+    - "cuánto se paga por el grado de bachiller"
+    - "hay que pagar algo para el bachiller"
+    - "precio del trámite de bachiller"
+    - "monto del grado académico de bachiller"
+    - "cuánto cuesta sacar el bachiller en la UDH"
+    - "el bachiller es gratis"
+    - "dónde pago el bachiller"
+    - "cuál es la tasa del bachiller"
+    - "cuánto me cobran por el diploma de bachiller"
+  ficha_relacionada: BAC_P01
+  si_falta_entidad: "No requiere entidad. Si dice solo «cuánto cuesta»: «¿El costo del Grado de Bachiller o de la convalidación de PPP?»"
+
+- intent: BAC_prerrequisito_ppp
+  descripcion: Relación entre PPP y Bachiller (la PPP aprobada o convalidada es requisito del grado)
+  entidades: []
+  ejemplos:
+    - "necesito las prácticas para sacar el bachiller"
+    - "puedo pedir el bachiller sin haber hecho prácticas"
+    - "las PPP son requisito del bachiller"
+    - "qué necesito antes de iniciar el bachiller"
+    - "si convalidé mis prácticas puedo sacar el bachiller"
+    - "me exoneran de prácticas para el bachiller"
+    - "qué va primero las prácticas o el bachiller"
+    - "requisitos previos para el grado de bachiller"
+    - "me falta la resolución de prácticas, puedo tramitar el bachiller"
+    - "el bachiller pide las prácticas aprobadas"
+  ficha_relacionada: BAC_P01
+  si_falta_entidad: "No requiere entidad."
+
+# ─────────────────── CONVALIDACIÓN DE PPP POR EXPERIENCIA LABORAL ───────────────────
+
+- intent: CPP_condiciones
+  descripcion: Quién puede convalidar la PPP por experiencia laboral (Art. 31)
+  entidades: []
+  ejemplos:
+    - "puedo convalidar mis prácticas con mi trabajo"
+    - "quién puede convalidar las PPP"
+    - "cuánto tiempo de trabajo necesito para convalidar prácticas"
+    - "trabajo hace un año, puedo convalidar las prácticas"
+    - "desde qué ciclo puedo convalidar las prácticas"
+    - "si trabajo en una empresa privada puedo convalidar"
+    - "requisitos para convalidar prácticas por experiencia laboral"
+    - "convalidan prácticas si soy practicante contratado"
+    - "16 meses de trabajo para convalidar"
+    - "no quiero hacer prácticas porque ya trabajo, qué hago"
+    - "trabajo en soporte técnico, me sirve para convalidar"
+  ficha_relacionada: CPP_E00
+  si_falta_entidad: "No requiere entidad. Si dice solo «convalidar»: «¿Quieres convalidar tus prácticas por experiencia laboral o convalidar cursos por traslado?»"
+
+- intent: CPP_requisitos_expediente
+  descripcion: Documentos del expediente de convalidación de PPP (Art. 32)
+  entidades: [documento_cpp]
+  ejemplos:
+    - "qué documentos necesito para convalidar prácticas"
+    - "qué lleva el expediente de convalidación de PPP"
+    - "qué es el anexo 08"
+    - "qué es el anexo 09"
+    - "necesito boletas de pago para convalidar"
+    - "la constancia de trabajo tiene que ser original"
+    - "quién firma la ficha de evaluación de la convalidación"
+    - "cómo hago el informe técnico para convalidar"
+    - "requisitos del expediente de convalidación"
+    - "me piden contrato o constancia para convalidar"
+    - "a quién va dirigida la solicitud de convalidación"
+  ficha_relacionada: CPP_E01
+  si_falta_entidad: "¿Quieres la lista completa del expediente o detalles de un documento en particular? (solicitud Anexo 08, constancias o contratos, boletas, ficha de evaluación, informe técnico Anexo 09, recibo de pago)"
+
+- intent: CPP_envio_expediente
+  descripcion: Dónde y cómo se presenta el expediente de convalidación
+  entidades: []
+  ejemplos:
+    - "a qué correo mando la convalidación de prácticas"
+    - "dónde envío el expediente de convalidación"
+    - "cómo solicito la convalidación de PPP"
+    - "la convalidación se pide en el sistema"
+    - "correo para convalidar prácticas"
+    - "dónde presento mi informe técnico de convalidación"
+    - "envío la convalidación a la comisión de prácticas"
+    - "se presenta en físico o por correo la convalidación"
+    - "cómo inicio la convalidación de prácticas"
+    - "a qué secretaría mando los documentos de convalidación"
+    - "es el mismo correo del informe final de prácticas"
+  ficha_relacionada: CPP_E01
+  si_falta_entidad: "No requiere entidad."
+
+- intent: CPP_plazo
+  descripcion: Plazos de la convalidación de PPP
+  entidades: []
+  ejemplos:
+    - "cuánto tiempo tengo para presentar la convalidación"
+    - "plazo para el informe de convalidación"
+    - "cuántos días tengo para la convalidación de prácticas"
+    - "cuánto demora la convalidación de PPP"
+    - "son 20 días hábiles o calendario"
+    - "en cuánto tiempo sale la resolución de convalidación"
+    - "hay fecha límite para convalidar"
+    - "desde cuándo cuentan los 20 días"
+    - "cuánto tarda la comisión en evaluar mi convalidación"
+    - "tiempo para la sustentación de convalidación"
+  ficha_relacionada: CPP_E01
+  si_falta_entidad: "No requiere entidad."
+
+- intent: CPP_costo
+  descripcion: Costo de la convalidación de PPP (derecho de trámite documentario)
+  entidades: []
+  ejemplos:
+    - "cuánto cuesta convalidar las prácticas"
+    - "cuánto pago por la convalidación de PPP"
+    - "precio del derecho de trámite de convalidación"
+    - "la convalidación tiene costo"
+    - "cuánto es el trámite documentario de convalidación"
+    - "qué recibo de pago piden para convalidar"
+    - "dónde pago la convalidación de prácticas"
+    - "monto de la convalidación por experiencia laboral"
+    - "es gratis convalidar las prácticas"
+    - "cuánto cobran para convalidar PPP"
+  ficha_relacionada: CPP_E01
+  si_falta_entidad: "No requiere entidad. Si dice solo «convalidación»: «¿Convalidación de PPP o convalidación de cursos por traslado?»"
+
+- intent: CPP_sustentacion
+  descripcion: Evaluación y sustentación (exposición) ante la Comisión de PPP
+  entidades: []
+  ejemplos:
+    - "tengo que sustentar la convalidación"
+    - "la exposición de convalidación es obligatoria"
+    - "quién evalúa mi convalidación de prácticas"
+    - "cómo es la sustentación de la convalidación"
+    - "qué hace la comisión de PPP con mi expediente"
+    - "con quién coordino la exposición de convalidación"
+    - "qué pasa después de enviar mi expediente de convalidación"
+    - "me dan constancia de aprobación de la convalidación"
+    - "la comisión revisa el informe técnico"
+    - "qué presento en la exposición de convalidación"
+  ficha_relacionada: CPP_E03
+  si_falta_entidad: "No requiere entidad."
+
+- intent: CPP_resultado
+  descripcion: Cierre de la convalidación (resolución de la Facultad) y siguiente paso
+  entidades: []
+  ejemplos:
+    - "cómo sé si aprobaron mi convalidación"
+    - "quién emite la resolución de convalidación de prácticas"
+    - "qué documento recibo al final de la convalidación"
+    - "ya me aprobó la comisión, qué sigue"
+    - "la facultad aprueba la convalidación"
+    - "después de la convalidación puedo sacar el bachiller"
+    - "me dan resolución por convalidar las prácticas"
+    - "dónde llega la resolución de convalidación"
+    - "qué sigue después de la constancia de aprobación"
+    - "terminé la convalidación, ahora qué hago"
+  ficha_relacionada: CPP_E04
+  si_falta_entidad: "No requiere entidad."
+
+- intent: CPP_etapa_info
+  descripcion: Detalle de una etapa concreta de la convalidación de PPP
+  entidades: [etapa_cpp]
+  ejemplos:
+    - "qué pasa en la etapa 2 de la convalidación"
+    - "en qué etapa está la verificación del P.A."
+    - "qué hace el programa académico con mi expediente de convalidación"
+    - "explícame la etapa 3 de la convalidación de prácticas"
+    - "etapas de la convalidación de PPP"
+    - "cuál es la última etapa de la convalidación"
+    - "qué etapa sigue después de enviar el expediente"
+    - "qué hace la facultad en la convalidación"
+    - "en qué consiste la etapa 1 de la convalidación"
+    - "cuántas etapas tiene la convalidación de prácticas"
+  ficha_relacionada: CPP_E*
+  si_falta_entidad: "¿Qué etapa de la convalidación te interesa? (0 condiciones, 1 solicitud y expediente, 2 verificación del P.A., 3 evaluación y sustentación, 4 resolución de la Facultad)"
