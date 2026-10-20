@@ -1,0 +1,51 @@
+id,pregunta,intent_esperado,etapa,anexo,respuesta_esperada,dato_clave,tipo
+PPP_Q01,"cuántas horas son las prácticas pre profesionales",PPP_info_general,,,PPP_info_general,"600 horas efectivas",normal
+PPP_Q02,"las prácticas son obligatorias o me puedo exonerar",PPP_info_general,,,PPP_info_general,"obligatorias, sin exoneración",normal
+PPP_Q03,"cuantas etapas tienen las practicas",PPP_info_general,,,PPP_info_general,"4 etapas",normal
+PPP_Q04,"desde qué ciclo puedo hacer mis prácticas",PPP_requisitos_inicio,,,PPP_requisitos_inicio,"cursos de especialidad hasta el octavo ciclo concluidos",normal
+PPP_Q05,"puedo hacer prácticas en una empresa de marketing",PPP_requisitos_inicio,,,PPP_requisitos_inicio,"áreas válidas: desarrollo; redes; seguridad; gestión de TIC; gestión de proyectos",normal
+PPP_Q06,"la empresa tiene que tener un ingeniero de sistemas",PPP_requisitos_inicio,,,PPP_requisitos_inicio,"supervisado por Ingeniero de Sistemas o carrera afín",normal
+PPP_Q07,"estoy en séptimo ciclo, ya puedo empezar mis prácticas",PPP_requisitos_inicio,,,VC_CICLO,"debe concluir cursos hasta el octavo ciclo",normal
+PPP_Q08,"ya tengo la carta de aceptación, qué sigue",PPP_diagnostico_etapa,,,DX_E01,"solicitar carta de presentación; S/ 5.00; secretaria.fac.ing@udh.edu.pe",diagnostico
+PPP_Q09,"ya terminé mis 600 horas, qué hago ahora",PPP_diagnostico_etapa,,,DX_E04,"20 días hábiles; secretaria.sistemas.hco@udh.edu.pe",diagnostico
+PPP_Q10,"no sé qué me toca hacer en mis prácticas",PPP_diagnostico_etapa,,,DX_Q0,"inicia preguntas de diagnóstico",diagnostico
+PPP_Q11,"qué documentos necesito para la carta de presentación",PPP_requisitos_etapa,carta_presentacion,,PPP_requisitos_etapa · carta_presentacion,"Anexo 03 y Anexo 02",normal
+PPP_Q12,"requisitos para aprobar el plan de prácticas",PPP_requisitos_etapa,plan,,PPP_requisitos_etapa · plan,"Anexo 04, carta de presentación, Anexo 02, Anexo 03",normal
+PPP_Q13,"qué piden para el informe final de ppp",PPP_requisitos_etapa,informe_final,,PPP_requisitos_etapa · informe_final,"constancia, Anexos 06, 05 y 07, asistencia, Seguimiento del Graduado; en PDF",normal
+PPP_Q14,"qué papeles piden para las prácticas",PPP_requisitos_etapa,,,REPREGUNTA_ETAPA,"pregunta la etapa",desambiguacion
+PPP_Q15,"cómo saco la carta de presentación",PPP_pasos_etapa,carta_presentacion,,PPP_pasos_etapa · carta_presentacion,"sistema UDH; S/ 5.00; llega al correo institucional",normal
+PPP_Q16,"quién revisa mi plan",PPP_pasos_etapa,plan,,PPP_pasos_etapa · plan,"Comisión de PPP",normal
+PPP_Q17,"qué hago durante las prácticas",PPP_pasos_etapa,ejecucion,,PPP_pasos_etapa · ejecucion,"600 horas; asistencia firmada y sellada; reuniones con el Asesor–Supervisor",normal
+PPP_Q18,"quién aprueba el informe final",PPP_pasos_etapa,informe_final,,PPP_pasos_etapa · informe_final,"Comisión emite constancia; Facultad aprueba por resolución",normal
+PPP_Q19,"a qué correo envío mi plan de prácticas",PPP_correo_etapa,plan,,PPP_correo_etapa · plan,"comision.practicas.isi@udh.edu.pe",normal
+PPP_Q20,"a qué correo mando los anexos 02 y 03",PPP_correo_etapa,carta_presentacion,,PPP_correo_etapa · carta_presentacion,"secretaria.fac.ing@udh.edu.pe",normal
+PPP_Q21,"a dónde mando el informe final de ppp",PPP_correo_etapa,informe_final,,PPP_correo_etapa · informe_final,"secretaria.sistemas.hco@udh.edu.pe",normal
+PPP_Q22,"a qué correo mando los documentos de la etapa 3",PPP_correo_etapa,ejecucion,,PPP_correo_etapa · ejecucion,"no envía documentos; el Asesor–Supervisor eleva Anexos 10 y 07",normal
+PPP_Q23,"a qué correo envío los documentos de prácticas",PPP_correo_etapa,,,REPREGUNTA_ETAPA,"pregunta la etapa",desambiguacion
+PPP_Q24,"cuánto cuesta la carta de presentación",PPP_costo,carta_presentacion,,PPP_costo · carta_presentacion,"S/ 5.00",normal
+PPP_Q25,"cuánto cuesta todo el proceso de prácticas",PPP_costo,,,PPP_costo · (sin etapa),"S/ 5.00 conocido; etapas 2 y 4 sin monto confirmado",normal
+PPP_Q26,"cuánto se paga por el plan de ppp",PPP_costo,plan,,DATO_PENDIENTE,"no confirmado; secretaria.sistemas.hco@udh.edu.pe",pendiente
+PPP_Q27,"cuántos días tengo para presentar el plan",PPP_plazo,plan,,PPP_plazo · plan,"15 días calendario desde el inicio de la práctica",normal
+PPP_Q28,"me observaron el plan, cuánto tiempo tengo",PPP_plazo,plan,,PPP_plazo · plan,"7 días hábiles; si no, se anula",normal
+PPP_Q29,"cuántos días después de terminar entrego el informe",PPP_plazo,informe_final,,PPP_plazo · informe_final,"20 días hábiles",normal
+PPP_Q30,"plazos de las ppp",PPP_plazo,,,PPP_plazo · (sin etapa),"15 días calendario; 7, 20 y 10 días hábiles",normal
+PPP_Q31,"en cuánto tiempo sale la carta de presentación",PPP_plazo,carta_presentacion,,DATO_PENDIENTE,"no confirmado",pendiente
+PPP_Q32,"qué es el anexo 04",PPP_anexo_info,,04,PPP_anexo_info · 04,"formato del Plan de PPP",normal
+PPP_Q33,"quién llena el anexo 06",PPP_anexo_info,,06,PPP_anexo_info · 06,"jefe de área de la entidad",normal
+PPP_Q34,"qué es el anexo 10",PPP_anexo_info,,10,PPP_anexo_info · 10,"ficha de avances; la eleva el Asesor–Supervisor",normal
+PPP_Q35,"necesito el anexo 1",PPP_anexo_info,,01,PPP_anexo_info · 01,"no se exige",normal
+PPP_Q36,"dónde descargo los anexos de ppp",PPP_anexo_info,,,DATO_PENDIENTE,"no confirmado",pendiente
+PPP_Q37,"quién designa al supervisor de prácticas",PPP_asesor_supervisor,,,PPP_asesor_supervisor,"la Comisión de PPP al aprobar el Plan",normal
+PPP_Q38,"cada cuánto me reúno con mi supervisor",PPP_asesor_supervisor,,,PPP_asesor_supervisor,"mensualmente o como mínimo 2 veces",normal
+PPP_Q39,"la sustentación de prácticas es obligatoria",PPP_sustentacion,,,PPP_sustentacion,"obligatoria y pública",normal
+PPP_Q40,"la sustentación es virtual o presencial",PPP_sustentacion,,,DATO_PENDIENTE,"no confirmado",pendiente
+PPP_Q41,"cuántas faltas puedo tener en las prácticas",PPP_anulacion,,,PPP_anulacion,"3 consecutivas o 5 alternadas sin justificar",normal
+PPP_Q42,"qué pasa si copio el informe",PPP_anulacion,,,PPP_anulacion,"informe plagiado anula la práctica",normal
+PPP_Q43,"no subsané el plan a tiempo, puedo empezar de nuevo",PPP_anulacion,,,PPP_anulacion,"reinicio en 30 días calendario en otra entidad",normal
+PPP_Q44,"no me llega la carta de presentación",PPP_estado_tramite,carta_presentacion,,PPP_estado_tramite · carta_presentacion,"llega al correo institucional",normal
+PPP_Q45,"cómo sé si ya aprobaron mi plan",PPP_estado_tramite,plan,,DATO_PENDIENTE,"no confirmado",pendiente
+PPP_Q46,"ya aprobé mis prácticas, qué sigue",PPP_siguiente_paso,,,PPP_siguiente_paso,"resolución de la Facultad; luego Grado de Bachiller",normal
+PPP_Q47,"trabajo hace 2 años en sistemas, igual tengo que hacer prácticas",PPP_requisitos_inicio,,,DESVIO_CPP,"convalidación por experiencia; 16 meses",desvio
+PPP_Q48,"qué es el anexo 09",PPP_anexo_info,,09,DESVIO_CPP,"corresponde a convalidación por experiencia",desvio
+PPP_Q49,"quiero convalidar cursos por traslado interno",,,,DESVIO_TRA,"no es PPP; desvío a TRA_*",desvio
+PPP_Q50,"cuál es el horario de la biblioteca",,,,GEN_fuera_de_alcance,"fuera del alcance de PPP",fuera_de_alcance

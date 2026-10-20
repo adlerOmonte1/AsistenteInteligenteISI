@@ -1,0 +1,74 @@
+{
+  "proceso": "ppp",
+  "programa": "Ingeniería de Sistemas e Informática",
+  "facultad": "Ingeniería",
+  "fuente": "Reglamento de PPP 2021 (Res. N.° 221-2021-CF-FI-UDH; Res. N.° 029-2022-R-CU-UDH) y flujograma de Coordinación",
+  "horas_totales": 600,
+  "ciclo_minimo": "Cursos de especialidad hasta el octavo ciclo concluidos",
+  "etapas": [
+    {
+      "numero": 1,
+      "id": "PPP_E01",
+      "nombre": "Carta de presentación",
+      "tramite_sistema": "Carta de presentación",
+      "correo": "secretaria.fac.ing@udh.edu.pe",
+      "pago": {"monto": 5.00, "moneda": "PEN", "estado": "confirmado"},
+      "anexos": ["02", "03"],
+      "plazos": [
+        {"hito": "Emisión de la carta de presentación", "valor": null, "unidad": null, "desde": null, "si_incumple": null, "estado": "pendiente"}
+      ]
+    },
+    {
+      "numero": 2,
+      "id": "PPP_E02",
+      "nombre": "Plan de PPP",
+      "tramite_sistema": "Aprobación de Plan de PPP",
+      "correo": "comision.practicas.isi@udh.edu.pe",
+      "pago": {"monto": null, "moneda": "PEN", "estado": "pendiente"},
+      "anexos": ["02", "03", "04"],
+      "plazos": [
+        {"hito": "Presentar el Plan", "valor": 15, "unidad": "días calendario", "desde": "inicio de la práctica", "si_incumple": null},
+        {"hito": "Subsanar observaciones del Plan", "valor": 7, "unidad": "días hábiles", "desde": "observación", "si_incumple": "Se anula; reinicio en 30 días calendario en otra entidad"}
+      ]
+    },
+    {
+      "numero": 3,
+      "id": "PPP_E03",
+      "nombre": "Ejecución",
+      "tramite_sistema": null,
+      "correo": null,
+      "pago": {"monto": 0, "moneda": "PEN", "estado": "no_aplica"},
+      "anexos": ["07", "10"],
+      "plazos": [
+        {"hito": "Reuniones de supervisión", "valor": "mensuales o mínimo 2", "unidad": null, "desde": null, "si_incumple": null}
+      ]
+    },
+    {
+      "numero": 4,
+      "id": "PPP_E04",
+      "nombre": "Informe final y sustentación",
+      "tramite_sistema": "Aprobación del informe final de PPP",
+      "correo": "secretaria.sistemas.hco@udh.edu.pe",
+      "pago": {"monto": null, "moneda": "PEN", "estado": "pendiente"},
+      "anexos": ["05", "06", "07"],
+      "plazos": [
+        {"hito": "Presentar el informe final", "valor": 20, "unidad": "días hábiles", "desde": "conclusión de la práctica", "si_incumple": null},
+        {"hito": "Subsanar tras la sustentación", "valor": 10, "unidad": "días hábiles", "desde": "sustentación", "si_incumple": "Se anula la práctica"}
+      ]
+    }
+  ],
+  "anexos": {
+    "02": {"nombre": "Carta de compromiso", "responsable": "Estudiante"},
+    "03": {"nombre": "Carta de aceptación", "responsable": "Entidad receptora"},
+    "04": {"nombre": "Plan de PPP", "responsable": "Estudiante"},
+    "05": {"nombre": "Estructura del informe de PPP", "responsable": "Estudiante"},
+    "06": {"nombre": "Ficha de evaluación del jefe de área", "responsable": "Jefe de área de la entidad"},
+    "07": {"nombre": "Ficha de supervisión y evaluación", "responsable": "Asesor–Supervisor"},
+    "10": {"nombre": "Ficha de avances", "responsable": "Asesor–Supervisor"}
+  },
+  "faltas_maximas": {"consecutivas": 3, "alternadas": 5, "condicion": "sin justificar"},
+  "reinicio_tras_anulacion": {"valor": 30, "unidad": "días calendario", "condicion": "en otra entidad; confirmado para anulación por no subsanar el Plan"},
+  "contacto_programa": {"correo": "secretaria.sistemas.hco@udh.edu.pe", "telefono": "952069136", "direccion": "Carretera Central Km 2.5, La Esperanza"},
+  "siguiente_proceso": "BAC_*",
+  "alternativa": {"proceso": "CPP_*", "condicion": "16 meses o más de experiencia laboral en la especialidad"}
+}
