@@ -1,0 +1,836 @@
+version: '1.0'
+alcance: Diseño y base de conocimiento del integrante F; no implementación de un chatbot funcional.
+fuentes:
+- Requisitos_para_Convalidacion_Interna.md
+- Requisitos_para_Convalidacion_Externa.md
+vigencia: pendiente de validación institucional
+politica_contexto:
+  regla_tipo: Exigir tipo cuando cambie la respuesta; permitir comparaciones explícitas con ambos tipos.
+  regla_fase: Exigir fase solo para navegación o consulta ambigua. No preguntar fase si documento e intent
+    la determinan.
+  regla_externo: Para orientación personalizada, preguntar origen y destino si no están explícitos. Aclarar
+    que el alcance oficial del documento externo está pendiente; no prometer su aplicabilidad. Se permite explicar
+    lo que dice el documento con esa salvedad.
+  fallos: Contador de fallos consecutivos inicia en 0. Cada entrada no comprendida o aclaración inválida suma
+    1. Con 2, ejecutar GEN_derivar_humano sin tercera pregunta. Respuesta interpretada y entidades indispensables
+    resueltas reinician a 0. Cambiar de tema no reinicia un fallo si la entrada sigue sin comprenderse.
+  seguimiento: Sí avanza solo si existe oferta de siguiente fase y fase activa. Sí aislado sin contexto requiere
+    aclaración. No ante la oferta cierra. Una pregunta directa tiene prioridad sobre la navegación secuencial.
+  datos_usuario: Los estados, instituciones y dirección se guardan como mencionados_por_usuario; no como confirmación
+    institucional.
+  sin_integraciones: No autenticar, cobrar, registrar, aprobar ni consultar expedientes; los archivos solo
+    diseñan respuestas.
+  cambio_proceso: Si el usuario cambia de interno a externo o viceversa, limpiar fase activa y confirmar contexto
+    nuevo.
+  enrutamiento: Costos/plazos explícitos tienen prioridad sobre el intent del documento; entrega/lugar sobre
+    requisitos; registro sobre pasos; siguiente fase sobre pasos con contexto; destino sobre evaluación si
+    se menciona otra universidad; diferencia explícita sobre tipo. Solicitud explícita de humano tiene prioridad
+    máxima.
+acciones_conversacionales:
+  TRA_ACC_identificar_tipo: Preguntar interno o externo; no consultar ficha hasta resolver la ambigüedad necesaria.
+  TRA_ACC_derivar: Usar TRA_P_HUMANO. No enviar mensajes ni afirmar transferencia efectiva; canal oficial pendiente.
+  TRA_ACC_desconocido: Usar TRA_P_NO_RECONOCIDA y regla de dos fallos.
+  TRA_ACC_bienvenida: Usar TRA_P_BIENVENIDA.
+  TRA_ACC_cierre: Usar TRA_P_CIERRE.
+entidades:
+  tipo_traslado:
+    descripcion: Procedimiento explícito del usuario.
+    valores_admitidos:
+    - interno
+    - externo
+    sinonimos:
+      interno:
+      - traslado interno
+      - convalidación interna
+      externo:
+      - traslado externo
+      - convalidación externa
+    criterio_extraccion: No inferir por cambiar de carrera o de universidad. Si se nombran ambos para comparar,
+      mantener el alcance comparativo sin seleccionar uno. El cambio de tipo invalida la fase anterior.
+    ejemplos:
+    - texto: traslado interno
+      valor: interno
+    - texto: mi traslado externo
+      valor: externo
+    - texto: convalidacion interna
+      valor: interno
+    - texto: convalidación externa
+      valor: externo
+    - texto: interno por favor
+      valor: interno
+    - texto: externo nomás
+      valor: externo
+    - texto: es de traslado interno
+      valor: interno
+    - texto: consulto el proceso externo
+      valor: externo
+    - texto: para interno
+      valor: interno
+    - texto: sobre externo
+      valor: externo
+  fase:
+    descripcion: Etapa explícita o etapa activa en el diálogo.
+    valores_admitidos:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    sinonimos:
+      '1':
+      - primera
+      - certificado
+      '2':
+      - segunda
+      - constancia
+      '3':
+      - tercera
+      - sílabos
+      '4':
+      - cuarta
+      - presentación documental
+      '5':
+      - quinta
+      - registro
+      '6':
+      - sexta
+      - evaluación
+      '7':
+      - séptima
+      - cierre del proceso
+    criterio_extraccion: Resolver tras conocer tipo_traslado. Resolución corresponde a INT 7 o EXT 6; universidad
+      de destino a EXT 7. No convertir una etapa activa en evidencia de que el estudiante la completó.
+    ejemplos:
+    - texto: fase uno
+      valor: 1
+    - texto: etapa 2
+      valor: 2
+    - texto: la tercera
+      valor: 3
+    - texto: cuarta fase
+      valor: 4
+    - texto: fase cinco
+      valor: 5
+    - texto: sexta etapa
+      valor: 6
+    - texto: fase siete
+      valor: 7
+    - texto: primero mi certificado
+      valor: 1
+    - texto: obtención de constancia
+      valor: 2
+    - texto: registro de convalidación
+      valor: 5
+  documento:
+    descripcion: Documento consultado.
+    valores_admitidos:
+    - certificado_estudios
+    - constancia_ingreso
+    - silabo
+    - resolucion
+    sinonimos:
+      certificado_estudios:
+      - certificado
+      - certificado de estudios
+      constancia_ingreso:
+      - constancia de ingreso
+      silabo:
+      - sílabo
+      - silabos
+      - sílabos
+      resolucion:
+      - resolución de cursos convalidados
+      - resolucion
+    criterio_extraccion: Aceptar plural y omisión de tildes. Constancia sin especificación exige aclarar si
+      es de ingreso. Original/autenticado son menciones que se verifican contra la ficha, no nuevos requisitos.
+    ejemplos:
+    - texto: mi certificado de estudios
+      valor: certificado_estudios
+    - texto: certificado
+      valor: certificado_estudios
+    - texto: sacar el certificado
+      valor: certificado_estudios
+    - texto: constancia de ingreso
+      valor: constancia_ingreso
+    - texto: mi constancia de ingreso
+      valor: constancia_ingreso
+    - texto: sílabos
+      valor: silabo
+    - texto: silabo del curso
+      valor: silabo
+    - texto: silabos firmados
+      valor: silabo
+    - texto: resolución de cursos convalidados
+      valor: resolucion
+    - texto: mi resolucion
+      valor: resolucion
+  concepto_pago:
+    descripcion: Concepto tarifario; no equivale a medio de pago.
+    valores_admitidos:
+    - certificado_estudios
+    - derecho_certificado
+    - silabo
+    - solicitud_convalidacion
+    sinonimos:
+      certificado_estudios:
+      - costo del certificado
+      derecho_certificado:
+      - derecho de trámite del certificado
+      silabo:
+      - pago de sílabos
+      solicitud_convalidacion:
+      - derecho de convalidación
+      - solicitud interna
+      - solicitud externa
+    criterio_extraccion: 'S/ 5 aislado no identifica un concepto: puede ser derecho del certificado o solicitud
+      de convalidación. Preguntar antes de asignar. No inventar medio de pago.'
+    ejemplos:
+    - texto: precio del certificado
+      valor: certificado_estudios
+    - texto: costo por ciclo del certificado
+      valor: certificado_estudios
+    - texto: derecho de trámite del certificado
+      valor: derecho_certificado
+    - texto: trámite del certificado
+      valor: derecho_certificado
+    - texto: pago por sílabo
+      valor: silabo
+    - texto: precio de los silabos
+      valor: silabo
+    - texto: costo de un sílabo
+      valor: silabo
+    - texto: pago de solicitud de convalidación
+      valor: solicitud_convalidacion
+    - texto: solicitud interna de convalidación
+      valor: solicitud_convalidacion
+    - texto: derecho de convalidación externa
+      valor: solicitud_convalidacion
+  dependencia:
+    descripcion: Órgano o canal mencionado en la conversación.
+    valores_admitidos:
+    - oficina_admision
+    - secretaria_coordinacion
+    - coordinacion_academica
+    - dependencia_silabos_no_precisada
+    - universidad_destino
+    sinonimos:
+      oficina_admision:
+      - Admisión
+      secretaria_coordinacion:
+      - Secretaría de Coordinación Académica
+      coordinacion_academica:
+      - Coordinación Académica
+      dependencia_silabos_no_precisada:
+      - dependencia de sílabos
+      universidad_destino:
+      - universidad de destino
+    criterio_extraccion: Secretaría y Coordinación son receptora y evaluadora distintas. El nombre genérico
+      dependencia de sílabos no confirma una oficina concreta.
+    ejemplos:
+    - texto: Oficina de Admisión
+      valor: oficina_admision
+    - texto: Admisión
+      valor: oficina_admision
+    - texto: oficina de admision
+      valor: oficina_admision
+    - texto: Secretaría de Coordinación Académica
+      valor: secretaria_coordinacion
+    - texto: secretaria de coordinacion
+      valor: secretaria_coordinacion
+    - texto: Coordinación Académica
+      valor: coordinacion_academica
+    - texto: coordinacion academica
+      valor: coordinacion_academica
+    - texto: dependencia de sílabos
+      valor: dependencia_silabos_no_precisada
+    - texto: universidad de destino
+      valor: universidad_destino
+    - texto: mi universidad de destino
+      valor: universidad_destino
+  estado_tramite:
+    descripcion: Estado autodeclarado; no catálogo oficial del sistema.
+    valores_admitidos:
+    - por_iniciar
+    - documentos_reunidos
+    - documentos_presentados
+    - solicitud_registrada
+    - en_evaluacion
+    - observado
+    - rechazado
+    - resolucion_recibida
+    - desconocido
+    sinonimos:
+      por_iniciar:
+      - no empecé
+      documentos_reunidos:
+      - ya tengo los documentos
+      documentos_presentados:
+      - ya entregué
+      solicitud_registrada:
+      - ya registré
+      en_evaluacion:
+      - están revisando
+      observado:
+      - observado
+      rechazado:
+      - rechazado
+      resolucion_recibida:
+      - recibí la resolución
+      desconocido:
+      - no sé el estado
+    criterio_extraccion: Guardar como estado_mencionado_por_usuario. Nunca afirmar consulta al expediente o
+      estado verificado. Observado y rechazado no tienen procedimiento de subsanación documentado.
+    ejemplos:
+    - texto: no empecé
+      valor: por_iniciar
+    - texto: tengo los documentos
+      valor: documentos_reunidos
+    - texto: ya entregué los requisitos
+      valor: documentos_presentados
+    - texto: registré mi solicitud
+      valor: solicitud_registrada
+    - texto: me dicen que está en evaluación
+      valor: en_evaluacion
+    - texto: mi trámite está observado
+      valor: observado
+    - texto: lo rechazaron
+      valor: rechazado
+    - texto: recibí la resolución
+      valor: resolucion_recibida
+    - texto: no sé el estado
+      valor: desconocido
+    - texto: todavía no inicio
+      valor: por_iniciar
+  universidad_destino:
+    descripcion: Nombre libre de institución dicho por el usuario.
+    valores_admitidos:
+    - texto_libre_no_vacio
+    sinonimos: {}
+    criterio_extraccion: Extraer el nombre después de voy a, destino o universidad de destino; conservar el
+      texto original. Los ejemplos no son destinos autorizados ni convenios confirmados.
+    ejemplos:
+    - texto: mi universidad de destino es Universidad Ejemplo A
+      valor: Universidad Ejemplo A
+    - texto: mi universidad de destino es Universidad Ejemplo B
+      valor: Universidad Ejemplo B
+    - texto: mi universidad de destino es Universidad Ejemplo C
+      valor: Universidad Ejemplo C
+    - texto: mi universidad de destino es Universidad Ejemplo D
+      valor: Universidad Ejemplo D
+    - texto: mi universidad de destino es Universidad Ejemplo E
+      valor: Universidad Ejemplo E
+    - texto: mi universidad de destino es Universidad Ejemplo F
+      valor: Universidad Ejemplo F
+    - texto: mi universidad de destino es Universidad Ejemplo G
+      valor: Universidad Ejemplo G
+    - texto: mi universidad de destino es Universidad Ejemplo H
+      valor: Universidad Ejemplo H
+    - texto: mi universidad de destino es Universidad Ejemplo I
+      valor: Universidad Ejemplo I
+    - texto: mi universidad de destino es Universidad Ejemplo J
+      valor: Universidad Ejemplo J
+  direccion_traslado:
+    descripcion: Sentido indicado por el usuario, separado del alcance oficial del documento.
+    valores_admitidos:
+    - ingreso_a_udh
+    - salida_de_udh
+    - no_confirmada
+    sinonimos:
+      ingreso_a_udh:
+      - de otra universidad a UDH
+      salida_de_udh:
+      - de UDH a otra universidad
+      no_confirmada:
+      - no sé el sentido
+    criterio_extraccion: Extraer origen y destino explícitos; no inferir ingreso/salida por externo. Incluso
+      si el usuario lo aclara, el procedimiento oficial aplicable continúa pendiente hasta validación de Coordinación.
+    ejemplos:
+    - texto: vengo de otra universidad a UDH
+      valor: ingreso_a_udh
+    - texto: quiero ingresar a UDH desde otra universidad
+      valor: ingreso_a_udh
+    - texto: mi destino es UDH y vengo de otra institución
+      valor: ingreso_a_udh
+    - texto: de otra institución hacia la UDH
+      valor: ingreso_a_udh
+    - texto: salgo de UDH a otra universidad
+      valor: salida_de_udh
+    - texto: estudio en UDH y voy a otra universidad
+      valor: salida_de_udh
+    - texto: de la UDH hacia otra institución
+      valor: salida_de_udh
+    - texto: UDH es mi origen y otra universidad mi destino
+      valor: salida_de_udh
+    - texto: no sé si es ingreso o salida
+      valor: no_confirmada
+    - texto: todavía no definí origen y destino
+      valor: no_confirmada
+intents:
+- intent: TRA_tipo_traslado
+  descripcion: Identificar el tipo de traslado sin adivinar el sentido.
+  entidades:
+  - tipo_traslado
+  - direccion_traslado
+  ejemplos:
+  - quiero hacer un traslado
+  - como hago mi traslado
+  - quiero cambiarme de carrera
+  - necesito orientación para trasladarme
+  - no sé qué traslado me corresponde
+  - es para traslado interno
+  - mi consulta es de traslado externo
+  - me kiero trasladar
+  - quiero cambiar de universidad
+  - ayúdame a identificar mi tipo de traslado
+  ficha_relacionada: []
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  accion_conversacional: TRA_ACC_identificar_tipo
+  entidades_obligatorias: []
+- intent: TRA_requisitos
+  descripcion: Consultar la documentación requerida.
+  entidades:
+  - tipo_traslado
+  - fase
+  ejemplos:
+  - qué documentos necesito para traslado interno
+  - requisitos de traslado externo
+  - q papeles llevo para interno
+  - qué necesito presentar para convalidar externo
+  - me das la lista de requisitos del traslado interno
+  - qué papeles piden en traslado externo
+  - documentos obligatorios para convalidación interna
+  - requisitos documentales de convalidación externa
+  - para interno necesito el certificado original
+  - para externo sirve la copia autenticada
+  ficha_relacionada:
+  - TRA_INT_F04
+  - TRA_EXT_F04
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_costo
+  descripcion: Consultar un precio o los conceptos documentados, diferenciando el medio de pago.
+  entidades:
+  - tipo_traslado
+  - concepto_pago
+  - documento
+  ejemplos:
+  - cuánto cuesta el certificado para interno
+  - cuánto pago por sílabos para externo
+  - precio de la solicitud de convalidación interna
+  - costo del trámite de convalidación externa
+  - cuánto sale el certificado por ciclo para externo
+  - cuáles son los pagos del traslado interno
+  - para externo dónde hago el pago
+  - puedo pagar por yape el traslado interno
+  - cuanto cobran por un silabo para interno
+  - es gratis la constancia de ingreso para externo
+  ficha_relacionada:
+  - TRA_INT_F01
+  - TRA_INT_F03
+  - TRA_INT_F05
+  - TRA_EXT_F01
+  - TRA_EXT_F03
+  - TRA_EXT_F05
+  - TRA_INT_F02
+  - TRA_EXT_F02
+  si_falta_entidad: ¿Sobre qué concepto de pago deseas consultar?
+  entidades_obligatorias:
+  - tipo_traslado
+  aclaracion_condicional: Si el concepto o la etapa son ambiguos, preguntar antes de recuperar datos. Para
+    todos los pagos se pueden consultar las fichas de costos en conjunto.
+- intent: TRA_plazo
+  descripcion: Consultar una duración sin convertir aproximaciones en garantías.
+  entidades:
+  - tipo_traslado
+  - fase
+  - documento
+  ejemplos:
+  - cuánto demora la constancia de ingreso para interno
+  - plazo de la evaluación de traslado externo
+  - cuántos días revisan los cursos de interno
+  - en cuánto sale la constancia para externo
+  - cuanto demora mi convalidacion interna
+  - cuánto dura la evaluación externa
+  - en un día me dan mi constancia de ingreso para interno
+  - para externo cuánto tarda la universidad de destino
+  - cuánto demora el certificado para interno
+  - el traslado externo demora dos días exactos
+  ficha_relacionada:
+  - TRA_INT_F01
+  - TRA_INT_F02
+  - TRA_INT_F03
+  - TRA_INT_F04
+  - TRA_INT_F05
+  - TRA_INT_F06
+  - TRA_INT_F07
+  - TRA_EXT_F01
+  - TRA_EXT_F02
+  - TRA_EXT_F03
+  - TRA_EXT_F04
+  - TRA_EXT_F05
+  - TRA_EXT_F06
+  - TRA_EXT_F07
+  si_falta_entidad: ¿Por qué etapa o documento deseas conocer el plazo?
+  entidades_obligatorias:
+  - tipo_traslado
+  aclaracion_condicional: Si el concepto o la etapa son ambiguos, preguntar antes de recuperar datos. Para
+    todos los pagos se pueden consultar las fichas de costos en conjunto.
+- intent: TRA_pasos
+  descripcion: Explicar la secuencia documental del procedimiento.
+  entidades:
+  - tipo_traslado
+  - direccion_traslado
+  ejemplos:
+  - cómo hago el traslado interno paso a paso
+  - explícame el proceso de traslado externo
+  - por dónde empiezo para interno
+  - cuál es la secuencia de convalidación externa
+  - pasos para trasladarme internamente
+  - qué tengo que hacer en traslado externo
+  - dame todo el procedimiento interno
+  - me explicas desde el inicio lo del externo
+  - como se hace traslado interno
+  - ruta completa para la convalidación externa
+  ficha_relacionada:
+  - TRA_INT_F01
+  - TRA_INT_F02
+  - TRA_INT_F03
+  - TRA_INT_F04
+  - TRA_INT_F05
+  - TRA_INT_F06
+  - TRA_INT_F07
+  - TRA_EXT_F01
+  - TRA_EXT_F02
+  - TRA_EXT_F03
+  - TRA_EXT_F04
+  - TRA_EXT_F05
+  - TRA_EXT_F06
+  - TRA_EXT_F07
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_certificado
+  descripcion: Consultar la solicitud y uso del Certificado de Estudios.
+  entidades:
+  - tipo_traslado
+  - documento
+  ejemplos:
+  - cómo saco mi certificado de estudios para interno
+  - dónde solicito el certificado para traslado externo
+  - necesito tramitar mi certificado para interno
+  - cómo obtengo el certificado de estudios externo
+  - el certificado para interno se pide en Login
+  - quiero pedir el certificado de estudios para externo
+  - para interno dónde genero el certificado
+  - como saco certificado para externo
+  - puedo entregar el certificado original para interno
+  - para externo el certificado debe ser copia autenticada
+  ficha_relacionada:
+  - TRA_INT_F01
+  - TRA_INT_F04
+  - TRA_EXT_F01
+  - TRA_EXT_F04
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_constancia
+  descripcion: Consultar la Constancia de Ingreso.
+  entidades:
+  - tipo_traslado
+  - documento
+  ejemplos:
+  - cómo saco la constancia de ingreso para interno
+  - quién emite mi constancia de ingreso para externo
+  - dónde pido constancia de ingreso para interno
+  - necesito la constancia de ingreso para externo
+  - Admisión entrega la constancia de ingreso para interno
+  - para externo quién da la constancia de ingreso
+  - quiero obtener mi constancia de ingreso para interno
+  - como tramito constancia de ingreso externa
+  - para interno necesito constancia de ingreso
+  - me falta la constancia de ingreso de traslado externo
+  ficha_relacionada:
+  - TRA_INT_F02
+  - TRA_EXT_F02
+  si_falta_entidad: ¿Te refieres a la Constancia de Ingreso?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_silabos
+  descripcion: Consultar obtención y formalidades de sílabos.
+  entidades:
+  - tipo_traslado
+  - documento
+  ejemplos:
+  - cómo pido mis sílabos para interno
+  - los sílabos para externo deben estar firmados
+  - necesito silabos para convalidación interna
+  - sirven sílabos sin sello para externo
+  - dónde consigo los sílabos para interno
+  - para externo deben sellar mis sílabos
+  - qué formalidades llevan los sílabos para interno
+  - puedo presentar sílabos sin firma para externo
+  - quiero los silabos de mis cursos para interno
+  - cómo obtengo los sílabos para traslado externo
+  ficha_relacionada:
+  - TRA_INT_F03
+  - TRA_EXT_F03
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_presentacion
+  descripcion: Consultar lugar y condiciones de entrega.
+  entidades:
+  - tipo_traslado
+  - dependencia
+  - documento
+  ejemplos:
+  - dónde entrego mis documentos de traslado interno
+  - donde presento requisitos para externo
+  - a qué oficina llevo mis papeles para interno
+  - quién recibe los documentos del externo
+  - entrego en Secretaría lo de traslado interno
+  - para externo dónde dejo la documentación
+  - a quién doy los requisitos del interno
+  - en qué dependencia presento el expediente externo
+  - dónde llevo la copia autenticada para interno
+  - para externo Secretaría recibe mis sílabos y constancia
+  ficha_relacionada:
+  - TRA_INT_F04
+  - TRA_EXT_F04
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_registro
+  descripcion: Consultar ruta y registro en Convalidaciones.
+  entidades:
+  - tipo_traslado
+  - fase
+  ejemplos:
+  - cómo registro mi convalidación interna
+  - qué opción del Login uso para externo
+  - dónde genero la solicitud de traslado interno
+  - ruta de registro de convalidación externa
+  - en Login elijo interno o externo si es traslado interno
+  - cómo ingreso la solicitud externa
+  - ya entregué los documentos cómo registro interno
+  - donde se registra traslado externo
+  - en qué módulo hago convalidación interna
+  - para externo selecciono la opción Externo
+  ficha_relacionada:
+  - TRA_INT_F05
+  - TRA_EXT_F05
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_evaluacion
+  descripcion: Consultar quién evalúa y qué se documenta de la revisión.
+  entidades:
+  - tipo_traslado
+  - fase
+  ejemplos:
+  - quién evalúa mis cursos en traslado interno
+  - quién revisa la solicitud externa en UDH
+  - qué comparan en la evaluación interna
+  - cómo revisa Coordinación la convalidación externa
+  - ven créditos y horas para traslado interno
+  - qué hace Coordinación con mi solicitud externa
+  - cómo deciden qué cursos convalidar en interno
+  - quién realiza la evaluación externa de Coordinación
+  - en interno revisan contenidos del sílabo
+  - como evalúan los cursos internamente
+  ficha_relacionada:
+  - TRA_INT_F06
+  - TRA_EXT_F06
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_resolucion
+  descripcion: Consultar emisión y envío de la resolución.
+  entidades:
+  - tipo_traslado
+  - documento
+  ejemplos:
+  - quién emite la resolución del traslado interno
+  - a dónde mandan la resolución externa
+  - cómo recibo mi resolución de convalidación interna
+  - al terminar externo me envían la resolución al correo
+  - quién me manda la resolución del interno
+  - para externo quién emite la resolución en UDH
+  - qué documento recibo al finalizar el interno
+  - la resolución interna llega al correo registrado
+  - cómo envían la resolución de cursos del externo
+  - qué entrega Coordinación después de evaluar el externo
+  ficha_relacionada:
+  - TRA_INT_F07
+  - TRA_EXT_F06
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_estado
+  descripcion: Consultar seguimiento sin acceso a expedientes ni estados oficiales.
+  entidades:
+  - tipo_traslado
+  - estado_tramite
+  ejemplos:
+  - cómo sé en qué estado está mi traslado interno
+  - puedes ver mi expediente de traslado externo
+  - revisa si aprobaron mi convalidación interna
+  - cómo hago seguimiento del traslado externo
+  - mi trámite interno está observado qué hago
+  - rechazaron mis documentos de externo qué sigue
+  - quiero saber si ya revisaron mi solicitud interna
+  - dónde consulto el estado de mi convalidación externa
+  - me dices cómo va mi traslado interno
+  - busca mi solicitud de traslado externo
+  ficha_relacionada:
+  - TRA_INT_F05
+  - TRA_EXT_F05
+  si_falta_entidad: ¿Tu consulta es sobre traslado interno o externo?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: TRA_siguiente_fase
+  descripcion: Navegar a la etapa siguiente de la fase activa sin declarar avance real.
+  entidades:
+  - tipo_traslado
+  - fase
+  ejemplos:
+  - ya tengo el certificado para interno qué sigue
+  - recibí mi constancia de ingreso para externo qué sigue
+  - después de los sílabos para interno qué hago
+  - ya entregué los documentos para externo qué sigue
+  - registré la solicitud interna cuál es el siguiente paso
+  - ya recibí la resolución externa qué sigue
+  - cuál sigue después de la fase dos interna
+  - siguiente etapa del traslado externo
+  - ya terminé la fase seis interna continúa
+  - sí muéstrame la siguiente fase
+  ficha_relacionada:
+  - TRA_INT_F01
+  - TRA_INT_F02
+  - TRA_INT_F03
+  - TRA_INT_F04
+  - TRA_INT_F05
+  - TRA_INT_F06
+  - TRA_INT_F07
+  - TRA_EXT_F01
+  - TRA_EXT_F02
+  - TRA_EXT_F03
+  - TRA_EXT_F04
+  - TRA_EXT_F05
+  - TRA_EXT_F06
+  - TRA_EXT_F07
+  si_falta_entidad: ¿En qué etapa del traslado te encuentras?
+  entidades_obligatorias:
+  - tipo_traslado
+  - fase
+- intent: TRA_diferencia
+  descripcion: Comparar procedimientos sin seleccionar uno ni asumir dirección externa.
+  entidades:
+  - tipo_traslado
+  - direccion_traslado
+  ejemplos:
+  - qué diferencia hay entre traslado interno y externo
+  - interno y externo son lo mismo
+  - compara las dos convalidaciones
+  - en qué cambia la opción Interno frente a Externo
+  - diferencias de pasos entre los dos traslados
+  - el traslado externo termina igual que el interno
+  - qué cambia en las fases finales de interno y externo
+  - cuál es la diferencia documental entre ambos
+  - se presentan los mismos documentos en interno y externo
+  - qué diferencia hay en la ruta Login de ambos traslados
+  ficha_relacionada:
+  - TRA_INT_F05
+  - TRA_EXT_F05
+  - TRA_INT_F07
+  - TRA_EXT_F06
+  - TRA_EXT_F07
+  si_falta_entidad: null
+  entidades_obligatorias: []
+- intent: TRA_destino
+  descripcion: Consultar la evaluación de la universidad de destino descrita en el documento externo.
+  entidades:
+  - tipo_traslado
+  - universidad_destino
+  - direccion_traslado
+  ejemplos:
+  - quién reconoce mis cursos en la universidad de destino
+  - qué hace la universidad de destino en traslado externo
+  - para externo la otra universidad acepta todos mis cursos
+  - la universidad de destino compara su malla curricular
+  - qué revisan en la última fase del externo
+  - después de la resolución externa evalúa otra universidad
+  - qué criterios aparecen para la universidad de destino
+  - el reconocimiento de cursos externos es automático
+  - qué presento a la universidad de destino según el documento
+  - la última decisión de reconocimiento externo la toma el destino
+  ficha_relacionada:
+  - TRA_EXT_F07
+  si_falta_entidad: ¿Te trasladas desde la UDH hacia otra universidad o desde otra institución hacia la UDH?
+  entidades_obligatorias:
+  - tipo_traslado
+- intent: GEN_derivar_humano
+  descripcion: Orientar al personal competente por pedido explícito o dos fallos consecutivos.
+  entidades:
+  - tipo_traslado
+  - fase
+  ejemplos:
+  - quiero hablar con una persona
+  - necesito atención de alguien de Coordinación
+  - derívame con personal administrativo
+  - me puede orientar una persona
+  - prefiero atención humana
+  - no me estás entendiendo quiero un asesor
+  - ponme en contacto con Secretaría
+  - quiero consultar directamente con Coordinación
+  - ayuda de alguien de la universidad por favor
+  - necesito que me atienda una persona real
+  ficha_relacionada: []
+  si_falta_entidad: null
+  accion_conversacional: TRA_ACC_derivar
+  entidades_obligatorias: []
+resolucion_fichas:
+  convencion: Las listas son candidatos existentes, no una autorización para mezclar procedimientos. Filtrar
+    por tipo, intent, concepto y fase. NO_APLICA es solo la convención del golden set para aclaración o acción
+    sin ficha.
+  por_concepto:
+    certificado_estudios:
+    - TRA_INT_F01
+    - TRA_EXT_F01
+    derecho_certificado:
+    - TRA_INT_F01
+    - TRA_EXT_F01
+    silabo:
+    - TRA_INT_F03
+    - TRA_EXT_F03
+    solicitud_convalidacion:
+    - TRA_INT_F05
+    - TRA_EXT_F05
+  excepcion_costo_constancia: TRA_costo con documento constancia_ingreso usa F02 del tipo activo y responde
+    costo no indicado; no inventar cero.
+  por_documento:
+    certificado_estudios:
+    - TRA_INT_F01
+    - TRA_EXT_F01
+    constancia_ingreso:
+    - TRA_INT_F02
+    - TRA_EXT_F02
+    silabo:
+    - TRA_INT_F03
+    - TRA_EXT_F03
+    resolucion:
+    - TRA_INT_F07
+    - TRA_EXT_F06
+  original_o_copia: TRA_certificado o TRA_requisitos sobre entrega del original recupera F04 del tipo activo.
+  plazo: F02 para constancia; F06 para evaluación. Para otra etapa recuperar su ficha e indicar no indicado
+    si datos.plazo es nulo. No sumar plazos parciales para dar una duración total.
+  siguiente_fase: Leer siguiente_fase de la ficha activa; el golden set refiere la ficha de destino. Si es
+    null, cerrar el procedimiento documentado.
+  estado: Recuperar F05 para contextualizar, pero reconocer falta de mecanismo de seguimiento y orientar a
+    Coordinación sin afirmar acceso a expedientes.
+  diferencia: Comparar solo las referencias listadas para TRA_diferencia; explicitar el pendiente de dirección
+    externa.
+  destino: No imponer tipo externo si el usuario había confirmado interno; pedir aclaración ante esa contradicción.
