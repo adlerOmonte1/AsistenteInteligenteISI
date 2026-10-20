@@ -1,0 +1,1529 @@
+{
+  "proceso": "titulo_tesis",
+  "version": "1.0",
+  "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+  "fecha_vigencia": "2025-11-11",
+  "fichas": [
+    {
+      "id": "general",
+      "fase": "general",
+      "nombre": "Información general",
+      "base_normativa": {
+        "resolucion": "Resolución N.° 2367-2025-R-CU-UDH",
+        "fecha": "11 de noviembre de 2025",
+        "institucion": "Universidad de Huánuco – Facultad de Ingeniería",
+        "programa": "Ingeniería de Sistemas e Informática"
+      },
+      "objetivo": "Describir en 9 fases el proceso para optar el título profesional por sustentación de tesis, desde la designación del asesor técnico hasta la obtención del título.",
+      "indicacion_previa": {
+        "texto": "APROBAR EL CURSO DE CONDUCTA RESPONSABLE EN INVESTIGACIÓN antes de la Fase 1.",
+        "enlace": "https://tucoach.udh.edu.pe/cursos",
+        "tipo": "advertencia"
+      },
+      "contactos": {
+        "correos": [
+          {
+            "valor": "secretaria.sistemas.hco@udh.edu.pe",
+            "uso": "Enviar requisitos Fases 1–8; informe de conformidad del asesor técnico (Fase 6)"
+          },
+          {
+            "valor": "repositorio@udh.edu.pe",
+            "uso": "Oficina de Repositorio (Fase 9)"
+          }
+        ],
+        "telefonos": [
+          {
+            "valor": "952 068 664",
+            "uso": "Consulta indicada en Fase 9 (motivo/área no precisado)",
+            "estado": "confirmado"
+          },
+          {
+            "valor": "952069136",
+            "uso": "Pie de página del documento (sin uso específico)",
+            "estado": "confirmado"
+          }
+        ],
+        "direccion": "Carretera Central Km 2.5 – La Esperanza"
+      },
+      "seguimiento": {
+        "ruta_general": "Login → Trámite Seguimiento (todos los trámites)",
+        "ruta_fase_9": "Login → CONSULTA REGISTRO DE GRADOS Y TITULOS",
+        "advertencia": "OJO, OJITO: todos los trámites hacer seguimiento en línea."
+      },
+      "consejo_facultad": {
+        "regla": "Se realiza la primera semana de cada mes. El trámite debe estar atendido por todas las áreas.",
+        "nota": "El documento no detalla qué otras áreas deben atender el trámite.",
+        "estado_detalle": "pendiente"
+      },
+      "entrega_grado": {
+        "plazo": "Dentro de 2 meses (aproximadamente)",
+        "medio": "Correo institucional",
+        "requisito": "2 fotos tamaño pasaporte con vestimenta formal (entregar en coordinación)"
+      },
+      "areas_atencion": [
+        {
+          "area": "Programa Académico",
+          "atiende": "Oficio"
+        },
+        {
+          "area": "Facultad de Ingeniería",
+          "atiende": "Resolución"
+        }
+      ],
+      "flujo_general": [
+        "Designación del docente asesor técnico",
+        "Designación de docente objetante",
+        "Aprobación del trabajo de investigación (tesis)",
+        "Designación de jurados revisores del informe final",
+        "Aprobación del informe final de tesis",
+        "Pre sustentación",
+        "Declarar apto para sustentación",
+        "Fecha y hora de sustentación",
+        "Optar título profesional"
+      ],
+      "metadatos": {
+        "facultad": "Ingeniería",
+        "programa": "Ingeniería de Sistemas e Informática",
+        "proceso": "titulo_tesis",
+        "fase": "general",
+        "tipo_dato": "anexo",
+        "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+        "fecha_vigencia": "2025-11-11",
+        "estado": "confirmado"
+      },
+      "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe.",
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_1",
+      "fase": 1,
+      "nombre": "Designación del docente asesor técnico",
+      "tramite_login": "DESIG. DE DOCENTE ASESOR TECNICO PARA LA TESIS",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Carta de aceptación de asesor técnico.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Constancia del curso de Conducta Responsable de Investigación (https://tucoach.udh.edu.pe/cursos).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Compromiso de honor para tesistas en pareja (solo si la tesis es entre dos). OJO",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: DESIG. DE DOCENTE ASESOR TECNICO PARA LA TESIS.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "La Facultad designa asesor metodológico.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "La Facultad emite la resolución de designación de asesor Técnico y Metodológico.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "Vigencia del trámite: mínimo 1 mes, máximo 4 meses.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Vigencia del asesor: 2 años (si está en cursos de investigación) / 1 año (si es bachiller).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "El documento no menciona pago para esta fase.",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": 1,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: el compromiso de honor para tesistas en pareja se adjunta solo si realizará su trabajo de investigación entre dos.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Si no cumple plazos → se anula el trámite (mínimo 1 mes, máximo 4 meses).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 1,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 5: el documento no detalla las condiciones de la vigencia del asesor (2 años / 1 año). estado: pendiente en el detalle."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_2",
+      "fase": 2,
+      "nombre": "Designación de doc. objetante para la revisión del trab. de inv. (tesis)",
+      "tramite_login": "DESIG. DE DOC. OBJETANTE PARA LA REVISION DEL TRAB. DE INV. (TESIS)",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Resolución de asesores (técnico y metodológico).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Informe de conformidad del proyecto de investigación del asesor técnico y metodológico (proceso de mínimo 1 mes y máximo 4 meses).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Trabajo de investigación (tesis).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: DESIG. DE DOC. OBJETANTE PARA LA REVISION DEL TRAB. DE INV. (TESIS) y cancelar el monto establecido.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar todos los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "La Facultad designará el jurado objetante para el proyecto de tesis.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "El proceso del informe de conformidad del proyecto es de mínimo 1 mes y máximo 4 meses (aparece dentro del requisito).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "Debes cancelar el monto establecido (la cifra no está especificada en el documento).",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": null,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "💡 El plazo de 1 a 4 meses aparece dentro del requisito 'Informe de conformidad del proyecto de investigación'.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 2,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 1: monto no especificado.",
+        "Obs. 6: el plazo 1–4 meses figura dentro del requisito, no como plazo de la fase."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_3",
+      "fase": 3,
+      "nombre": "Aprobación del trabajo de investigación (tesis)",
+      "tramite_login": "APROBACION DEL TRABAJO DE INVESTIGACION (TESIS)",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Informe de conformidad del jurado objetante.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Constancia de originalidad del software de similitud (emitida por el asesor técnico).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Resolución de designación de doc. objetante para la revisión del trab. de inv. (tesis).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Resolución de asesores.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Trabajo de investigación (PDF).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: APROBACION DEL TRABAJO DE INVESTIGACION (TESIS) y cancelar el monto establecido.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar todos los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "Duración mínima 2 meses, máxima 6 meses.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "Debes cancelar el monto establecido (la cifra no está especificada en el documento).",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": null,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: este proceso tiene una duración mínima de 2 meses y máxima de 6 meses.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 3,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 1: monto no especificado.",
+        "Obs. 14: aquí se pide el trabajo en PDF; en la Fase 2 solo dice 'tesis'."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_4",
+      "fase": 4,
+      "nombre": "Designación de jurados revisores para el informe final (tesis)",
+      "tramite_login": "DESIGNACION DE JURADOS REVISORES DEL INFORME FINAL (TESIS)",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Informe de conformidad del asesor técnico junto con su instrumento de evaluación.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Constancia de originalidad de software de similitud del informe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Informe de tesis final.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Resolución de aprobación del proyecto de investigación.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: DESIGNACION DE JURADOS REVISORES DEL INFORME FINAL (TESIS) y cancelar el monto establecido.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar todos los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "Plazo máximo de 30 días.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Máximo 2 revisiones.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "Debes cancelar el monto establecido (la cifra no está especificada en el documento).",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": null,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: este proceso tiene un plazo máximo de 30 días y no debe exceder de 2 revisiones.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 4,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 1: monto no especificado."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_5",
+      "fase": 5,
+      "nombre": "Aprobación del informe final de tesis",
+      "tramite_login": "APROBACION DEL INFORME FINAL (TESIS)",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Informe final de aprobación del proyecto de investigación (tesis) del jurado.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Informe de tesis final.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Resolución de aprobación de proyecto de investigación.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Resolución de designación de jurados revisores para el informe final (tesis).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: APROBACION DEL INFORME FINAL (TESIS) y cancelar el monto establecido.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar todos los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "Plazo máximo de 30 días para atender y subsanar observaciones.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Máximo 2 revisiones.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "Debes cancelar el monto establecido (la cifra no está especificada en el documento).",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": null,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: el bachiller debe atender y subsanar observaciones en un plazo máximo de 30 días y no debe exceder de 2 revisiones.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 5,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 1: monto no especificado.",
+        "Obs. 4: Fase 5 = 30 días; Fase 6 = 15 días; el documento no explica la diferencia."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_6",
+      "fase": 6,
+      "nombre": "Pre sustentación",
+      "tramite_login": "PRE SUSTENTACION DEL INFORME DE TESIS",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Aprobación del informe final de los tres jurados.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 6,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Resolución de aprobación del proyecto de investigación.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 6,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Trabajo de investigación.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 6,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: PRE SUSTENTACION DEL INFORME DE TESIS y cancelar el monto establecido.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 6,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar todos los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 6,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "Si el informe queda observado: subsanar máximo en 15 días y enviar el informe de conformidad (aprobación) del asesor técnico.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 6,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "Debes cancelar el monto establecido (la cifra no está especificada en el documento).",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": null,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: en caso el informe de tesis quede observado, el bachiller tiene que subsanar máximo en 15 días y enviar el informe de conformidad (aprobación) por parte de su asesor técnico a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 6,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 1: monto no especificado.",
+        "Obs. 7: el documento no detalla quiénes son los 'tres jurados' ni cómo se designan."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_7",
+      "fase": 7,
+      "nombre": "Declarar apto para sustentación",
+      "tramite_login": "DECLARAR APTO PARA SUSTENTACION",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Aprobación del informe de pre sustentación del jurado.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Informe final del trabajo de investigación (tesis).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Boleta de pago.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "pendiente"
+          }
+        },
+        {
+          "texto": "Grado de bachiller.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "DNI ampliada y ambas caras.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Declaración de antecedentes penales.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: DECLARAR APTO PARA SUSTENTACION y cancelar el monto establecido.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar todos los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "El documento no especifica un plazo propio para esta fase.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Condición: si hubo observaciones en la pre sustentación, enviar también el informe de aprobación del asesor técnico.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "Debes cancelar el monto establecido (la cifra no está especificada en el documento). Además, la 'boleta de pago' figura como requisito sin aclarar a qué pago corresponde.",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": null,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: si tuvo observaciones en la pre sustentación, enviar también como requisito el informe de aprobación por parte de su asesor técnico.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 7,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 1 y 2: monto no especificado y 'boleta de pago' sin aclarar.",
+        "Obs. 8: requisitos similares a la Fase 8."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_8",
+      "fase": 8,
+      "nombre": "Fecha y hora de sustentación",
+      "tramite_login": "FECHA Y HORA",
+      "correo_destino": "secretaria.sistemas.hco@udh.edu.pe",
+      "requisitos": [
+        {
+          "texto": "Aprobación del informe de pre sustentación del jurado.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 8,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Informe final del trabajo de investigación (tesis).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 8,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Resolución de aprobación del informe final de tesis.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 8,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Generar el trámite en Login: FECHA Y HORA y cancelar el monto establecido.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 8,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Enviar todos los requisitos a secretaria.sistemas.hco@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 8,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "Plazo máximo de 30 días para solicitar fecha y hora, contados desde que solicitaste DECLARAR APTO.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 8,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": null,
+        "texto": "Debes cancelar el monto establecido (la cifra no está especificada en el documento).",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": null,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "pendiente"
+        },
+        "respuesta_pendiente": "Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: el bachiller, posterior a haber solicitado DECLARAR APTO, tiene un plazo máximo de 30 días para solicitar fecha y hora.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 8,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 1: monto no especificado."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a secretaria.sistemas.hco@udh.edu.pe"
+    },
+    {
+      "id": "fase_9",
+      "fase": 9,
+      "nombre": "Optar título profesional – modalidad sustentación de tesis",
+      "tramite_login": "OPTAR TÍTULO PROFESIONAL (MODALIDAD DE SUSTENTACION DE TESIS)",
+      "correo_destino": "repositorio@udh.edu.pe (Repositorio) / secretaria.sistemas.hco@udh.edu.pe (Programa)",
+      "requisitos": [
+        {
+          "texto": "Constancia de inscripción al Repositorio Institucional (original): se genera automáticamente con el trámite. Revisa en Trámite Seguimiento qué enviar a repositorio@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Seguimiento en línea: Login → CONSULTA REGISTRO DE GRADOS Y TITULOS.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Trámite atendido por todas las áreas para ingresar a Consejo de Facultad (primera semana de cada mes). OJO",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "2 fotos tamaño pasaporte con vestimenta formal (entregar en coordinación). OJO",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "requisito",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "texto": "Realizar el trámite en línea OPTAR TÍTULO PROFESIONAL (MODALIDAD DE SUSTENTACION DE TESIS) y pagar S/ 5.00.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Se genera automáticamente la constancia de inscripción al Repositorio; en Trámite Seguimiento ves los requisitos para repositorio@udh.edu.pe.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Hacer seguimiento en línea en Login → CONSULTA REGISTRO DE GRADOS Y TITULOS.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Asegurar que el trámite esté atendido por todas las áreas para entrar a Consejo de Facultad.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Traer a coordinación 2 fotos tamaño pasaporte (vestimenta formal).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Esperar la fecha de entrega del grado por correo institucional.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "paso",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "plazos": [
+        {
+          "texto": "Consejo de Facultad: primera semana de cada mes.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "Entrega del grado: dentro de 2 meses (aproximadamente).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "plazo",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "pago": {
+        "monto": "S/ 5.00",
+        "texto": "El trámite tiene un costo de S/ 5.00.",
+        "metadatos": {
+          "facultad": "Ingeniería",
+          "programa": "Ingeniería de Sistemas e Informática",
+          "proceso": "titulo_tesis",
+          "fase": 9,
+          "tipo_dato": "pago",
+          "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+          "fecha_vigencia": "2025-11-11",
+          "estado": "confirmado"
+        }
+      },
+      "advertencias": [
+        {
+          "texto": "OJO: para ingresar a Consejo de Facultad, el trámite debe estar atendido por todas las áreas. El Consejo se da la primera semana de cada mes.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "OJO: debe traer a la coordinación 2 fotos tamaño pasaporte (con vestimenta formal).",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        },
+        {
+          "texto": "OJO, OJITO: todos los trámites hacer seguimiento en línea, entrando a su Login en la opción Trámite Seguimiento.",
+          "metadatos": {
+            "facultad": "Ingeniería",
+            "programa": "Ingeniería de Sistemas e Informática",
+            "proceso": "titulo_tesis",
+            "fase": 9,
+            "tipo_dato": "advertencia",
+            "fuente": "Resolución N.° 2367-2025-R-CU-UDH (11-nov-2025)",
+            "fecha_vigencia": "2025-11-11",
+            "estado": "confirmado"
+          }
+        }
+      ],
+      "notas_observaciones": [
+        "Obs. 9: 'Consultar al 952 068 664' sin precisar motivo; distinto del número del pie de página (952069136).",
+        "Obs. 10: los requisitos del Repositorio no se detallan (remite a Trámite Seguimiento) → estado: pendiente en el detalle.",
+        "Obs. 11: el título del documento dice 'OBTAR'; el trámite dice 'OPTAR'. Se conservan ambas grafías.",
+        "Obs. 12: 'ATENDIÓ' en el original; se lee como 'atendido' sin modificar el sentido."
+      ],
+      "cierre": "Fuente: Resolución N.° 2367-2025-R-CU-UDH · Escríbenos a repositorio@udh.edu.pe (Repositorio) / secretaria.sistemas.hco@udh.edu.pe (Programa)"
+    }
+  ]
+}
