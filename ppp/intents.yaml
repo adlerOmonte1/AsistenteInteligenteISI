@@ -1,0 +1,350 @@
+# Proceso D — Prácticas Pre Profesionales (PPP), Plan 2021
+# Prefijo: PPP_
+# Las referencias a GEN_*, CPP_*, TRA_* y BAC_* se resuelven en las carpetas de otros integrantes.
+
+entidades:
+  - nombre: etapa
+    valores:
+      - valor: carta_presentacion
+        ficha: PPP_E01
+        sinonimos: [etapa 1, primera etapa, carta de presentación, carta, presentación, carta de la facultad]
+      - valor: plan
+        ficha: PPP_E02
+        sinonimos: [etapa 2, segunda etapa, plan, plan de prácticas, plan de ppp, aprobación del plan]
+      - valor: ejecucion
+        ficha: PPP_E03
+        sinonimos: [etapa 3, tercera etapa, ejecución, durante las prácticas, horas, asistencia]
+      - valor: informe_final
+        ficha: PPP_E04
+        sinonimos: [etapa 4, cuarta etapa, última etapa, informe final, informe, sustentación, expediente final]
+
+  - nombre: anexo
+    valores:
+      - {valor: "02", sinonimos: [anexo 2, anexo 02, carta de compromiso], ficha: PPP_T02}
+      - {valor: "03", sinonimos: [anexo 3, anexo 03, carta de aceptación], ficha: PPP_T02}
+      - {valor: "04", sinonimos: [anexo 4, anexo 04, formato del plan], ficha: PPP_T02}
+      - {valor: "05", sinonimos: [anexo 5, anexo 05, estructura del informe], ficha: PPP_T02}
+      - {valor: "06", sinonimos: [anexo 6, anexo 06, ficha de evaluación, evaluación del jefe], ficha: PPP_T02}
+      - {valor: "07", sinonimos: [anexo 7, anexo 07, ficha de supervisión], ficha: PPP_T02}
+      - {valor: "10", sinonimos: [anexo 10, ficha de avances], ficha: PPP_T02}
+
+intents:
+
+  - intent: PPP_info_general
+    descripcion: Qué son las PPP, cuántas horas son, si son obligatorias y cuáles son sus etapas
+    entidades: []
+    ficha_relacionada: PPP_E00
+    si_falta_entidad: null
+    ejemplos:
+      - "qué son las prácticas pre profesionales"
+      - "cómo funcionan las prácticas"
+      - "cuántas horas de prácticas tengo que hacer"
+      - "cuáles son las etapas de las ppp"
+      - "las prácticas son obligatorias"
+      - "me puedo exonerar de las prácticas"
+      - "explíqueme el proceso de prácticas"
+      - "quiero hacer mis prácticas, por dónde empiezo"
+      - "info sobre ppp"
+      - "cuánto duran las prácticas pre profesionales"
+      - "las ppp son requisito para el bachiller"
+      - "cuántas etapas tienen las practicas"
+      - "qué es la ppp"
+      - "necesito información de prácticas pre profesionales plan 2021"
+      - "son 600 horas de practicas?"
+
+  - intent: PPP_requisitos_inicio
+    descripcion: Condiciones para iniciar las PPP, áreas válidas y tipo de entidad
+    entidades: []
+    ficha_relacionada: PPP_E00
+    si_falta_entidad: null
+    ejemplos:
+      - "desde qué ciclo puedo hacer prácticas"
+      - "qué necesito para empezar mis prácticas"
+      - "puedo hacer prácticas si estoy en séptimo ciclo"
+      - "en qué áreas puedo hacer mis prácticas"
+      - "puedo practicar en una empresa que no es de sistemas"
+      - "quién tiene que supervisarme en la empresa"
+      - "puedo hacer prácticas en una entidad pública"
+      - "mis prácticas pueden cruzarse con mi horario de clases"
+      - "requisitos para iniciar ppp"
+      - "me falta un curso de octavo, puedo empezar las prácticas"
+      - "puedo hacer prácticas en soporte técnico"
+      - "la empresa tiene que tener un ingeniero de sistemas"
+      - "puedo hacer prácticas en redes"
+      - "valen las prácticas en una municipalidad"
+      - "qué condiciones piden para las ppp"
+
+  - intent: PPP_diagnostico_etapa
+    descripcion: El estudiante no sabe en qué etapa está o qué le toca hacer ahora
+    entidades: []
+    ficha_relacionada: PPP_E01 a PPP_E04 según el diagnóstico
+    si_falta_entidad: null   # el flujo de diagnóstico hace las preguntas (ver flujo.md)
+    ejemplos:
+      - "en qué etapa de prácticas estoy"
+      - "ya tengo la carta de aceptación, qué sigue"
+      - "ya me llegó la carta de presentación, ahora qué hago"
+      - "me aprobaron el plan, qué sigue"
+      - "ya terminé mis 600 horas, qué hago ahora"
+      - "no sé qué me toca hacer en mis prácticas"
+      - "ya empecé a practicar, qué tengo que presentar"
+      - "estoy practicando y no he hecho ningún trámite"
+      - "qué me falta para terminar las prácticas"
+      - "cuál es mi siguiente paso en ppp"
+      - "ya tengo empresa para practicar, qué hago"
+      - "acabo de empezar en la empresa, qué trámite hago"
+      - "ya tengo asesor supervisor, ahora qué"
+      - "ayúdeme a saber en qué paso voy"
+      - "qué sigue después de la carta"
+
+  - intent: PPP_requisitos_etapa
+    descripcion: Documentos que se necesitan en una etapa específica
+    entidades: [etapa]
+    ficha_relacionada: PPP_E01 a PPP_E04 según etapa
+    si_falta_entidad: "¿De qué etapa necesita los requisitos? 1) Carta de presentación, 2) Plan de PPP, 3) Ejecución o 4) Informe final."
+    ejemplos:
+      - "qué documentos necesito para la carta de presentación"
+      - "requisitos para aprobar el plan de prácticas"
+      - "qué piden para el informe final de ppp"
+      - "qué tengo que adjuntar en el expediente final"
+      - "qué documentos van con el plan"
+      - "requisitos de la etapa 2"
+      - "qué necesito presentar"
+      - "qué papeles piden para las prácticas"
+      - "qué documentos pide la facultad para la carta"
+      - "qué debo enviar para el informe final"
+      - "requisitos para sacar la carta de presentación"
+      - "lista de documentos del expediente de prácticas"
+      - "qué necesito para la etapa 4"
+      - "qué documentos me tiene que dar la empresa al terminar"
+      - "requisitos ppp informe final"
+
+  - intent: PPP_pasos_etapa
+    descripcion: Cómo se realiza una etapa, paso a paso
+    entidades: [etapa]
+    ficha_relacionada: PPP_E01 a PPP_E04 según etapa
+    si_falta_entidad: "¿Qué etapa desea conocer? 1) Carta de presentación, 2) Plan de PPP, 3) Ejecución o 4) Informe final."
+    ejemplos:
+      - "cómo saco la carta de presentación"
+      - "cómo solicito la aprobación del plan"
+      - "qué pasa después de enviar mi plan"
+      - "cómo presento el informe final"
+      - "qué trámite genero en el sistema para el plan"
+      - "cuál es el procedimiento de la etapa 4"
+      - "cómo se registra la asistencia en las prácticas"
+      - "cómo es el proceso de la carta de presentación"
+      - "qué trámite pido en el sistema udh para el informe"
+      - "pasos para aprobar mi plan de ppp"
+      - "qué hago durante las prácticas"
+      - "cómo se tramita la etapa 1"
+      - "quién revisa mi plan"
+      - "quién aprueba el informe final"
+      - "cómo es el procedimiento completo del informe"
+
+  - intent: PPP_correo_etapa
+    descripcion: A qué correo se envían los documentos de una etapa
+    entidades: [etapa]
+    ficha_relacionada: PPP_E01, PPP_E02, PPP_E04
+    si_falta_entidad: "El correo cambia según la etapa. ¿Para cuál lo necesita? 1) Carta de presentación, 2) Plan de PPP o 4) Informe final."
+    ejemplos:
+      - "a qué correo envío mi plan de prácticas"
+      - "correo para la carta de presentación"
+      - "a dónde mando el informe final de ppp"
+      - "cuál es el correo de la comisión de prácticas"
+      - "a qué correo mando los anexos 02 y 03"
+      - "a qué correo envío los documentos de prácticas"
+      - "dónde envío el expediente"
+      - "correo de prácticas"
+      - "a quién le envío mi plan"
+      - "me equivoqué de correo, cuál era el correcto"
+      - "correo de la facultad de ingeniería para prácticas"
+      - "a qué correo mando el informe"
+      - "cuál es el correo de la secretaría de sistemas"
+      - "a qué correo envío la carta de aceptación"
+      - "el correo de ppp cuál es"
+
+  - intent: PPP_costo
+    descripcion: Cuánto se paga en el proceso de PPP
+    entidades: [etapa]
+    ficha_relacionada: PPP_E01, PPP_E02, PPP_E04
+    si_falta_entidad: null   # sin etapa se responde el resumen de pagos
+    ejemplos:
+      - "cuánto cuesta la carta de presentación"
+      - "cuánto se paga por las prácticas"
+      - "hay que pagar algo para el plan"
+      - "cuánto cuesta presentar el informe final"
+      - "costo de las ppp"
+      - "las prácticas tienen algún pago"
+      - "cuánto pago en el sistema para la carta"
+      - "se paga la sustentación de prácticas"
+      - "montos de las prácticas pre profesionales"
+      - "dónde pago la carta de presentación"
+      - "cuánto es el derecho de trámite de prácticas"
+      - "es gratis el trámite del plan"
+      - "cuánto cuesta todo el proceso de prácticas"
+      - "precio de la carta de presentación"
+      - "tengo que pagar por el informe final"
+
+  - intent: PPP_plazo
+    descripcion: Plazos para presentar o subsanar en cada etapa
+    entidades: [etapa]
+    ficha_relacionada: PPP_E01 a PPP_E04 según etapa
+    si_falta_entidad: null   # sin etapa se responde la tabla de plazos
+    ejemplos:
+      - "cuántos días tengo para presentar el plan"
+      - "plazo para entregar el informe final"
+      - "cuánto tiempo tengo para subsanar el plan"
+      - "en cuánto tiempo debo corregir después de sustentar"
+      - "hasta cuándo puedo presentar mi informe"
+      - "ya terminé mis prácticas, cuánto tiempo tengo"
+      - "plazos de las ppp"
+      - "son días hábiles o calendario"
+      - "se me pasó el plazo del plan, qué hago"
+      - "en cuánto tiempo sale la carta de presentación"
+      - "cuál es el plazo máximo del informe"
+      - "cuántos días para levantar observaciones"
+      - "me observaron el plan, cuánto tiempo tengo"
+      - "hay fecha límite para el plan de prácticas"
+      - "cuántos días después de terminar entrego el informe"
+
+  - intent: PPP_anexo_info
+    descripcion: Qué es un anexo, quién lo llena y en qué etapa se usa
+    entidades: [anexo]
+    ficha_relacionada: PPP_T02
+    si_falta_entidad: "¿Qué anexo desea consultar? Los anexos de prácticas son: 02, 03, 04, 05, 06, 07 y 10."
+    ejemplos:
+      - "qué es el anexo 04"
+      - "para qué sirve el anexo 06"
+      - "quién llena el anexo 07"
+      - "qué es la carta de compromiso"
+      - "qué anexos necesito para las prácticas"
+      - "dónde descargo los anexos de ppp"
+      - "el anexo 03 lo hace la empresa"
+      - "qué es la ficha de avances"
+      - "qué anexo es el plan de prácticas"
+      - "cuál es el anexo del informe"
+      - "quién firma la ficha de supervisión"
+      - "qué es el anexo 10"
+      - "lista de anexos de prácticas"
+      - "necesito el anexo 1"
+      - "qué anexo llena el jefe de la empresa"
+
+  - intent: PPP_asesor_supervisor
+    descripcion: Quién es el Asesor–Supervisor, quién lo designa y qué hace
+    entidades: []
+    ficha_relacionada: PPP_E02, PPP_E03, PPP_T03
+    si_falta_entidad: null
+    ejemplos:
+      - "quién es mi asesor supervisor"
+      - "quién designa al supervisor de prácticas"
+      - "qué hace el asesor supervisor"
+      - "cada cuánto me reúno con mi supervisor"
+      - "el supervisor es un docente de la universidad"
+      - "puedo elegir a mi asesor de prácticas"
+      - "cuándo me asignan supervisor"
+      - "a qué docente me asignaron como supervisor"
+      - "cuántas reuniones tengo con el supervisor"
+      - "mi supervisor no me responde"
+      - "el supervisor me tiene que visitar en la empresa"
+      - "el asesor supervisor es de la empresa o de la universidad"
+      - "quién evalúa mis avances"
+      - "cuál es la función del supervisor de ppp"
+      - "necesito la ficha de supervisión firmada"
+
+  - intent: PPP_sustentacion
+    descripcion: Cómo es la sustentación del informe final de PPP
+    entidades: []
+    ficha_relacionada: PPP_E04
+    si_falta_entidad: null
+    ejemplos:
+      - "la sustentación de prácticas es obligatoria"
+      - "cómo es la sustentación de ppp"
+      - "ante quién sustento mis prácticas"
+      - "la sustentación es pública"
+      - "qué pasa si me observan en la sustentación"
+      - "cuándo sustento mis prácticas"
+      - "qué necesito para aprobar la sustentación"
+      - "puedo no sustentar las prácticas"
+      - "quién evalúa la sustentación"
+      - "quiénes me evalúan cuando sustento"
+      - "cómo me preparo para sustentar ppp"
+      - "la sustentación es virtual o presencial"
+      - "qué pasa después de sustentar"
+      - "sustentación de prácticas pre profesionales"
+      - "me dan constancia de sustentación"
+
+  - intent: PPP_anulacion
+    descripcion: Causas por las que se anula la práctica y qué pasa después
+    entidades: []
+    ficha_relacionada: PPP_T01
+    si_falta_entidad: null
+    ejemplos:
+      - "por qué me pueden anular las prácticas"
+      - "cuántas faltas puedo tener"
+      - "qué pasa si no subsano a tiempo"
+      - "me anularon la práctica, qué hago"
+      - "puedo volver a empezar en otra empresa"
+      - "qué pasa si falto a las prácticas"
+      - "causales de anulación de ppp"
+      - "en cuánto tiempo puedo reiniciar las prácticas"
+      - "qué pasa si me desaprueba el supervisor"
+      - "qué pasa si copio el informe"
+      - "me pueden anular por faltar 3 días"
+      - "anulan las prácticas por plagio"
+      - "qué pasa si no presento el plan a tiempo"
+      - "puedo perder mis horas de práctica"
+      - "si me anulan tengo que hacer todo de nuevo"
+
+  - intent: PPP_estado_tramite
+    descripcion: Cómo saber en qué estado está un trámite de PPP
+    entidades: [etapa]
+    ficha_relacionada: PPP_E01, PPP_E02, PPP_E04
+    si_falta_entidad: null
+    ejemplos:
+      - "cómo sé si ya aprobaron mi plan"
+      - "dónde veo el estado de mi trámite de prácticas"
+      - "ya envié mi plan y no me responden"
+      - "cómo sé si llegó mi carta de presentación"
+      - "mi trámite de ppp sigue en proceso"
+      - "a dónde me llega la carta de presentación"
+      - "cuándo me responden del informe final"
+      - "cómo hago seguimiento a mi expediente"
+      - "no me llega la carta de presentación"
+      - "cómo me avisan que aprobaron mi plan"
+      - "dónde llega la resolución de prácticas"
+      - "envié el informe hace una semana y nada"
+      - "ya pagué y no pasa nada"
+      - "revisé mi correo y no hay respuesta de prácticas"
+      - "cómo consulto mi trámite de ppp"
+
+  - intent: PPP_siguiente_paso
+    descripcion: Qué sigue después de aprobar las PPP
+    entidades: []
+    ficha_relacionada: PPP_E04 (enlaza con BAC_*)
+    si_falta_entidad: null
+    ejemplos:
+      - "ya aprobé mis prácticas, qué sigue"
+      - "después de la resolución de prácticas qué hago"
+      - "terminé las ppp, ahora qué trámite sigue"
+      - "con la resolución de ppp ya puedo sacar el bachiller"
+      - "qué documento me dan al terminar las prácticas"
+      - "las prácticas me sirven para el bachiller"
+      - "qué viene después de prácticas"
+      - "ya tengo resolución de ppp"
+      - "después de sustentar prácticas qué trámite hago"
+      - "qué sigue después de la constancia de la comisión"
+      - "ya acabé todo lo de prácticas"
+      - "ahora puedo tramitar mi grado"
+      - "las prácticas son el último requisito"
+      - "terminé mis prácticas y tengo la resolución, ahora qué"
+      - "con qué sigo después de las ppp"
+
+# Desvíos a intents de otros procesos (no se definen aquí)
+desvios:
+  - si_detecta: ["ya trabajo", "experiencia laboral", "convalidar prácticas", "convalidar ppp", "trabajo hace más de un año"]
+    redirigir_a: CPP_*            # Integrante E
+  - si_detecta: ["convalidar cursos", "traslado interno", "traslado externo"]
+    redirigir_a: TRA_*            # Integrante F
+  - si_detecta: ["trámite de bachiller", "grado de bachiller"]
+    redirigir_a: BAC_*            # Integrante E
+  - si_fallan: 2 intentos
+    redirigir_a: GEN_derivar_humano   # Integrante F
