@@ -1,0 +1,37 @@
+# Variante sin HTTPS, solo para demostraciones en una red interna o antes de tener dominio.
+# Se activa con infra/docker-compose.http.yml. No usar en producción: el refresh del panel
+# viaja en una cookie que exige HTTPS (Secure), así que el panel no mantiene la sesión.
+
+server {
+    listen 80;
+    server_name _;
+    client_max_body_size 11m;
+
+    location /api/ {
+        proxy_pass http://api:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_buffering off;
+        proxy_read_timeout 120s;
+    }
+
+    location /media/ {
+        alias /app/media/;
+    }
+
+    location /widget/ {
+        alias /usr/share/nginx/widget/;
+        add_header Access-Control-Allow-Origin "*";
+    }
+
+    location /admin/ {
+        root /usr/share/nginx;
+        try_files $uri $uri/ /admin/index.html;
+    }
+
+    location / {
+        root /usr/share/nginx/portal;
+        try_files $uri $uri/ /index.html;
+    }
+}

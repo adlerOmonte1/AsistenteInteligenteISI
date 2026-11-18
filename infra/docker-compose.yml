@@ -1,0 +1,82 @@
+# Despliegue de producción. Desde la raíz del repositorio:
+#   docker compose -f infra/docker-compose.yml --env-file .env up -d --build
+# Guía completa: docs/05-despliegue/guia_despliegue.md
+name: asistente-udh
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file: ../.env
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py createcachetable &&
+             python manage.py programar_tareas &&
+             gunicorn config.wsgi --bind 0.0.0.0:8000 --worker-class gthread --workers 2 --threads 8
+             --timeout 120 --access-logfile -"
+    volumes:
+      - media:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health/')"]
+      interval: 30s
+      retries: 5
+
+  worker:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    env_file: ../.env
+    command: python manage.py qcluster
+    volumes:
+      - media:/app/media
+    depends_on:
+      api:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ..
+      dockerfile: infra/nginx/Dockerfile
+    restart: unless-stopped
+    environment:
+      DOMINIO: ${DOMINIO}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - media:/app/media:ro
+      - ./certbot/conf:/etc/letsencrypt:ro
+      - ./certbot/www:/var/www/certbot:ro
+    depends_on:
+      - api
+
+  certbot:
+    image: certbot/certbot:latest
+    profiles: ["certificados"]
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+
+volumes:
+  pgdata:
+  media:
