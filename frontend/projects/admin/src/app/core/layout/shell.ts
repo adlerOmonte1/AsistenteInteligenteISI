@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NOMBRES_ROL, Rol } from 'shared';
+import { MarcaUdh, NOMBRES_ROL, Rol } from 'shared';
 import { Auth } from '../auth/auth';
 
 interface ItemMenu {
@@ -27,7 +27,7 @@ const MENU: ItemMenu[] = [
 
 @Component({
   selector: 'app-shell',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MarcaUdh],
   templateUrl: './shell.html',
   styleUrl: './shell.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

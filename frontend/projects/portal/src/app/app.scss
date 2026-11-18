@@ -21,71 +21,101 @@ main {
   }
 }
 
-.barra {
+// --------------------------------------------------------------- franja
+
+.franja-institucional {
+  background: var(--udh-grafito);
+  color: #d4d4d4;
+  font-size: 12.5px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.franja-interior {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+}
+
+// ------------------------------------------------------------- cabecera
+
+.cabecera {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: var(--udh-primario);
-  color: var(--udh-primario-texto);
-  box-shadow: 0 2px 8px rgb(7 42 82 / 25%);
+  background: #fff;
+  border-bottom: 1px solid var(--udh-borde);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 3%);
 }
 
-.barra-interior {
+.cabecera-interior {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 76px;
+}
+
+.identidad {
   display: flex;
   align-items: center;
   gap: 16px;
-  min-height: 64px;
-}
-
-.marca {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  margin-right: auto;
   color: inherit;
   text-decoration: none;
-  margin-right: auto;
 }
 
-.escudo {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  background: var(--udh-acento);
-  color: #1c2430;
-  font-weight: 800;
-  font-size: 13px;
+.separador {
+  width: 1px;
+  height: 36px;
+  background: var(--udh-borde-fuerte);
 }
 
-.nombre {
+.servicio {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  line-height: 1.25;
+
+  strong {
+    font-size: 15px;
+    color: var(--udh-grafito);
+  }
 
   small {
-    opacity: 0.8;
-    font-size: 12px;
+    font-size: 12.5px;
+    color: var(--udh-texto-tenue);
   }
 }
 
 nav {
   display: flex;
-  gap: 4px;
+  align-self: stretch;
 
   a {
-    color: inherit;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    color: var(--udh-grafito);
+    font-size: 14.5px;
+    font-weight: 600;
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
 
     &:hover {
-      background: rgb(255 255 255 / 12%);
+      color: var(--udh-verde-oscuro);
     }
 
     &.activo {
-      background: rgb(255 255 255 / 18%);
+      color: var(--udh-verde-oscuro);
+      border-bottom-color: var(--udh-verde);
     }
   }
 }
@@ -93,7 +123,7 @@ nav {
 .hamburguesa {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   border: 0;
   background: transparent;
   padding: 8px;
@@ -102,62 +132,102 @@ nav {
   span {
     width: 22px;
     height: 2px;
-    background: #fff;
+    background: var(--udh-grafito);
   }
 }
 
-.pie {
-  margin-top: 48px;
-  padding: 28px 0;
-  background: #0f1d2e;
-  color: #c9d3df;
-  font-size: 13.5px;
+// ------------------------------------------------------------------ pie
 
-  strong {
+.pie {
+  margin-top: 64px;
+  background: var(--udh-grafito);
+  color: #c9c9c9;
+  font-size: 13.5px;
+  border-top: 4px solid var(--udh-verde);
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: #fff;
   }
 
-  .tenue {
-    color: #93a1b3;
+  p {
+    margin: 0 0 4px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  a {
+    color: #c9c9c9;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--udh-oro);
+    }
   }
 }
 
-.pie-interior {
+.pie-columnas {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 24px;
+  grid-template-columns: 1.1fr 1fr 1.4fr;
+  gap: 32px;
+  padding: 36px 0 28px;
 }
+
+.pie-legal {
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  padding: 14px 0;
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+// ------------------------------------------------------- chat flotante
 
 .lanzador {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 24px;
+  bottom: 24px;
   z-index: 30;
   display: flex;
   align-items: center;
-  gap: 8px;
-  height: 52px;
+  gap: 10px;
+  height: 50px;
   padding: 0 20px;
   border: 0;
-  border-radius: 26px;
-  background: var(--udh-primario);
+  border-radius: 25px;
+  background: var(--udh-verde-oscuro);
   color: #fff;
-  font: 600 15px/1 var(--udh-fuente);
-  box-shadow: 0 8px 24px rgb(11 58 110 / 35%);
+  font: 600 14.5px/1 var(--udh-fuente);
+  box-shadow: var(--udh-sombra-elevada);
   cursor: pointer;
+
+  &:hover {
+    background: var(--udh-verde-profundo);
+  }
 }
 
 .chat-flotante {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 24px;
+  bottom: 24px;
   z-index: 30;
-  width: 390px;
-  height: min(620px, calc(100vh - 100px));
+  width: 400px;
+  height: min(640px, calc(100vh - 120px));
   display: flex;
-  border-radius: 16px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgb(15 23 42 / 28%);
+  border: 1px solid var(--udh-borde);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 22%);
 
   udh-chat-panel {
     flex: 1;
@@ -167,13 +237,22 @@ nav {
 .chat-cabecera {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 12px 14px;
-  background: var(--udh-primario);
+  background: var(--udh-grafito);
+  border-bottom: 3px solid var(--udh-verde);
   color: #fff;
 
-  strong {
+  div {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
+  small {
+    font-size: 12px;
+    color: #bdbdbd;
   }
 
   a {
@@ -182,36 +261,67 @@ nav {
   }
 
   button {
+    display: grid;
+    place-items: center;
     border: 0;
     background: transparent;
     color: #fff;
-    font-size: 16px;
+    padding: 4px;
+    border-radius: 4px;
     cursor: pointer;
+
+    &:hover {
+      background: rgb(255 255 255 / 12%);
+    }
   }
 }
 
-@media (max-width: 760px) {
+// ------------------------------------------------------------- móvil
+
+@media (max-width: 860px) {
+  .franja-interior span {
+    display: none;
+  }
+
   .hamburguesa {
     display: flex;
+  }
+
+  .servicio,
+  .separador {
+    display: none;
   }
 
   nav {
     display: none;
     position: absolute;
-    top: 64px;
+    top: 100%;
     left: 0;
     right: 0;
     flex-direction: column;
-    padding: 8px 16px 16px;
-    background: var(--udh-primario);
+    background: #fff;
+    border-bottom: 1px solid var(--udh-borde);
+    box-shadow: var(--udh-sombra-elevada);
 
     &.abierto {
       display: flex;
     }
+
+    a {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--udh-borde);
+      border-left: 3px solid transparent;
+
+      &.activo {
+        border-bottom-color: var(--udh-borde);
+        border-left-color: var(--udh-verde);
+      }
+    }
   }
 
-  .pie-interior {
+  .pie-columnas {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .chat-flotante {
@@ -219,5 +329,11 @@ nav {
     width: 100vw;
     height: 100dvh;
     border-radius: 0;
+    border: 0;
+  }
+
+  .lanzador {
+    right: 16px;
+    bottom: 16px;
   }
 }

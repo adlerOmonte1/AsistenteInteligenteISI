@@ -1,11 +1,11 @@
 <div class="fondo">
   <form class="tarjeta" (submit)="ingresar($event)" novalidate>
     <div class="marca">
-      <span class="escudo" aria-hidden="true">UDH</span>
-      <div>
-        <h1>Panel del Asistente Académico</h1>
-        <p class="tenue">Acceso solo para personal administrativo</p>
-      </div>
+      <udh-marca [alto]="48" />
+    </div>
+    <div class="titulo">
+      <h1>Panel del Asistente Académico</h1>
+      <p class="tenue">Programa Académico de Ingeniería de Sistemas e Informática</p>
     </div>
 
     <label class="campo">

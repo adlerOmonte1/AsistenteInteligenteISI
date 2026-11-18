@@ -33,7 +33,7 @@ import { Notificaciones } from './core/http/notificaciones';
       align-items: flex-start;
       padding: 12px 14px;
       border-radius: 8px;
-      background: #1c2430;
+      background: var(--udh-grafito);
       color: #fff;
       box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
       font-size: 14px;

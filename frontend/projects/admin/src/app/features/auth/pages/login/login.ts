@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { MarcaUdh } from 'shared';
 import { Auth } from '../../../../core/auth/auth';
 
 @Component({
   selector: 'app-login',
+  imports: [MarcaUdh],
   templateUrl: './login.html',
   styleUrl: './login.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

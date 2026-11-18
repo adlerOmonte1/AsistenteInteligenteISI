@@ -1,10 +1,10 @@
 <aside class="lateral" [class.abierto]="menuAbierto()">
   <div class="marca">
-    <span class="escudo" aria-hidden="true">UDH</span>
-    <div>
-      <strong>Asistente Académico</strong>
-      <small>Panel de administración</small>
-    </div>
+    <udh-marca [alto]="34" />
+  </div>
+  <div class="servicio">
+    <strong>Asistente Académico</strong>
+    <small>Panel de administración</small>
   </div>
 
   <nav aria-label="Panel" (click)="menuAbierto.set(false)">

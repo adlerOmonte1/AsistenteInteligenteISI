@@ -1,47 +1,50 @@
+// Shadow DOM: la paleta se declara aquí porque los estilos de la página no llegan.
 :host {
-  --udh-primario: #0b3a6e;
+  --udh-primario: #0d7a6a;
   --udh-primario-texto: #ffffff;
-  --udh-acento: #c8961e;
+  --udh-verde: #30b8a0;
+  --udh-grafito: #2b2b2b;
+  --udh-borde: #d9dcdb;
 
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 2147483000;
-  font-family:
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    sans-serif;
+  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
 }
 
 .lanzador {
   display: flex;
   align-items: center;
-  gap: 8px;
-  height: 56px;
+  gap: 10px;
+  height: 52px;
   padding: 0 20px 0 16px;
   border: 0;
-  border-radius: 28px;
+  border-radius: 26px;
   background: var(--udh-primario);
   color: var(--udh-primario-texto);
-  font: 600 15px/1 inherit;
-  box-shadow: 0 8px 24px rgb(11 58 110 / 35%);
+  font: 600 14.5px/1 inherit;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 22%);
   cursor: pointer;
 
+  &:hover {
+    background: #095a4e;
+  }
+
   &:focus-visible {
-    outline: 3px solid var(--udh-acento);
-    outline-offset: 2px;
+    outline: 2px solid var(--udh-grafito);
+    outline-offset: 3px;
   }
 }
 
 .ventana {
   display: none;
-  width: 390px;
-  height: min(620px, calc(100vh - 40px));
-  border-radius: 16px;
+  width: 400px;
+  height: min(640px, calc(100vh - 40px));
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgb(15 23 42 / 28%);
+  border: 1px solid var(--udh-borde);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 22%);
   background: #fff;
 
   &.visible {
@@ -56,47 +59,43 @@
 header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  background: var(--udh-primario);
-  color: var(--udh-primario-texto);
-}
-
-.marca {
-  flex: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  background: var(--udh-acento);
-  color: #1c2430;
-  font: 800 12px/1 inherit;
-  letter-spacing: 0.5px;
+  gap: 12px;
+  padding: 10px 12px 10px 14px;
+  background: #fff;
+  border-bottom: 3px solid var(--udh-verde);
 }
 
 .titulos {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding-left: 12px;
+  border-left: 1px solid var(--udh-borde);
   line-height: 1.25;
 
+  strong {
+    font-size: 14px;
+    color: var(--udh-grafito);
+  }
+
   span {
-    font-size: 12px;
-    opacity: 0.85;
+    font-size: 11.5px;
+    color: #5c6361;
   }
 }
 
 .cerrar {
+  display: grid;
+  place-items: center;
   border: 0;
   background: transparent;
-  color: inherit;
+  color: var(--udh-grafito);
   cursor: pointer;
   padding: 6px;
-  border-radius: 8px;
+  border-radius: 6px;
 
   &:hover {
-    background: rgb(255 255 255 / 15%);
+    background: #f0f1f1;
   }
 }
 
@@ -112,5 +111,10 @@ header {
     width: 100vw;
     height: 100dvh;
     border-radius: 0;
+    border: 0;
+  }
+
+  .titulos span {
+    display: none;
   }
 }

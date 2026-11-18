@@ -1,27 +1,45 @@
 // Sistema visual común del portal y del panel. Cada app lo importa en su styles.scss.
+//
+// Paleta tomada del logotipo oficial de la Universidad de Huánuco (udh.edu.pe/img/logo.png):
+// verde institucional #30B8A0, grafito #303030 y oro del escudo #F8C020. El verde de marca
+// no alcanza contraste AA con texto blanco, así que botones y enlaces usan su tono oscuro.
 
 :root {
-  --udh-primario: #0b3a6e;
-  --udh-primario-oscuro: #072a52;
-  --udh-primario-suave: #e7eef7;
+  // Marca
+  --udh-verde: #30b8a0;
+  --udh-verde-oscuro: #0d7a6a;
+  --udh-verde-profundo: #095a4e;
+  --udh-verde-suave: #e5f5f1;
+  --udh-grafito: #2b2b2b;
+  --udh-grafito-claro: #3d3d3d;
+  --udh-oro: #f8c020;
+  --udh-oro-suave: #fdf4d8;
+  --udh-oro-texto: #7a5b00;
+
+  // Roles (los componentes usan estos nombres)
+  --udh-primario: var(--udh-verde-oscuro);
+  --udh-primario-oscuro: var(--udh-verde-profundo);
+  --udh-primario-suave: var(--udh-verde-suave);
   --udh-primario-texto: #ffffff;
-  --udh-acento: #c8961e;
-  --udh-acento-suave: #fbf3e0;
-  --udh-fondo: #f6f8fb;
+  --udh-acento: var(--udh-oro);
+  --udh-acento-suave: var(--udh-oro-suave);
+  --udh-fondo: #f4f5f5;
   --udh-superficie: #ffffff;
-  --udh-superficie-alterna: #f2f5f9;
-  --udh-borde: #d8dee8;
-  --udh-texto: #1c2430;
-  --udh-texto-tenue: #5b6676;
-  --udh-exito: #137a3f;
-  --udh-exito-suave: #e3f4ea;
-  --udh-alerta: #9a6700;
-  --udh-alerta-suave: #fff4d6;
-  --udh-peligro: #b42318;
-  --udh-peligro-suave: #fdecea;
-  --udh-radio: 10px;
-  --udh-sombra: 0 1px 2px rgb(16 24 40 / 6%), 0 4px 12px rgb(16 24 40 / 6%);
-  --udh-fuente: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --udh-superficie-alterna: #f6f7f7;
+  --udh-borde: #d9dcdb;
+  --udh-borde-fuerte: #b9bebc;
+  --udh-texto: #222222;
+  --udh-texto-tenue: #5c6361;
+  --udh-exito: #0d7a4a;
+  --udh-exito-suave: #e3f3ea;
+  --udh-alerta: var(--udh-oro-texto);
+  --udh-alerta-suave: var(--udh-oro-suave);
+  --udh-peligro: #b3261e;
+  --udh-peligro-suave: #fbeceb;
+  --udh-radio: 6px;
+  --udh-sombra: 0 1px 2px rgb(0 0 0 / 6%);
+  --udh-sombra-elevada: 0 6px 20px rgb(0 0 0 / 12%);
+  --udh-fuente: 'Open Sans Variable', 'Open Sans', 'Segoe UI', Arial, sans-serif;
 
   color-scheme: light;
 }
@@ -48,11 +66,13 @@ h3,
 h4 {
   line-height: 1.25;
   margin: 0 0 0.5em;
-  color: var(--udh-texto);
+  color: var(--udh-grafito);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 h1 {
-  font-size: 1.85rem;
+  font-size: 1.9rem;
 }
 
 h2 {
@@ -60,7 +80,32 @@ h2 {
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.08rem;
+}
+
+// Título de sección con la barra verde del logotipo
+.titulo-seccion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+
+  &::before {
+    content: '';
+    flex: none;
+    width: 4px;
+    height: 1.2em;
+    background: var(--udh-verde);
+  }
+}
+
+.antetitulo {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--udh-verde-oscuro);
 }
 
 a {
@@ -78,7 +123,7 @@ code,
 }
 
 :focus-visible {
-  outline: 3px solid var(--udh-acento);
+  outline: 2px solid var(--udh-verde-oscuro);
   outline-offset: 2px;
 }
 
@@ -136,7 +181,7 @@ code,
   gap: 6px;
   height: 38px;
   padding: 0 16px;
-  border-radius: 8px;
+  border-radius: var(--udh-radio);
   border: 1px solid var(--udh-primario);
   background: var(--udh-primario);
   color: var(--udh-primario-texto);

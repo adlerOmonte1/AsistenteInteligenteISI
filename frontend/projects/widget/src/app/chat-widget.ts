@@ -7,7 +7,7 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { API_URL, ChatPanel } from 'shared';
+import { API_URL, ChatPanel, MarcaUdh } from 'shared';
 
 /**
  * Elemento <udh-chat>: botón flotante que abre la conversación.
@@ -19,7 +19,7 @@ import { API_URL, ChatPanel } from 'shared';
  */
 @Component({
   selector: 'udh-chat-widget',
-  imports: [ChatPanel],
+  imports: [ChatPanel, MarcaUdh],
   templateUrl: './chat-widget.html',
   styleUrl: './chat-widget.scss',
   encapsulation: ViewEncapsulation.ShadowDom,
@@ -42,6 +42,8 @@ export class ChatWidget {
   /** "abierto" para mostrar la conversación al cargar. */
   readonly estado = input<string>('cerrado');
 
+  /** El logotipo se sirve junto a main.js, en el dominio del asistente, no en el de la página. */
+  protected readonly logo = new URL('marca/logo-udh.png', import.meta.url).href;
   protected readonly abierto = signal(false);
   protected readonly usado = signal(false);
 

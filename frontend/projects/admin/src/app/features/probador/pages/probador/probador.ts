@@ -93,7 +93,7 @@ import { CalidadApi } from '../../../calidad/data-access/calidad-api';
     pre {
       font-size: 12px;
       overflow-x: auto;
-      background: #0f1d2e;
+      background: var(--udh-grafito);
       color: #d6e2f0;
       padding: 12px;
       border-radius: 8px;

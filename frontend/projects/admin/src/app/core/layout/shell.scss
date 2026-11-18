@@ -10,38 +10,32 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0f1d2e;
-  color: #c9d3df;
+  background: var(--udh-grafito);
+  color: #cfcfcf;
 }
 
+// El logotipo oficial tiene letras grafito: va sobre una franja blanca.
 .marca {
   display: flex;
-  gap: 10px;
   align-items: center;
-  padding: 18px 16px;
-  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  padding: 14px 16px;
+  background: #fff;
+  border-bottom: 3px solid var(--udh-verde);
+}
+
+.servicio {
+  padding: 14px 18px 10px;
 
   strong {
     display: block;
     color: #fff;
+    font-size: 14px;
   }
 
   small {
     font-size: 12px;
-    color: #93a1b3;
+    color: #a3a3a3;
   }
-}
-
-.escudo {
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
-  display: grid;
-  place-items: center;
-  background: var(--udh-acento);
-  color: #1c2430;
-  font-weight: 800;
-  font-size: 12px;
 }
 
 nav {
@@ -53,10 +47,11 @@ nav {
   gap: 2px;
 
   a {
-    color: #c9d3df;
+    color: #cfcfcf;
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 8px 12px 8px 14px;
+    border-left: 3px solid transparent;
+    border-radius: 0 4px 4px 0;
     font-size: 14px;
 
     &:hover {
@@ -65,8 +60,10 @@ nav {
     }
 
     &.activo {
-      background: var(--udh-primario);
+      background: rgb(48 184 160 / 14%);
+      border-left-color: var(--udh-verde);
       color: #fff;
+      font-weight: 600;
     }
   }
 }
@@ -76,7 +73,7 @@ nav {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #6f7f93;
+  color: #8a8a8a;
 }
 
 .usuario {
@@ -99,7 +96,7 @@ nav {
 
   small {
     font-size: 12px;
-    color: #93a1b3;
+    color: #a3a3a3;
   }
 }
 
