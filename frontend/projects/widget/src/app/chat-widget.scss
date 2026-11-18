@@ -1,0 +1,116 @@
+:host {
+  --udh-primario: #0b3a6e;
+  --udh-primario-texto: #ffffff;
+  --udh-acento: #c8961e;
+
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483000;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.lanzador {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 56px;
+  padding: 0 20px 0 16px;
+  border: 0;
+  border-radius: 28px;
+  background: var(--udh-primario);
+  color: var(--udh-primario-texto);
+  font: 600 15px/1 inherit;
+  box-shadow: 0 8px 24px rgb(11 58 110 / 35%);
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 3px solid var(--udh-acento);
+    outline-offset: 2px;
+  }
+}
+
+.ventana {
+  display: none;
+  width: 390px;
+  height: min(620px, calc(100vh - 40px));
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgb(15 23 42 / 28%);
+  background: #fff;
+
+  &.visible {
+    display: flex;
+  }
+
+  udh-chat-panel {
+    flex: 1;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--udh-primario);
+  color: var(--udh-primario-texto);
+}
+
+.marca {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--udh-acento);
+  color: #1c2430;
+  font: 800 12px/1 inherit;
+  letter-spacing: 0.5px;
+}
+
+.titulos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+
+  span {
+    font-size: 12px;
+    opacity: 0.85;
+  }
+}
+
+.cerrar {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+
+  &:hover {
+    background: rgb(255 255 255 / 15%);
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .ventana.visible {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+  }
+}

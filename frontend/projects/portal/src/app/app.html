@@ -1,0 +1,84 @@
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="barra">
+  <div class="contenedor barra-interior">
+    <a routerLink="/" class="marca" (click)="menuAbierto.set(false)">
+      <span class="escudo" aria-hidden="true">UDH</span>
+      <span class="nombre">
+        <strong>Asistente Académico</strong>
+        <small>P.A. Ingeniería de Sistemas e Informática</small>
+      </span>
+    </a>
+
+    <button
+      type="button"
+      class="hamburguesa"
+      (click)="alternarMenu()"
+      [attr.aria-expanded]="menuAbierto()"
+      aria-controls="menu-principal"
+      aria-label="Menú"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav
+      id="menu-principal"
+      [class.abierto]="menuAbierto()"
+      aria-label="Principal"
+      (click)="menuAbierto.set(false)"
+    >
+      <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }"
+        >Trámites</a
+      >
+      <a routerLink="/documentos" routerLinkActive="activo">Documentos</a>
+      <a routerLink="/asistente" routerLinkActive="activo">Asistente</a>
+      <a routerLink="/acerca" routerLinkActive="activo">Acerca</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <router-outlet />
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie-interior">
+    <div>
+      <strong>Universidad de Huánuco · Facultad de Ingeniería</strong>
+      <p>Programa Académico de Ingeniería de Sistemas e Informática</p>
+    </div>
+    <div class="tenue">
+      <p>
+        La información de este portal se basa en la normativa vigente del programa. Ante cualquier
+        diferencia, prevalece la comunicación oficial de la Coordinación.
+      </p>
+      <p>© {{ anio }} · Proyecto de servicio social universitario</p>
+    </div>
+  </div>
+</footer>
+
+@if (!enAsistente()) {
+  @if (chatAbierto()) {
+    <section class="chat-flotante" role="dialog" aria-label="Asistente Académico">
+      <udh-chat-panel>
+        <div cabecera class="chat-cabecera">
+          <strong>Asistente Académico</strong>
+          <a routerLink="/asistente" (click)="chatAbierto.set(false)" class="chat-ampliar"
+            >Pantalla completa</a
+          >
+          <button type="button" (click)="chatAbierto.set(false)" aria-label="Cerrar">✕</button>
+        </div>
+      </udh-chat-panel>
+    </section>
+  } @else {
+    <button type="button" class="lanzador" (click)="chatAbierto.set(true)">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2zm3 6v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"
+        />
+      </svg>
+      Preguntar al asistente
+    </button>
+  }
+}

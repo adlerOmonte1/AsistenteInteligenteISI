@@ -1,0 +1,32 @@
+<div class="fondo">
+  <form class="tarjeta" (submit)="ingresar($event)" novalidate>
+    <div class="marca">
+      <span class="escudo" aria-hidden="true">UDH</span>
+      <div>
+        <h1>Panel del Asistente Académico</h1>
+        <p class="tenue">Acceso solo para personal administrativo</p>
+      </div>
+    </div>
+
+    <label class="campo">
+      <span>Usuario</span>
+      <input type="text" name="username" autocomplete="username" required autofocus />
+    </label>
+    <label class="campo">
+      <span>Contraseña</span>
+      <input type="password" name="password" autocomplete="current-password" required />
+    </label>
+
+    @if (error()) {
+      <p class="aviso peligro" role="alert">{{ error() }}</p>
+    }
+
+    <button class="boton" type="submit" [disabled]="enviando()">
+      {{ enviando() ? 'Ingresando…' : 'Ingresar' }}
+    </button>
+    <p class="tenue nota">
+      Las cuentas las crea el Centro de Cómputo. Tras cinco intentos fallidos la cuenta se bloquea
+      durante quince minutos.
+    </p>
+  </form>
+</div>

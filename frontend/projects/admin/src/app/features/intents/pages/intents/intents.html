@@ -1,0 +1,145 @@
+<header class="pagina-cabecera">
+  <div>
+    <h1>Intents</h1>
+    <p>
+      Lo que el estudiante quiere saber, con ejemplos de cómo lo pregunta y la ficha que lo
+      responde.
+    </p>
+  </div>
+  <button class="boton" type="button" (click)="abrir(null)">Nuevo intent</button>
+</header>
+
+<div class="filtros">
+  <select (change)="filtrar('proceso', $event)" aria-label="Proceso">
+    <option value="">Todos los procesos</option>
+    @for (p of procesos(); track p.id) {
+      <option [value]="p.clave">{{ p.nombre }}</option>
+    }
+  </select>
+  <input
+    type="search"
+    placeholder="Nombre del intent"
+    (input)="filtrar('q', $event)"
+    aria-label="Buscar"
+  />
+</div>
+
+<div class="tabla-contenedor">
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Intent</th>
+        <th>Descripción</th>
+        <th>Fichas</th>
+        <th>Secciones</th>
+        <th>Ejemplos</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (i of intents(); track i.id) {
+        <tr [class.inactivo]="!i.activo">
+          <td class="mono">{{ i.nombre }}</td>
+          <td>{{ i.descripcion }}</td>
+          <td class="mono tenue">{{ i.fichas.join(', ') || '—' }}</td>
+          <td class="tenue">{{ i.secciones.length ? i.secciones.join(', ') : 'todas' }}</td>
+          <td>
+            <span class="insignia" [class.alerta]="i.lista_ejemplos.length < 10">{{
+              i.lista_ejemplos.length
+            }}</span>
+          </td>
+          <td>
+            <button class="boton secundario chico" type="button" (click)="abrir(i)">Editar</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" class="vacio">
+            {{ cargando() ? 'Cargando…' : 'No hay intents con esos filtros.' }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<p class="tenue total">{{ total() }} intents. Se recomiendan al menos 10 ejemplos por intent.</p>
+
+<dialog class="modal ancho" #dialogo>
+  @if (abierto()) {
+    @let i = editando();
+    <form (submit)="guardar($event)">
+      <h2>{{ i ? 'Editar ' + i.nombre : 'Nuevo intent' }}</h2>
+      <div class="rejilla-formulario">
+        <label class="campo">
+          <span>Proceso</span>
+          <select name="proceso" required>
+            @for (p of procesos(); track p.id) {
+              <option [value]="p.id" [selected]="p.id === i?.proceso">{{ p.nombre }}</option>
+            }
+          </select>
+        </label>
+        <label class="campo">
+          <span>Nombre</span>
+          <input
+            type="text"
+            name="nombre"
+            class="mono"
+            [value]="i?.nombre ?? ''"
+            placeholder="BAC_fotos"
+            required
+          />
+          @if (errores()['nombre']) {
+            <small class="error">{{ errores()['nombre'] }}</small>
+          }
+        </label>
+      </div>
+      <label class="campo">
+        <span>Descripción (se muestra como botón al desambiguar)</span>
+        <input type="text" name="descripcion" [value]="i?.descripcion ?? ''" />
+      </label>
+      <label class="campo">
+        <span>Fichas que lo responden (códigos separados por coma)</span>
+        <input type="text" name="fichas" class="mono" [value]="i?.fichas?.join(', ') ?? ''" />
+        @if (errores()['fichas']) {
+          <small class="error">{{ errores()['fichas'] }}</small>
+        }
+      </label>
+      <fieldset class="secciones">
+        <legend>Secciones que responde (ninguna marcada = toda la ficha)</legend>
+        @for (s of secciones; track s) {
+          <label
+            ><input
+              type="checkbox"
+              name="secciones"
+              [value]="s"
+              [checked]="i?.secciones?.includes(s)"
+            />
+            {{ titulos[s] }}</label
+          >
+        }
+      </fieldset>
+      <label class="campo">
+        <span>Ejemplos (uno por línea)</span>
+        <textarea name="ejemplos" rows="8" [value]="ejemplosComoTexto(i)" required></textarea>
+        @if (errores()['ejemplos']) {
+          <small class="error">{{ errores()['ejemplos'] }}</small>
+        }
+      </label>
+      <label class="campo">
+        <span>Pregunta si falta la fase o el tipo</span>
+        <input type="text" name="si_falta_entidad" [value]="i?.si_falta_entidad ?? ''" />
+      </label>
+      <label class="campo">
+        <span>Respuesta fija (solo para intents sin ficha, como el saludo)</span>
+        <textarea name="respuesta_fija" rows="2" [value]="i?.respuesta_fija ?? ''"></textarea>
+      </label>
+      <label class="fila"
+        ><input type="checkbox" name="activo" [checked]="i?.activo ?? true" /> Activo</label
+      >
+      <div class="acciones">
+        <button class="boton secundario" type="button" (click)="cerrar()">Cancelar</button>
+        <button class="boton" type="submit">Guardar</button>
+      </div>
+    </form>
+  }
+</dialog>

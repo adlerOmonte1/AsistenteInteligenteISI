@@ -1,0 +1,155 @@
+.portada {
+  padding: 56px 0 64px;
+  background:
+    radial-gradient(circle at 85% 20%, rgb(200 150 30 / 18%), transparent 40%),
+    linear-gradient(160deg, var(--udh-primario) 0%, var(--udh-primario-oscuro) 100%);
+  color: #fff;
+
+  h1 {
+    color: #fff;
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+    max-width: 760px;
+  }
+}
+
+.antetitulo {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12.5px;
+  color: var(--udh-acento);
+  font-weight: 700;
+}
+
+.bajada {
+  max-width: 680px;
+  font-size: 1.05rem;
+  opacity: 0.92;
+}
+
+.buscador {
+  display: flex;
+  gap: 8px;
+  max-width: 680px;
+  margin-top: 24px;
+
+  input {
+    height: 48px;
+    font-size: 16px;
+    border: 0;
+  }
+
+  .boton {
+    height: 48px;
+    background: var(--udh-acento);
+    border-color: var(--udh-acento);
+    color: #1c2430;
+  }
+}
+
+.atajo {
+  margin-top: 14px;
+  font-size: 14px;
+
+  a {
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+.seccion {
+  margin-top: 40px;
+}
+
+.encabezado-seccion {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.tramite {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgb(16 24 40 / 12%);
+  }
+
+  h3 {
+    margin: 6px 0 2px;
+  }
+
+  p {
+    flex: 1;
+    font-size: 14px;
+  }
+}
+
+.numero {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--udh-primario-suave);
+  color: var(--udh-primario);
+  font-weight: 700;
+}
+
+.pie-tarjeta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--udh-primario);
+}
+
+.esqueleto {
+  height: 180px;
+  background: linear-gradient(90deg, #eef1f5 25%, #f7f9fb 50%, #eef1f5 75%);
+  background-size: 200% 100%;
+  animation: brillo 1.4s infinite;
+}
+
+@keyframes brillo {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.pasos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+
+  strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .buscador {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,45 @@
+<aside class="lateral" [class.abierto]="menuAbierto()">
+  <div class="marca">
+    <span class="escudo" aria-hidden="true">UDH</span>
+    <div>
+      <strong>Asistente Académico</strong>
+      <small>Panel de administración</small>
+    </div>
+  </div>
+
+  <nav aria-label="Panel" (click)="menuAbierto.set(false)">
+    @for (g of grupos(); track g.grupo) {
+      @if (g.grupo) {
+        <p class="grupo">{{ g.grupo }}</p>
+      }
+      @for (item of g.items; track item.ruta) {
+        <a [routerLink]="item.ruta" routerLinkActive="activo">{{ item.texto }}</a>
+      }
+    }
+  </nav>
+
+  @if (auth.usuario(); as u) {
+    <div class="usuario">
+      <div>
+        <strong>{{ u.first_name || u.username }}</strong>
+        <small
+          >{{ nombresRol[u.rol] }}{{ u.facultad_nombre ? ' · ' + u.facultad_nombre : '' }}</small
+        >
+      </div>
+      <button type="button" class="boton secundario chico" (click)="auth.logout()">Salir</button>
+    </div>
+  }
+</aside>
+
+<div class="principal">
+  <header class="superior">
+    <button type="button" class="menu" (click)="menuAbierto.set(!menuAbierto())" aria-label="Menú">
+      ☰
+    </button>
+    <span class="espaciador"></span>
+    <a href="/" target="_blank" rel="noopener">Ver el portal ↗</a>
+  </header>
+  <main>
+    <router-outlet />
+  </main>
+</div>

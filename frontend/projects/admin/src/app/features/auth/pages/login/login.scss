@@ -1,0 +1,53 @@
+.fondo {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: linear-gradient(160deg, var(--udh-primario) 0%, #0f1d2e 100%);
+}
+
+form {
+  width: min(400px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+}
+
+.marca {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+
+  h1 {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+  }
+}
+
+.escudo {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--udh-acento);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.boton {
+  height: 42px;
+}
+
+.nota {
+  font-size: 12px;
+  margin: 0;
+}

@@ -1,0 +1,93 @@
+<ng-content select="[cabecera]" />
+
+<div class="lista" #lista role="log" aria-live="polite" aria-label="Conversación con el asistente">
+  @for (m of mensajes(); track m.id) {
+    <div class="fila" [class.propia]="m.autor === 'estudiante'">
+      <div class="burbuja" [class.error]="m.error">
+        @if (m.escribiendo && !m.texto) {
+          <span class="escribiendo" aria-label="El asistente está escribiendo"
+            ><i></i><i></i><i></i
+          ></span>
+        } @else {
+          <div class="texto" [innerHTML]="m.texto | markdown"></div>
+        }
+
+        @if (m.fuentes?.length) {
+          <div class="fuentes">
+            <span>Fuente:</span>
+            @for (f of m.fuentes; track f.codigo) {
+              <span class="chip" [title]="f.titulo">{{ f.codigo }}</span>
+            }
+          </div>
+        }
+
+        @if (m.autor === 'asistente' && m.consultaId && !m.escribiendo) {
+          <div class="calificar">
+            @if (m.util == null) {
+              <span>¿Le fue útil?</span>
+              <button type="button" (click)="calificar(m, true)" aria-label="Sí, me fue útil">
+                Sí
+              </button>
+              <button type="button" (click)="calificar(m, false)" aria-label="No me fue útil">
+                No
+              </button>
+            } @else {
+              <span>Gracias por su respuesta.</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (m.opciones?.length) {
+      <div class="opciones">
+        @for (o of m.opciones; track o.etiqueta) {
+          <button type="button" (click)="elegirOpcion(o)" [disabled]="enviando()">
+            {{ o.etiqueta }}
+          </button>
+        }
+      </div>
+    }
+  }
+
+  @if (mensajes().length === 1) {
+    <div class="opciones sugerencias">
+      @for (s of sugerencias(); track s) {
+        <button type="button" (click)="elegirOpcion({ etiqueta: s })">{{ s }}</button>
+      }
+    </div>
+  }
+</div>
+
+<form class="entrada" (submit)="$event.preventDefault(); enviarTexto()">
+  <label class="oculto" for="udh-chat-mensaje">Escriba su consulta</label>
+  <textarea
+    id="udh-chat-mensaje"
+    #entrada
+    rows="1"
+    [attr.maxlength]="maximo"
+    placeholder="Escriba su consulta…"
+    (input)="alEscribir($event)"
+    (keydown)="alPresionarTecla($event)"
+    [disabled]="enviando()"
+  ></textarea>
+  <button
+    type="submit"
+    class="enviar"
+    [disabled]="enviando() || !texto().trim()"
+    aria-label="Enviar"
+  >
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <path fill="currentColor" d="M3.4 20.4 21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z" />
+    </svg>
+  </button>
+</form>
+
+<div class="pie">
+  @if (avisoLegal()) {
+    <p>{{ avisoLegal() }}</p>
+  }
+  @if (mensajes().length > 1) {
+    <button type="button" class="enlace" (click)="reiniciar()">Nueva conversación</button>
+  }
+</div>

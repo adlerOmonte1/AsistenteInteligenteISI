@@ -1,0 +1,86 @@
+<section class="portada">
+  <div class="contenedor">
+    <p class="antetitulo">Universidad de Huánuco · Facultad de Ingeniería</p>
+    <h1>Consulte sus trámites académicos en un solo lugar</h1>
+    <p class="bajada">
+      Requisitos, pasos, pagos, plazos y a dónde enviar cada documento, con base en la normativa
+      vigente del Programa Académico de Ingeniería de Sistemas e Informática.
+    </p>
+
+    <form class="buscador" role="search" (submit)="buscar($event)">
+      <label class="oculto" for="buscar-inicio">Buscar en los trámites</label>
+      <input
+        id="buscar-inicio"
+        type="search"
+        placeholder="Ej.: fotos para el bachiller, plan de prácticas, jurados de tesis"
+        (input)="alEscribir($event)"
+      />
+      <button class="boton" type="submit" [disabled]="termino().trim().length < 3">Buscar</button>
+    </form>
+    <p class="atajo">
+      ¿Prefiere preguntar? <a routerLink="/asistente">Converse con el asistente académico →</a>
+    </p>
+  </div>
+</section>
+
+<section class="contenedor seccion">
+  <div class="encabezado-seccion">
+    <h2>Trámites del programa</h2>
+    <a routerLink="/documentos">Ver resoluciones y formatos</a>
+  </div>
+
+  @let e = estado();
+  @if (e.cargando) {
+    <div class="rejilla">
+      @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+        <div class="tarjeta esqueleto"></div>
+      }
+    </div>
+  } @else if (e.error) {
+    <div class="aviso peligro">
+      No se pudo cargar la lista de trámites. Intente recargar la página.
+    </div>
+  } @else {
+    <div class="rejilla">
+      @for (p of e.procesos; track p.id; let i = $index) {
+        <a class="tarjeta tramite" [routerLink]="['/tramites', p.clave]">
+          <span class="numero">{{ i + 1 }}</span>
+          <h3>{{ p.nombre }}</h3>
+          <p class="tenue">{{ p.descripcion }}</p>
+          <span class="pie-tarjeta">
+            {{ p.fichas_publicadas }} {{ p.fichas_publicadas === 1 ? 'fase' : 'fases' }} · Ver el
+            trámite →
+          </span>
+        </a>
+      } @empty {
+        <div class="aviso">Aún no hay trámites publicados.</div>
+      }
+    </div>
+  }
+</section>
+
+<section class="contenedor seccion">
+  <h2>Cómo funciona el asistente</h2>
+  <ol class="pasos">
+    <li class="tarjeta">
+      <strong>Pregunte con sus palabras</strong>
+      <p class="tenue">
+        «¿A qué correo envío el plan de prácticas?» o «¿cuánto cuesta la fase 6 de suficiencia?».
+      </p>
+    </li>
+    <li class="tarjeta">
+      <strong>Reciba la respuesta con su fuente</strong>
+      <p class="tenue">
+        Cada respuesta cita la ficha del trámite y la norma de la que proviene. Si un dato no está
+        confirmado, se le indica.
+      </p>
+    </li>
+    <li class="tarjeta">
+      <strong>Si hace falta, lo derivamos</strong>
+      <p class="tenue">
+        Cuando la consulta excede la normativa, el asistente le indica cómo contactar a la
+        Coordinación.
+      </p>
+    </li>
+  </ol>
+</section>

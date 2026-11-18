@@ -1,0 +1,224 @@
+@let f = ficha();
+<header class="pagina-cabecera">
+  <div>
+    <a routerLink="/fichas" class="volver">← Fichas</a>
+    <h1>
+      @if (f) {
+        <span class="mono">{{ f.codigo }}</span> · {{ f.titulo }}
+      } @else if (esNueva()) {
+        Nueva ficha
+      } @else {
+        Cargando…
+      }
+    </h1>
+    @if (f) {
+      <div class="fila estado">
+        <span class="insignia" [class]="estados[f.estado_revision].clase">{{
+          estados[f.estado_revision].texto
+        }}</span>
+        <span class="insignia">{{
+          f.version ? 'Publicada v' + f.version : 'Nunca publicada'
+        }}</span>
+        @if (f.tiene_cambios_sin_publicar && f.version) {
+          <span class="insignia alerta">Cambios sin publicar</span>
+        }
+        <span class="tenue">{{ f.proceso_nombre }}</span>
+      </div>
+    }
+  </div>
+
+  <div class="fila">
+    @if (puedeEditar()) {
+      <button class="boton secundario" type="button" (click)="guardar()" [disabled]="ocupado()">
+        Guardar borrador
+      </button>
+    }
+    @if (puedeEnviar()) {
+      <button class="boton" type="button" (click)="enviarARevision()" [disabled]="ocupado()">
+        Enviar a revisión
+      </button>
+    }
+    @if (puedeRevisar()) {
+      <button class="boton peligro" type="button" (click)="abrirRechazo()" [disabled]="ocupado()">
+        Rechazar
+      </button>
+      <button class="boton exito" type="button" (click)="aprobar()" [disabled]="ocupado()">
+        Aprobar y publicar
+      </button>
+    }
+  </div>
+</header>
+
+@if (f?.estado_revision === 'rechazada' && f?.observaciones) {
+  <div class="aviso peligro observaciones">
+    <strong>Observaciones del revisor:</strong> {{ f?.observaciones }}
+  </div>
+}
+@if (f?.estado_revision === 'en_revision') {
+  <div class="aviso alerta observaciones">
+    La ficha está en revisión y no se puede editar. El revisor la aprobará o la devolverá con
+    observaciones.
+  </div>
+}
+
+<div class="disposicion">
+  <form [formGroup]="form" class="pila" (submit)="$event.preventDefault(); guardar()">
+    <section class="tarjeta">
+      <h2>Metadatos</h2>
+      <div class="rejilla-formulario">
+        <label class="campo">
+          <span>Proceso</span>
+          <select formControlName="proceso" [class.invalido]="invalido('proceso')">
+            <option [ngValue]="0" disabled>Elija un proceso</option>
+            @for (p of procesos(); track p.id) {
+              <option [ngValue]="p.id">{{ p.nombre }}</option>
+            }
+          </select>
+        </label>
+        <label class="campo">
+          <span>Código</span>
+          <input
+            type="text"
+            formControlName="codigo"
+            class="mono"
+            placeholder="BAC_P02"
+            [class.invalido]="invalido('codigo')"
+          />
+          @if (errores()['codigo']) {
+            <small class="error">{{ errores()['codigo'] }}</small>
+          } @else {
+            <small class="ayuda">PREFIJO_X00. No cambia una vez publicada.</small>
+          }
+        </label>
+        <label class="campo">
+          <span>Fase</span>
+          <input type="number" min="0" formControlName="fase" />
+        </label>
+        <label class="campo">
+          <span>Estado del dato</span>
+          <select formControlName="estado_dato">
+            <option value="confirmado">Confirmado por documento oficial</option>
+            <option value="pendiente">Pendiente de confirmar</option>
+          </select>
+        </label>
+      </div>
+      <label class="campo">
+        <span>Título</span>
+        <input type="text" formControlName="titulo" [class.invalido]="invalido('titulo')" />
+      </label>
+      <label class="campo">
+        <span>Fuente</span>
+        <input
+          type="text"
+          formControlName="fuente"
+          placeholder="Res. N.° 2367-2025-R-CU-UDH, Art. 12"
+          [class.invalido]="invalido('fuente')"
+        />
+        @if (errores()['fuente']) {
+          <small class="error">{{ errores()['fuente'] }}</small>
+        }
+      </label>
+      <div class="rejilla-formulario">
+        <label class="campo">
+          <span>Vigencia (fecha)</span>
+          <input type="date" formControlName="vigencia" />
+        </label>
+        <label class="campo">
+          <span>Vigencia (si no hay fecha)</span>
+          <input
+            type="text"
+            formControlName="vigencia_texto"
+            [class.invalido]="invalido('vigencia')"
+          />
+          @if (errores()['vigencia']) {
+            <small class="error">{{ errores()['vigencia'] }}</small>
+          }
+        </label>
+      </div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Secciones</h2>
+      <p class="tenue">
+        Las seis secciones son obligatorias. Si un dato no figura en la norma, escriba «No
+        indicado».
+      </p>
+      @for (s of secciones; track s) {
+        <label class="campo">
+          <span>{{ titulos[s] }}</span>
+          <textarea
+            [formControlName]="s"
+            [rows]="s === 'pasos' || s === 'requisitos' ? 6 : 3"
+            [class.invalido]="invalido(s)"
+          ></textarea>
+          @if (errores()[s]) {
+            <small class="error">{{ errores()[s] }}</small>
+          } @else {
+            <small class="ayuda">{{ ayuda[s] }}</small>
+          }
+        </label>
+      }
+      <label class="campo">
+        <span>{{ titulos.informacion_adicional }}</span>
+        <textarea formControlName="informacion_adicional" rows="4"></textarea>
+        <small class="ayuda">Opcional. Se muestra en el portal y se usa en la búsqueda.</small>
+      </label>
+    </section>
+  </form>
+
+  <aside class="pila">
+    <section class="tarjeta">
+      <h2>Historial</h2>
+      @for (v of historial(); track v.id) {
+        <div class="version">
+          <div>
+            <strong>v{{ v.numero }}</strong>
+            <small class="tenue"
+              >{{ v.publicada_en | date: 'dd/MM/yyyy HH:mm'
+              }}{{ v.publicada_por ? ' · ' + v.publicada_por : '' }}</small
+            >
+            @if (v.nota) {
+              <small>{{ v.nota }}</small>
+            }
+          </div>
+          @if (
+            auth.tieneRol('revisor') &&
+            v.numero !== f?.version &&
+            f?.estado_revision !== 'en_revision'
+          ) {
+            <button class="boton secundario chico" type="button" (click)="revertir(v)">
+              Revertir
+            </button>
+          }
+        </div>
+      } @empty {
+        <p class="tenue">Aún no hay versiones publicadas.</p>
+      }
+    </section>
+    <section class="tarjeta tenue ayuda-ciclo">
+      <h2>Ciclo de publicación</h2>
+      <ol>
+        <li>El editor guarda el borrador.</li>
+        <li>Lo envía a revisión: el sistema valida el contrato.</li>
+        <li>Un revisor distinto aprueba o rechaza con observaciones.</li>
+        <li>Al aprobar se reindexa y se corre una prueba de humo con el golden set.</li>
+      </ol>
+    </section>
+  </aside>
+</div>
+
+<dialog class="modal" #dialogoRechazo>
+  <form (submit)="rechazar($event)">
+    <h2>Rechazar cambios</h2>
+    <label class="campo">
+      <span>Observaciones para el editor</span>
+      <textarea name="observaciones" rows="4" required></textarea>
+    </label>
+    <div class="acciones">
+      <button class="boton secundario" type="button" (click)="dialogoRechazo.close()">
+        Cancelar
+      </button>
+      <button class="boton peligro" type="submit">Rechazar</button>
+    </div>
+  </form>
+</dialog>
