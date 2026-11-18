@@ -1,0 +1,75 @@
+# Intents transversales (GEN_). Responden en cualquier proceso.
+# GEN_derivar_humano no tiene respuesta fija: su texto sale de la pantalla
+# Configuración del panel (campo «contacto de derivación»).
+
+intents:
+  - intent: GEN_saludo
+    descripcion: Saludo inicial
+    entidades: []
+    ficha_relacionada: null
+    si_falta_entidad: null
+    respuesta_fija: "Buen día. Soy el Asistente Académico del P.A. de Ingeniería de Sistemas e Informática. Puedo orientarle sobre prácticas preprofesionales, grado de bachiller, título profesional y traslados. ¿Sobre qué trámite desea consultar?"
+    ejemplos:
+      - "hola"
+      - "buenos días"
+      - "buenas tardes"
+      - "buenas noches"
+      - "hola, una consulta"
+      - "buen día"
+      - "saludos"
+      - "hola asistente"
+      - "qué tal"
+      - "hola, necesito ayuda"
+
+  - intent: GEN_ayuda
+    descripcion: Qué puede hacer el asistente
+    entidades: []
+    ficha_relacionada: null
+    si_falta_entidad: null
+    respuesta_fija: "Puedo explicarle los requisitos, pasos, pagos, plazos y a dónde enviar los documentos de estos trámites: prácticas preprofesionales, convalidación de prácticas por experiencia laboral, grado de bachiller, título por tesis, título por trabajo de suficiencia profesional y traslados. Escriba su consulta o elija un trámite."
+    ejemplos:
+      - "qué puedes hacer"
+      - "en qué me puedes ayudar"
+      - "qué trámites conoces"
+      - "para qué sirves"
+      - "qué información tienes"
+      - "ayuda"
+      - "menú"
+      - "qué consultas puedo hacer"
+      - "cómo funciona este chat"
+      - "opciones"
+
+  - intent: GEN_agradecimiento
+    descripcion: Agradecimiento o cierre de la conversación
+    entidades: []
+    ficha_relacionada: null
+    si_falta_entidad: null
+    respuesta_fija: "Con gusto. Si tiene otra consulta sobre sus trámites, escríbanos. Recuerde revisar su correo institucional durante todo el proceso."
+    ejemplos:
+      - "gracias"
+      - "muchas gracias"
+      - "ok gracias"
+      - "listo, gracias"
+      - "eso era todo"
+      - "perfecto, gracias"
+      - "muy amable"
+      - "ya entendí, gracias"
+      - "chau"
+      - "hasta luego"
+
+  - intent: GEN_derivar_humano
+    descripcion: El estudiante pide hablar con una persona
+    entidades: []
+    ficha_relacionada: null
+    si_falta_entidad: null
+    ejemplos:
+      - "quiero hablar con una persona"
+      - "necesito hablar con alguien de coordinación"
+      - "pásame con un humano"
+      - "con quién me comunico"
+      - "a quién le pregunto esto"
+      - "quiero comunicarme con la coordinación"
+      - "necesito atención personalizada"
+      - "no me sirve, quiero hablar con alguien"
+      - "dónde atienden presencialmente"
+      - "hay algún número de contacto"

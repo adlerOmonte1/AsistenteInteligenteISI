@@ -1,0 +1,62 @@
+id,pregunta,intent_esperado,ficha_esperada,respuesta_clave
+TES_Q01,quiero mi título por tesis,TES_info_general,TES_F00,Son 9 fases; antes de la Fase 1 debes aprobar el curso de Conducta Responsable en Investigación (https://tucoach.udh.edu.pe/cursos). ¿Ya lo aprobaste y en qué fase estás?
+TES_Q02,qué necesito para designar asesor,TES_requisitos,TES_F01,"Fase 1: carta de aceptación de asesor técnico, constancia del curso de Conducta Responsable de Investigación y compromiso de honor si es en pareja. Trámite Login: DESIG. DE DOCENTE ASESOR TECNICO PARA LA TESIS. Envía a secretaria.sistemas.hco@udh.edu.pe"
+TES_Q03,cómo saco la constancia del curso de conducta responsable,TES_ruta_academica,TES_F01,Haz el curso en https://tucoach.udh.edu.pe/cursos; la constancia es requisito de la Fase 1.
+TES_Q04,"mi tesis es en pareja, qué más presento",TES_requisitos,TES_F01,Adjunta el compromiso de honor para tesistas en pareja (OJO: solo si la tesis es entre dos).
+TES_Q05,cuánto tiempo tengo en la fase 1,TES_plazo,TES_F01,"El trámite tiene vigencia mínima de 1 mes y máxima de 4 meses. Si no cumples plazos, se anula el trámite."
+TES_Q06,cuánto dura mi asesor,TES_plazo,TES_F01,"Vigencia del asesor: 2 años si estás en cursos de investigación, 1 año si eres bachiller. El detalle de estas condiciones no está especificado."
+TES_Q07,cuánto cuesta designar asesor,TES_costo,TES_F01,El documento no menciona pago para la Fase 1. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q08,qué trámite genero en Login para asesor,TES_fase,TES_F01,DESIG. DE DOCENTE ASESOR TECNICO PARA LA TESIS; luego envías los requisitos a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q09,qué es el doc objetante,TES_fase,TES_F02,Es el docente que revisa tu trabajo de investigación; la Facultad designa al jurado objetante tras tu trámite de la Fase 2.
+TES_Q10,requisitos para designar objetante,TES_requisitos,TES_F02,"Fase 2: resolución de asesores, informe de conformidad del proyecto (asesor técnico y metodológico) y trabajo de investigación (tesis)."
+TES_Q11,cuánto cuesta la designación de objetante,TES_costo,TES_F02,"Debes cancelar el monto establecido, pero la cifra no figura en el documento. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+TES_Q12,cuánto demora el informe de conformidad del proyecto,TES_plazo,TES_F02,Es un proceso de mínimo 1 mes y máximo 4 meses (el plazo aparece dentro del requisito).
+TES_Q13,qué trámite hago para objetante,TES_fase,TES_F02,DESIG. DE DOC. OBJETANTE PARA LA REVISION DEL TRAB. DE INV. (TESIS) en Login; envía requisitos a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q14,"ya tengo objetante, qué sigue",TES_fase,TES_F03,Fase 3: Aprobación del trabajo de investigación. Trámite: APROBACION DEL TRABAJO DE INVESTIGACION (TESIS).
+TES_Q15,qué necesito para aprobar mi proyecto de tesis,TES_requisitos,TES_F03,"Informe de conformidad del jurado objetante, constancia de originalidad del software de similitud (del asesor técnico), resolución de designación de objetante, resolución de asesores y trabajo en PDF."
+TES_Q16,cuánto demora la fase 3,TES_plazo,TES_F03,OJO: duración mínima de 2 meses y máxima de 6 meses.
+TES_Q17,quién emite la constancia de originalidad,TES_requisitos,TES_F03,La emite el asesor técnico (software de similitud).
+TES_Q18,cuánto se paga en aprobación del trabajo,TES_costo,TES_F03,"Debes cancelar el monto establecido, sin cifra en el documento. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+TES_Q19,cómo pido jurados revisores,TES_fase,TES_F04,Trámite Login: DESIGNACION DE JURADOS REVISORES DEL INFORME FINAL (TESIS). Envía requisitos a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q20,requisitos fase 4,TES_requisitos,TES_F04,"Informe de conformidad del asesor técnico con su instrumento de evaluación, constancia de originalidad del informe, informe de tesis final y resolución de aprobación del proyecto."
+TES_Q21,cuántos días tiene la fase 4,TES_plazo,TES_F04,OJO: plazo máximo de 30 días y no debe exceder de 2 revisiones.
+TES_Q22,cuántas revisiones me dan,TES_plazo,TES_F04,Máximo 2 revisiones (Fases 4 y 5).
+TES_Q23,cuánto cuesta jurados revisores,TES_costo,TES_F04,"Debes cancelar el monto establecido, sin cifra en el documento. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+TES_Q24,"ya tengo jurados, ahora qué",TES_fase,TES_F05,Fase 5: Aprobación del informe final de tesis. Trámite: APROBACION DEL INFORME FINAL (TESIS).
+TES_Q25,requisitos aprobación informe final,TES_requisitos,TES_F05,"Informe final de aprobación del proyecto del jurado, informe de tesis final, resolución de aprobación del proyecto y resolución de designación de jurados revisores."
+TES_Q26,cuántos días tengo para subsanar el informe final,TES_plazo,TES_F05,"OJO: máximo 30 días para atender y subsanar observaciones, sin exceder 2 revisiones."
+TES_Q27,por qué en fase 5 son 30 días y en fase 6 son 15,TES_plazo,TES_F05,"El documento indica 30 días en la Fase 5 y 15 días en la Fase 6, pero no explica la diferencia. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+TES_Q28,cuánto cuesta aprobar el informe final,TES_costo,TES_F05,"Debes cancelar el monto establecido, sin cifra en el documento. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+TES_Q29,qué necesito para la pre sustentación,TES_requisitos,TES_F06,"Aprobación del informe final de los tres jurados, resolución de aprobación del proyecto y trabajo de investigación. Trámite: PRE SUSTENTACION DEL INFORME DE TESIS."
+TES_Q30,cuánto cuesta la pre sustentación,TES_costo,TES_F06,"Debes cancelar el monto establecido, sin cifra en el documento. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+TES_Q31,mi informe quedó observado en pre sustentación,TES_plazo,TES_F06,OJO: subsana en máximo 15 días y envía el informe de conformidad (aprobación) de tu asesor técnico a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q32,a dónde envío el informe de conformidad del asesor,TES_correo,TES_F06,A secretaria.sistemas.hco@udh.edu.pe.
+TES_Q33,quiénes son los tres jurados,TES_requisitos,TES_F06,El documento menciona 'los tres jurados' pero no detalla quiénes son ni cómo se designan. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q34,qué trámite hago para pre sustentar,TES_fase,TES_F06,PRE SUSTENTACION DEL INFORME DE TESIS en Login; luego envías requisitos a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q35,"ya pre sustenté, qué sigue",TES_fase,TES_F07,Fase 7: Declarar apto para sustentación. Trámite: DECLARAR APTO PARA SUSTENTACION.
+TES_Q36,qué piden para declarar apto,TES_requisitos,TES_F07,"Aprobación del informe de pre sustentación, informe final, boleta de pago, grado de bachiller, DNI ampliada ambas caras y declaración de antecedentes penales."
+TES_Q37,de qué es la boleta de pago de la fase 7,TES_costo,TES_F07,El documento no aclara a qué pago corresponde. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q38,necesito ser bachiller para declarar apto,TES_ruta_academica,TES_F07,"Sí, el grado de bachiller es requisito de la Fase 7."
+TES_Q39,"tuve observaciones en pre sustentación, qué agrego",TES_requisitos,TES_F07,OJO: envía también el informe de aprobación de tu asesor técnico.
+TES_Q40,cuánto tiempo tengo en la fase 7,TES_plazo,TES_F07,El documento no especifica un plazo propio para esta fase. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q41,"ya declaré apto, y ahora",TES_fase,TES_F08,Fase 8: Fecha y hora de sustentación. Tienes máximo 30 días desde que solicitaste DECLARAR APTO. Trámite: FECHA Y HORA.
+TES_Q42,qué necesito para fecha y hora,TES_requisitos,TES_F08,"Aprobación del informe de pre sustentación, informe final y resolución de aprobación del informe final de tesis."
+TES_Q43,cuántos días tengo para pedir fecha de sustentación,TES_plazo,TES_F08,OJO: máximo 30 días posteriores a haber solicitado DECLARAR APTO.
+TES_Q44,cuánto cuesta el trámite de fecha y hora,TES_costo,TES_F08,"Debes cancelar el monto establecido, sin cifra en el documento. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe."
+TES_Q45,dónde mando los papeles de fecha y hora,TES_correo,TES_F08,A secretaria.sistemas.hco@udh.edu.pe.
+TES_Q46,cuánto cuesta optar el título,TES_costo,TES_F09,El trámite OPTAR TÍTULO PROFESIONAL (MODALIDAD DE SUSTENTACION DE TESIS) cuesta S/ 5.00.
+TES_Q47,qué es la constancia del repositorio,TES_requisitos,TES_F09,Es la constancia de inscripción al Repositorio Institucional (original); se genera automáticamente con el trámite Optar Título.
+TES_Q48,qué envío al repositorio,TES_requisitos,TES_F09,Revisa en Trámite Seguimiento los requisitos y envíalos a repositorio@udh.edu.pe. El documento no los detalla. Ese dato no está confirmado en el reglamento vigente. Consulta a secretaria.sistemas.hco@udh.edu.pe.
+TES_Q49,cuándo es el Consejo de Facultad,TES_plazo,TES_F09,OJO: se realiza la primera semana de cada mes y tu trámite debe estar atendido por todas las áreas.
+TES_Q50,qué fotos piden,TES_requisitos,TES_F09,"OJO: 2 fotos tamaño pasaporte con vestimenta formal, para entregar en coordinación."
+TES_Q51,cuándo me entregan el grado,TES_plazo,TES_F09,Dentro de 2 meses (aproximadamente); te avisan por correo institucional.
+TES_Q52,a qué número consulto en fase 9,TES_correo,TES_F09,"El documento indica consultar al 952 068 664, sin precisar el motivo o área. El número del pie de página es 952069136."
+TES_Q53,a qué correo envío los requisitos,TES_correo,TES_F00,Fases 1–8: secretaria.sistemas.hco@udh.edu.pe. Fase 9 (Repositorio): repositorio@udh.edu.pe.
+TES_Q54,cómo hago seguimiento de mi trámite,TES_seguimiento,TES_F00,Entra a tu Login → Trámite Seguimiento. En Fase 9 también: CONSULTA REGISTRO DE GRADOS Y TITULOS.
+TES_Q55,tesis o TSP,TES_modalidad,TES_F00,"Yo te oriento en la modalidad de sustentación de tesis. Si es TSP, consulta a secretaria.sistemas.hco@udh.edu.pe. ¿Seguimos con tesis?"
+TES_Q56,qué necesito antes de la fase 1,TES_ruta_academica,TES_F00,Aprobar el curso de Conducta Responsable en Investigación (https://tucoach.udh.edu.pe/cursos).
+TES_Q57,dónde queda la facultad,TES_correo,TES_F00,Carretera Central Km 2.5 – La Esperanza.
+TES_Q58,cuántas fases tiene el proceso,TES_info_general,TES_F00,"9 fases: asesor técnico, objetante, aprobación del trabajo, jurados revisores, aprobación del informe final, pre sustentación, declarar apto, fecha y hora, y optar título."
+TES_Q59,"quién atiende mi trámite, oficio o resolución",TES_seguimiento,TES_F00,Programa Académico atiende con Oficio y la Facultad de Ingeniería con Resolución.
+TES_Q60,el informe,TES_fase,TES_F00,"¿Te refieres al informe de proyecto (Fase 3), informe final (Fase 5) o pre sustentación (Fase 6)?"
+TES_Q61,quiero un resumen de todos los plazos,TES_plazo,TES_F00,"1) Fase 1: 1–4 meses. 2) Fase 2: 1–4 meses. 3) Fase 3: 2–6 meses. 4) Fase 4: 30 días, 2 revisiones. 5) Fase 5: 30 días, 2 revisiones. 6) Fase 6: 15 días si hay observaciones. 7) Fase 7: sin plazo propio. 8) Fase 8: 30 días tras DECLARAR APTO. 9) Fase 9: Consejo 1.ª semana del mes; grado ~2 meses."

@@ -1,0 +1,103 @@
+entidades:
+- nombre: etapa
+  valores:
+  - valor: carta_presentacion
+    ficha: PPP_E01
+    sinonimos:
+    - etapa 1
+    - primera etapa
+    - carta de presentación
+    - carta
+    - presentación
+    - carta de la facultad
+  - valor: plan
+    ficha: PPP_E02
+    sinonimos:
+    - etapa 2
+    - segunda etapa
+    - plan
+    - plan de prácticas
+    - plan de ppp
+    - aprobación del plan
+  - valor: ejecucion
+    ficha: PPP_E03
+    sinonimos:
+    - etapa 3
+    - tercera etapa
+    - ejecución
+    - durante las prácticas
+    - horas
+    - asistencia
+  - valor: informe_final
+    ficha: PPP_E04
+    sinonimos:
+    - etapa 4
+    - cuarta etapa
+    - última etapa
+    - informe final
+    - informe
+    - sustentación
+    - expediente final
+- nombre: anexo
+  valores:
+  - valor: '02'
+    sinonimos:
+    - anexo 2
+    - anexo 02
+    - carta de compromiso
+    ficha: PPP_T02
+  - valor: '03'
+    sinonimos:
+    - anexo 3
+    - anexo 03
+    - carta de aceptación
+    ficha: PPP_T02
+  - valor: '04'
+    sinonimos:
+    - anexo 4
+    - anexo 04
+    - formato del plan
+    ficha: PPP_T02
+  - valor: '05'
+    sinonimos:
+    - anexo 5
+    - anexo 05
+    - estructura del informe
+    ficha: PPP_T02
+  - valor: '06'
+    sinonimos:
+    - anexo 6
+    - anexo 06
+    - ficha de evaluación
+    - evaluación del jefe
+    ficha: PPP_T02
+  - valor: '07'
+    sinonimos:
+    - anexo 7
+    - anexo 07
+    - ficha de supervisión
+    ficha: PPP_T02
+  - valor: '10'
+    sinonimos:
+    - anexo 10
+    - ficha de avances
+    ficha: PPP_T02
+desvios:
+- si_detecta:
+  - ya trabajo
+  - experiencia laboral
+  - convalidar prácticas
+  - convalidar ppp
+  - trabajo hace más de un año
+  redirigir_a: CPP_*
+- si_detecta:
+  - convalidar cursos
+  - traslado interno
+  - traslado externo
+  redirigir_a: TRA_*
+- si_detecta:
+  - trámite de bachiller
+  - grado de bachiller
+  redirigir_a: BAC_*
+- si_fallan: 2 intentos
+  redirigir_a: GEN_derivar_humano

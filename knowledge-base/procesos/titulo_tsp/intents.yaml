@@ -1,0 +1,918 @@
+version: '1.0'
+proceso: titulo_tsp
+fuente: TrabajoSuficiencia.md
+vigencia: no indicada; pendiente de confirmación institucional
+dependencias_externas:
+- intent_referenciado: GEN_derivar_humano
+  modulo_propietario: 'integrante F: traslados_generales'
+  contrato: Solo referencia de integración; no se define ni entrena este intent en TSP.
+politica_contexto:
+  modalidad: Este módulo atiende exclusivamente TSP. Si se identifica otra modalidad, usar TSP_fuera_alcance; no
+    recuperar fichas de tesis o traslados.
+  fase: Resolver primero mención explícita inequívoca; después documento/acción inequívocos; después fase activa
+    del diálogo. Si hay ambigüedad, preguntar. Fase solo contiene 1 a 8; etapa admite 0 como prerrequisito.
+  entidad_faltante: Conservar intent_pendiente y entidades resueltas. Una respuesta como la 6 completa el intent
+    de costo anterior y selecciona TSP_F06. No clasificar la aclaración aislada como una consulta nueva.
+  ambiguedades:
+    jurados:
+    - 2
+    - 4
+    informe final sin acción:
+    - 4
+    - 5
+    - 6
+    - 7
+    resolución de aprobación sin contexto:
+    - 3
+    - 5
+    plazo fase 2:
+    - evaluación
+    - subsanación
+    fase 8 plazo:
+    - Consejo
+    - entrega
+  prioridad: Otra modalidad tiene prioridad máxima. Costos y formatos explícitos prevalecen sobre tema general.
+    Observaciones y ejecución conservan intents especializados aunque incluyan duración. Fecha de sustentación se
+    resuelve a F07, apto a F06. Una pregunta de documentos específicos prevalece sobre TSP_sustentacion.
+  fallos: Iniciar contador en 0. Sumar solo por mensaje incomprensible o respuesta inválida a una aclaración. Pedir
+    por primera vez fase o tipo faltante no cuenta como fallo. A los 2 fallos consecutivos emitir la referencia
+    GEN_derivar_humano; no hacer una tercera pregunta. Tras comprensión con contexto suficiente, reiniciar a 0.
+  continuidad: Guardar fase_activa, etapa_activa, intent_pendiente y oferta_siguiente. Cuánto cuesta después de
+    requisitos F05 conserva fase=5. Pregunta directa sobre otra fase cambia el contexto sin obligar a recorrer etapas.
+  si_no: Sí avanza solo con oferta_siguiente activa; sin ella, pedir precisión. No ante la oferta cierra. Un cambio
+    de tema válido sustituye la consulta anterior.
+  condiciones: Al pasar F03 a F04 explicar la ejecución de 2 a 6 meses, salvo que el usuario diga explícitamente
+    haberla concluido; nunca verificarla automáticamente. Al pasar F07 a F08 explicar la sustentación previa; no
+    inventar acta o condición de aprobación no descrita.
+  datos: Estados, pagos realizados y experiencia son declaraciones del usuario. No registran ni validan expedientes.
+    La falta de información institucional no es fallo de comprensión.
+  vigencia: Todos los hechos se atribuyen al documento; no afirmar vigencia oficial. Monto null es no indicado;
+    cero es pago documentado de F01/F02. No crear plazos de atención a partir de experiencia o duración de ejecución.
+  documentos_frente_requisitos: Una petición de lista completa de documentos necesarios se clasifica como requisitos.
+    Una consulta centrada en formato Word/PDF o en identificar un documento concreto se clasifica como documentos.
+    Mantener esta distinción en el Golden Set.
+acciones_conversacionales:
+  TSP_ACC_fuera_alcance: Usar TSP_P16; aclarar que el módulo corresponde a TSP. La selección de otro módulo depende
+    de la arquitectura global y no se implementa aquí.
+  TSP_ACC_desconocido: Pedir reformulación una vez; aplicar política de dos fallos.
+  TSP_ACC_cierre: Usar TSP_P14.
+  TSP_ACC_referencia_humana: Solo solicitar al orquestador la referencia GEN_derivar_humano. No copiar su definición
+    ni afirmar transferencia automática.
+entidades:
+  fase:
+    descripcion: Fase administrativa 1 a 8; el prerrequisito se resuelve en etapa=0.
+    valores_admitidos:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    sinonimos:
+      '1':
+      - primera fase
+      - fase del asesor
+      '2':
+      - segunda fase
+      - designación de jurados del trabajo
+      '3':
+      - tercera fase
+      - aprobación del trabajo
+      '4':
+      - jurados para el informe final
+      '5':
+      - aprobación del informe final
+      '6':
+      - apto para sustentación
+      '7':
+      - programación de sustentación
+      '8':
+      - optar título
+    criterio_extraccion: Aceptar números y ordinales. Jurados aislado genera candidatos 2 y 4; informe final sin
+      acción genera candidatos 4, 5, 6 y 7. No resolver ambiguos por coincidencia parcial. Fase 0 se aclara como
+      prerrequisito y se guarda en etapa=0, sin crear una fase administrativa.
+    ejemplos:
+    - texto: fase 1
+      valor: 1
+    - texto: fase 2
+      valor: 2
+    - texto: fase 3
+      valor: 3
+    - texto: fase 4
+      valor: 4
+    - texto: fase 5
+      valor: 5
+    - texto: fase 6
+      valor: 6
+    - texto: fase 7
+      valor: 7
+    - texto: fase 8
+      valor: 8
+    - texto: fase del asesor
+      valor: 1
+    - texto: apto para sustentación
+      valor: 6
+  etapa:
+    descripcion: 'Unidad de conocimiento consultada: prerrequisito o fase.'
+    valores_admitidos:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    sinonimos:
+      '0':
+      - prerrequisito
+      - experiencia previa
+      - acreditar experiencia
+      '1':
+      - docente asesor
+      '2':
+      - jurados del trabajo
+      '3':
+      - aprobar trabajo
+      '4':
+      - jurados de informe final
+      '5':
+      - aprobar informe final
+      '6':
+      - declarar apto
+      '7':
+      - fecha y hora
+      '8':
+      - optar título
+    criterio_extraccion: Permite seleccionar TSP_F00 por experiencia profesional. Para etapas 1 a 8 mantener coherencia
+      con fase. Cuando ambas entidades estén explícitas y sean contradictorias, pedir aclaración.
+    ejemplos:
+    - texto: prerrequisito
+      valor: 0
+    - texto: experiencia profesional previa
+      valor: 0
+    - texto: etapa 1
+      valor: 1
+    - texto: etapa 2
+      valor: 2
+    - texto: etapa 3
+      valor: 3
+    - texto: etapa 4
+      valor: 4
+    - texto: etapa 5
+      valor: 5
+    - texto: etapa 6
+      valor: 6
+    - texto: etapa 7
+      valor: 7
+    - texto: etapa 8
+      valor: 8
+  tipo_consulta:
+    descripcion: Propósito comunicativo extraído de la pregunta.
+    valores_admitidos:
+    - requisitos
+    - pasos
+    - costo
+    - plazo
+    - documentos
+    - resolucion
+    - siguiente
+    - experiencia
+    - observaciones
+    - ejecucion
+    - sustentacion
+    - titulo
+    - repositorio
+    - seguimiento
+    - contacto
+    - fuera_alcance
+    sinonimos:
+      costo:
+      - cuánto cuesta
+      - cuanto pago
+      plazo:
+      - cuánto demora
+      - cuánto tiempo
+      requisitos:
+      - qué necesito
+      seguimiento:
+      - cómo va mi trámite
+    criterio_extraccion: El propósito específico prevalece sobre el nombre de un documento. Cuánto cuesta el apto
+      es costo con fase=6; no TSP_sustentacion. La clasificación de observaciones conserva intención propia para
+      plazos de subsanación.
+    ejemplos:
+    - texto: qué necesito
+      valor: requisitos
+    - texto: cómo lo hago paso a paso
+      valor: pasos
+    - texto: cuánto debo pagar
+      valor: costo
+    - texto: cuánto demora
+      valor: plazo
+    - texto: en Word o PDF
+      valor: documentos
+    - texto: quién emite la resolución
+      valor: resolucion
+    - texto: qué sigue después
+      valor: siguiente
+    - texto: cuántos años debo acreditar
+      valor: experiencia
+    - texto: quiero subsanar observaciones
+      valor: observaciones
+    - texto: cómo consulto el estado
+      valor: seguimiento
+  documento:
+    descripcion: Documento y formato mencionados por el bachiller.
+    valores_admitidos:
+    - carta_aceptacion
+    - constancia_conducta
+    - informe_conformidad_asesor
+    - resolucion_asesor
+    - trabajo_word
+    - trabajo_pdf
+    - originalidad
+    - informe_final_word
+    - informe_final_pdf
+    - aprobacion_jurados
+    - grado_bachiller
+    - dni
+    - certificado_judicial
+    - boleta_pago
+    - resolucion_aprobacion_informe_pdf
+    - constancia_repositorio
+    - fotografias
+    sinonimos:
+      trabajo_word:
+      - trabajo de investigación en Word
+      trabajo_pdf:
+      - trabajo en PDF
+      informe_final_word:
+      - informe final en Word
+      informe_final_pdf:
+      - informe final en PDF
+      originalidad:
+      - constancia de originalidad
+      certificado_judicial:
+      - certificado judicial
+    criterio_extraccion: Conservar la distinción entre trabajo e informe final y entre Word y PDF. No sustituir
+      certificado judicial por otro documento. Resolución de aprobación sin más detalle no se completa con un nombre
+      supuesto.
+    ejemplos:
+    - texto: carta de aceptación
+      valor: carta_aceptacion
+    - texto: constancia del curso de Conducta Responsable de Investigación
+      valor: constancia_conducta
+    - texto: informe de conformidad del asesor
+      valor: informe_conformidad_asesor
+    - texto: resolución del asesor
+      valor: resolucion_asesor
+    - texto: trabajo en Word
+      valor: trabajo_word
+    - texto: trabajo en PDF
+      valor: trabajo_pdf
+    - texto: informe final en Word
+      valor: informe_final_word
+    - texto: informe final en PDF
+      valor: informe_final_pdf
+    - texto: certificado judicial
+      valor: certificado_judicial
+    - texto: Constancia de Inscripción al Repositorio Institucional
+      valor: constancia_repositorio
+  pago:
+    descripcion: Importe dicho por el usuario; no acredita pago ni vigencia.
+    valores_admitidos:
+    - monto_decimal_pen
+    - no_indicado
+    sinonimos:
+      monto_decimal_pen:
+      - soles
+      - S/
+      no_indicado:
+      - sin información de monto
+    criterio_extraccion: 'Normalizar S/ 3,212.00 como 3212.00 PEN, pero verificar siempre en la ficha. Un monto
+      no identifica por sí solo una fase: S/ 5 se repite y S/ 0 aparece en F01 y F02. No pedir datos de tarjeta
+      ni comprobar pagos.'
+    ejemplos:
+    - texto: S/ 0.00
+      valor: '0.00'
+    - texto: cero soles
+      valor: '0.00'
+    - texto: S/ 5.00
+      valor: '5.00'
+    - texto: cinco soles
+      valor: '5.00'
+    - texto: S/ 3,212.00
+      valor: '3212.00'
+    - texto: 3212 soles
+      valor: '3212.00'
+    - texto: S/ 10.00
+      valor: '10.00'
+    - texto: pagué 5 soles
+      valor: '5.00'
+    - texto: me dijeron 3212 soles
+      valor: '3212.00'
+    - texto: sin información de monto
+      valor: no_indicado
+  plazo:
+    descripcion: Duración o periodicidad mencionada, con su alcance.
+    valores_admitidos:
+    - duracion_con_unidad_y_calificador
+    - periodicidad
+    - no_indicado
+    sinonimos:
+      duracion_con_unidad_y_calificador:
+      - días
+      - meses
+      - años
+      periodicidad:
+      - primera semana de cada mes
+      no_indicado:
+      - no sé cuánto demora
+    criterio_extraccion: Guardar valor, unidad, mínimo/máximo/aproximado y ámbito si aparecen. Dos años de experiencia
+      no es un plazo de atención. Quince días no se transforman en hábiles. Lo dicho por el usuario se verifica
+      contra la ficha.
+    ejemplos:
+    - texto: máximo 15 días
+      valor:
+        valor: 15
+        unidad: días
+        tipo: máximo
+    - texto: máximo dos meses
+      valor:
+        valor: 2
+        unidad: meses
+        tipo: máximo
+    - texto: mínimo 2 meses
+      valor:
+        valor: 2
+        unidad: meses
+        tipo: mínimo
+    - texto: máximo 6 meses
+      valor:
+        valor: 6
+        unidad: meses
+        tipo: máximo
+    - texto: aproximadamente 2 meses
+      valor:
+        valor: 2
+        unidad: meses
+        tipo: aproximado
+    - texto: dos años de experiencia
+      valor:
+        valor: 2
+        unidad: años
+        ambito: experiencia
+    - texto: primera semana de cada mes
+      valor:
+        periodicidad: primera semana de cada mes
+    - texto: 15 dias
+      valor:
+        valor: 15
+        unidad: días
+        tipo: no especificado
+    - texto: seis meses
+      valor:
+        valor: 6
+        unidad: meses
+        tipo: no especificado
+    - texto: no sé cuánto demora
+      valor: no_indicado
+  responsable:
+    descripcion: Actor u oficina mencionada; la extracción no valida un contacto.
+    valores_admitidos:
+    - bachiller
+    - asesor
+    - jurados
+    - secretaria
+    - plataforma
+    - programa_academico
+    - facultad_ingenieria
+    - repositorio
+    - consejo_facultad
+    - coordinacion
+    sinonimos:
+      secretaria:
+      - Secretaría del Programa Académico
+      programa_academico:
+      - Programa Académico
+      facultad_ingenieria:
+      - Facultad de Ingeniería
+      repositorio:
+      - Repositorio Institucional
+      asesor:
+      - docente asesor
+      - asesor técnico
+    criterio_extraccion: No intercambiar oficio del Programa con resolución de Facultad. El correo de Repositorio
+      no es el correo de Secretaría. Login UDH está confirmado en la fuente para inicio F08 y seguimiento; Plataforma
+      de las demás fases sigue siendo genérica.
+    ejemplos:
+    - texto: bachiller
+      valor: bachiller
+    - texto: asesor técnico
+      valor: asesor
+    - texto: jurados
+      valor: jurados
+    - texto: Secretaría del Programa Académico
+      valor: secretaria
+    - texto: Plataforma
+      valor: plataforma
+    - texto: Programa Académico
+      valor: programa_academico
+    - texto: Facultad de Ingeniería
+      valor: facultad_ingenieria
+    - texto: Repositorio Institucional
+      valor: repositorio
+    - texto: Consejo de Facultad
+      valor: consejo_facultad
+    - texto: Coordinación
+      valor: coordinacion
+  estado_tramite:
+    descripcion: Situación autodeclarada del usuario; no catálogo oficial de estados.
+    valores_admitidos:
+    - por_iniciar
+    - experiencia_enviada
+    - asesor_designado
+    - observado
+    - trabajo_aprobado
+    - en_ejecucion
+    - informe_aprobado
+    - apto
+    - sustentacion_programada
+    - sustentacion_realizada
+    - areas_atendidas
+    - desconocido
+    sinonimos:
+      observado:
+      - me observaron
+      apto:
+      - ya estoy apto
+      sustentacion_realizada:
+      - ya sustenté
+    criterio_extraccion: Conservar como mencionado_por_usuario. No afirmar que el sistema consultó un expediente.
+      En ejecución y sustentación, una oferta de siguiente fase no demuestra cumplimiento administrativo.
+    ejemplos:
+    - texto: todavía no empiezo
+      valor: por_iniciar
+    - texto: envié mis contratos
+      valor: experiencia_enviada
+    - texto: ya tengo asesor designado
+      valor: asesor_designado
+    - texto: me hicieron observaciones
+      valor: observado
+    - texto: mi trabajo está aprobado
+      valor: trabajo_aprobado
+    - texto: estoy ejecutando el trabajo
+      valor: en_ejecucion
+    - texto: mi informe final está aprobado
+      valor: informe_aprobado
+    - texto: ya me declararon apto
+      valor: apto
+    - texto: tengo fecha de sustentación
+      valor: sustentacion_programada
+    - texto: ya sustenté
+      valor: sustentacion_realizada
+intents:
+- intent: TSP_requisitos_fase
+  descripcion: Consultar la lista de requisitos de una fase o del prerrequisito.
+  entidades:
+  - fase
+  - etapa
+  - documento
+  ejemplos:
+  - qué necesito para pedir asesor en TSP
+  - requisitos de la fase dos de suficiencia profesional
+  - q papeles llevo para aprobar el trabajo
+  - qué me piden para los jurados del informe final
+  - lista de requisitos para la fase cinco
+  - quiero solicitar apto qué necesito presentar
+  - documentos necesarios para programar mi sustentación
+  - para optar título qué requisitos debo reunir
+  - qué exige la primera fase del TSP
+  - me falta iniciar la fase tres cuáles son sus requisitos
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿De qué fase del Trabajo de Suficiencia Profesional necesitas conocer los requisitos? También
+    puedes consultar el prerrequisito.
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_pasos_fase
+  descripcion: Explicar las acciones de una etapa, con actores y orden documental.
+  entidades:
+  - fase
+  - etapa
+  - responsable
+  ejemplos:
+  - cómo inicio la solicitud de asesor
+  - explícame el procedimiento de la fase dos
+  - pasos para aprobar el trabajo de suficiencia
+  - cómo tramito jurados para mi informe final
+  - qué hago para pedir aprobación del informe final
+  - procedimiento para que me declaren apto
+  - cómo solicito la fecha de sustentación paso a paso
+  - ruta para optar mi título por suficiencia
+  - por dónde empiezo con la experiencia profesional
+  - en la fase uno primero entro a la plataforma
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿Qué fase del Trabajo de Suficiencia Profesional quieres revisar paso a paso?
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_costo_fase
+  descripcion: Consultar el pago documentado de una etapa sin asumir vigencia.
+  entidades:
+  - fase
+  - etapa
+  - pago
+  ejemplos:
+  - cuánto cuesta
+  - cuanto cuesta el apto
+  - tengo que pagar por pedir asesor
+  - qué monto aparece en la fase dos
+  - cuánto cobran por aprobar el trabajo
+  - precio del trámite de jurados del informe final
+  - cuánto pago para aprobar el informe final
+  - el trámite de fecha de sustentación cuánto vale
+  - cuál es el costo de optar título
+  - para acreditar experiencia hay un pago indicado
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿De qué fase del Trabajo de Suficiencia Profesional necesitas conocer el costo? Puedes indicarme
+    una fase del 1 al 8.
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_plazo_fase
+  descripcion: Consultar duración o periodicidad administrativa documentada.
+  entidades:
+  - fase
+  - etapa
+  - plazo
+  ejemplos:
+  - cuánto demoran en designar a mi asesor
+  - plazo máximo de evaluación de la fase dos
+  - los jurados del trabajo tienen quince días para evaluar
+  - cuánto demora la aprobación del trabajo en la fase tres
+  - la fase cuatro tiene plazo de evaluación
+  - cuándo responden la aprobación del informe final
+  - en cuánto tiempo me declaran apto
+  - cuánto tarda la programación de sustentación
+  - cuánto demora la entrega de mi título por TSP
+  - en qué semana se reúne el Consejo de Facultad
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿De qué fase y de qué actividad necesitas conocer el plazo?
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_documentos_fase
+  descripcion: Distinguir documentos y formatos por etapa.
+  entidades:
+  - fase
+  - etapa
+  - documento
+  ejemplos:
+  - para la fase dos envío Word o PDF
+  - el trabajo de la fase tres va en PDF
+  - qué formato lleva el informe final para jurados
+  - en la fase cinco el informe se manda como Word
+  - para apto el informe final vuelve a Word
+  - qué resolución debe ir en PDF para programar
+  - la fase uno pide constancia del curso de conducta
+  - DNI y certificado judicial en qué fase se presentan
+  - cuántas fotos y de qué tamaño piden para título
+  - la constancia del repositorio se genera sola
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿Para qué fase necesitas identificar el documento o su formato?
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_resolucion_fase
+  descripcion: Identificar oficios y resoluciones y sus emisores.
+  entidades:
+  - fase
+  - responsable
+  - documento
+  ejemplos:
+  - quién emite la resolución del asesor
+  - qué oficio genera el programa al designar jurados del trabajo
+  - qué resolución obtengo al aprobar mi trabajo
+  - la designación de jurados del informe final termina en resolución
+  - quién aprueba formalmente el informe final
+  - cómo se llama la resolución de apto
+  - qué documento fija mi fecha de sustentación
+  - la Facultad o el Programa emite la resolución del título
+  - diferencia entre oficio y resolución en fase uno
+  - qué documento del Programa sale en la fase seis
+  ficha_relacionada:
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿De qué fase necesitas conocer el oficio o la resolución?
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_siguiente_fase
+  descripcion: Orientar a la próxima unidad respetando ejecución y sustentación intermedias.
+  entidades:
+  - fase
+  - etapa
+  - estado_tramite
+  ejemplos:
+  - ya tengo asesor q sigue
+  - después de acreditar experiencia qué trámite continúa
+  - terminé la fase dos cuál sigue
+  - ya terminé la fase tres qué hago ahora
+  - acabé la ejecución del trabajo cuál es el siguiente trámite
+  - ya atendí los jurados del informe final qué continúa
+  - mi informe final fue aprobado qué sigue
+  - ya me declararon apto cuál es el siguiente paso
+  - tengo fecha de sustentación después qué hago
+  - ya sustenté cómo continúo con el título
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿En qué fase estás o qué etapa acabas de concluir?
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_experiencia_previa
+  descripcion: Explicar los dos años de experiencia y su acreditación documental.
+  entidades:
+  - etapa
+  - documento
+  - estado_tramite
+  ejemplos:
+  - cuántos años de experiencia debo tener para TSP
+  - qué contratos necesito para acreditar experiencia
+  - sirven mis boletas para demostrar experiencia laboral
+  - a dónde mando los documentos de continuidad
+  - cómo acredito los dos años de experiencia profesional
+  - qué pasa antes de la fase uno
+  - el prerrequisito cuenta como una fase más
+  - quién confirma la recepción de mis documentos laborales
+  - puedo iniciar TSP con un año de experiencia
+  - la experiencia profesional se acredita por correo
+  ficha_relacionada:
+  - TSP_F00
+  si_falta_entidad: ¿Qué necesitas consultar sobre la acreditación de experiencia profesional?
+  requisitos_de_contexto: []
+- intent: TSP_observaciones
+  descripcion: Consultar subsanación y plazos sin generalizarlos a otras fases.
+  entidades:
+  - fase
+  - etapa
+  - plazo
+  - estado_tramite
+  ejemplos:
+  - me hicieron observaciones cuánto tiempo tengo
+  - cómo subsano las observaciones de la fase dos
+  - los jurados del trabajo me observaron qué hago
+  - tengo observaciones del informe final en fase cuatro
+  - hay plazo máximo para corregir la fase dos
+  - cuánto tiempo dan para subsanar fase cuatro
+  - qué pasa si no levanto las observaciones a tiempo
+  - el Repositorio observó mis requisitos qué debo hacer
+  - las observaciones de fase dos son dos meses
+  - me observaron y no sé a qué fase corresponde
+  ficha_relacionada:
+  - TSP_F02
+  - TSP_F04
+  - TSP_F08
+  si_falta_entidad: ¿Las observaciones corresponden a la fase 2, a la fase 4 o al Repositorio de la fase 8?
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_ejecucion_trabajo
+  descripcion: Explicar ejecución posterior a aprobación y duración mínima y máxima.
+  entidades:
+  - fase
+  - etapa
+  - plazo
+  - estado_tramite
+  ejemplos:
+  - cuánto tiempo tengo para ejecutar el trabajo
+  - cuál es el mínimo de meses de ejecución
+  - hasta cuántos meses puedo ejecutar mi trabajo
+  - quién orienta durante la ejecución del TSP
+  - puedo ejecutar el trabajo en un mes
+  - la ejecución empieza después de aprobar el trabajo
+  - ya aprobaron el trabajo ahora debo ejecutarlo
+  - dos a seis meses son para realizar el trabajo
+  - ejecución y aprobación administrativa son lo mismo
+  - cuándo paso de la ejecución a los jurados del informe final
+  ficha_relacionada:
+  - TSP_F03
+  si_falta_entidad: ¿Tu consulta se refiere a la ejecución del trabajo después de la aprobación de la fase 3?
+  requisitos_de_contexto: []
+- intent: TSP_sustentacion
+  descripcion: Diferenciar aptitud F06, programación F07 y realización posterior.
+  entidades:
+  - fase
+  - etapa
+  - estado_tramite
+  ejemplos:
+  - cómo llego a estar apto para sustentación
+  - qué diferencia hay entre apto y tener fecha
+  - ya estoy apto quiero programar mi sustentación
+  - cómo solicito fecha y hora de sustentación
+  - qué trámite formaliza la programación
+  - cuándo puedo pedir mi fecha después del apto
+  - la resolución de apto ya fija mi fecha
+  - cómo se programa mi exposición final de TSP
+  - debo sustentar antes de optar el título
+  - tengo fecha asignada dónde encaja la sustentación
+  ficha_relacionada:
+  - TSP_F06
+  - TSP_F07
+  si_falta_entidad: ¿Quieres consultar la declaración de apto de la fase 6 o la programación de fecha y hora de
+    la fase 7?
+  requisitos_de_contexto:
+  - fase_o_etapa_si_ambigua
+- intent: TSP_titulo_profesional
+  descripcion: Explicar el trámite final de título en F08 y sus condiciones.
+  entidades:
+  - fase
+  - etapa
+  - documento
+  - estado_tramite
+  ejemplos:
+  - cómo obtengo mi título profesional por suficiencia
+  - quiero sacar mi titulo por suficiencia
+  - qué trámite hago en Login después de sustentar
+  - qué significa Optar Título Profesional
+  - cómo se inicia la fase ocho
+  - debo llevar fotos para tramitar el título
+  - qué áreas atienden el trámite final de TSP
+  - cuándo puede pasar mi expediente a Consejo
+  - qué tengo que hacer para optar título en UDH
+  - ya sustenté y quiero empezar la fase del título
+  ficha_relacionada:
+  - TSP_F08
+  si_falta_entidad: ¿Qué parte de la fase 8, Optar Título Profesional, necesitas conocer?
+  requisitos_de_contexto: []
+- intent: TSP_repositorio
+  descripcion: Consultar inscripción, requisitos y atención del Repositorio en F08.
+  entidades:
+  - fase
+  - etapa
+  - documento
+  - responsable
+  ejemplos:
+  - cómo se obtiene la constancia de inscripción al repositorio
+  - dónde veo los requisitos que pide Repositorio
+  - el Login genera la constancia del repositorio
+  - la constancia automática ya significa que atendieron todo
+  - qué debo remitir al Repositorio para el título
+  - hay una lista completa de requisitos del repositorio
+  - dónde reviso qué le falta atender al repositorio
+  - cómo se relaciona el repositorio con Optar Título Profesional
+  - para Consejo necesito la atención de Repositorio
+  - qué significa la inscripción al repositorio en fase ocho
+  ficha_relacionada:
+  - TSP_F08
+  si_falta_entidad: ¿Qué necesitas consultar sobre el Repositorio en la fase 8?
+  requisitos_de_contexto: []
+- intent: TSP_seguimiento
+  descripcion: Orientar al seguimiento en línea sin consultar expedientes.
+  entidades:
+  - fase
+  - etapa
+  - estado_tramite
+  ejemplos:
+  - cómo hago seguimiento a mi trámite de TSP
+  - dónde reviso el estado de mi expediente
+  - puedes ver si ya atendieron mi título
+  - qué es Trámite Seguimiento en Login
+  - dónde está Consulta Registro de Grados y Títulos
+  - cómo sé si todas las áreas ya atendieron
+  - para la solicitud de asesor también hay seguimiento
+  - cómo reviso el avance de la fase seis
+  - puedes decirme si ya emitieron mi resolución
+  - cómo consulto la fecha de entrega del título
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿Quieres consultar el seguimiento general de trámites o el registro y entrega del título de
+    la fase 8?
+  requisitos_de_contexto: []
+  regla: 'Seguimiento general: sección 11.2, recuperada en datos.seguimiento de las fichas. Consulta Registro de
+    Grados y Títulos y entrega corresponden a F08. No se afirma acceso al expediente.'
+- intent: TSP_contacto
+  descripcion: Distinguir contacto documentado de Repositorio y contacto de Secretaría no indicado.
+  entidades:
+  - responsable
+  - fase
+  - etapa
+  ejemplos:
+  - cuál es el correo de Secretaría
+  - dame el correo del Repositorio
+  - hay teléfono de consulta del Repositorio
+  - a qué dirección envío la experiencia profesional
+  - el correo de repositorio es el de secretaria
+  - con qué oficina consulto requisitos del repositorio
+  - cómo contacto con Secretaría del Programa
+  - qué correo figura para Repositorio en el documento
+  - me das el número del Repositorio Institucional
+  - cuál es el contacto oficial vigente de Secretaría
+  ficha_relacionada:
+  - TSP_F00
+  - TSP_F01
+  - TSP_F02
+  - TSP_F03
+  - TSP_F04
+  - TSP_F05
+  - TSP_F06
+  - TSP_F07
+  - TSP_F08
+  si_falta_entidad: ¿Necesitas el contacto de Secretaría o del Repositorio Institucional?
+  requisitos_de_contexto: []
+  regla: Solo F08 contiene el contacto de Repositorio; no usarlo para Secretaría. Pregunta por contacto actual exige
+    reconocer vigencia pendiente.
+- intent: TSP_fuera_alcance
+  descripcion: Reconocer otra modalidad y abstenerse de responder con reglas de TSP.
+  entidades:
+  - tipo_consulta
+  ejemplos:
+  - quiero hacer mi título por tesis
+  - requisitos para titularme mediante tesis
+  - cómo empiezo una tesis para el título
+  - busco las fases de titulación por tesis
+  - quiero preguntar sobre prácticas preprofesionales
+  - necesito un traslado interno
+  - me ayudas con la convalidación externa
+  - mi trámite es bachiller por convalidación de prácticas
+  - esto no es suficiencia es una tesis
+  - dime las reglas de otra modalidad de titulación
+  ficha_relacionada: []
+  si_falta_entidad: ¿Tu consulta es sobre Trabajo de Suficiencia Profesional u otra modalidad?
+  requisitos_de_contexto: []
+  accion_conversacional: TSP_ACC_fuera_alcance
+resolucion_fichas:
+  regla: Los listados ficha_relacionada son candidatos reales, no autorización para mezclar fases. Resolver la fase
+    por contexto antes de leer datos.
+  prerrequisito: TSP_F00; etapa=0, fase sin valor administrativo.
+  siguiente: Seguir siguiente_fase y conservar condiciones_continuidad. El Golden Set usa ficha de respuesta, no
+    un avance de expediente.
+  observaciones: 'F02 y F04: máximo 2 meses para subsanar. F08: atender requisitos/observaciones de Repositorio,
+    pero sin plazo de subsanación especificado. Para otra fase responder no indicado; no trasladar el plazo de dos
+    meses.'
+  referencias_golden: Si una aclaración tiene dos fichas candidatas, separarlas con | dentro de ficha_esperada,
+    sin agregar columnas ni IDs ficticios.
+  derivacion: GEN_derivar_humano es una dependencia externa; no debe existir en la lista local intents.

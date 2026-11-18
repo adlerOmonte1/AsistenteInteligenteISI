@@ -1,0 +1,246 @@
+# Intents del proceso de título por tesis (TES_).
+# Convertido de 3_catalogo_intents.md al formato del contrato. Los intents generales del
+# entregable (saludo, despedida, ayuda, hablar con humano) se suman a los GEN_ transversales.
+# fuera_de_alcance y fallback no son intents: el sistema los resuelve por la vía RAG y la derivación.
+
+- intent: GEN_saludo
+  descripcion: Saludo
+  entidades: []
+  ejemplos:
+    - hola
+    - buenas
+    - buenos días
+    - hola, una consulta
+    - qué tal
+    - buenas tardes
+    - hey
+    - hola bot
+    - holi
+    - buenas noches
+  ficha_relacionada: null
+  si_falta_entidad: null
+
+- intent: GEN_agradecimiento
+  descripcion: Despedida
+  entidades: []
+  ejemplos:
+    - chau
+    - adiós
+    - hasta luego
+    - nos vemos
+    - eso es todo
+    - ya me voy
+    - gracias, chau
+    - listo, hasta pronto
+    - cerrar
+    - bye
+    - gracias
+    - muchas gracias
+    - te agradezco
+    - genial, gracias
+    - ok gracias
+    - súper, gracias
+    - mil gracias
+    - buenazo
+    - gracias por la ayuda
+    - perfecto, gracias
+  ficha_relacionada: null
+  si_falta_entidad: null
+
+- intent: GEN_ayuda
+  descripcion: Menu ayuda
+  entidades: []
+  ejemplos:
+    - qué puedes hacer
+    - ayuda
+    - menú
+    - qué temas manejas
+    - en qué me ayudas
+    - opciones
+    - qué sabes de titulación
+    - cómo funciona esto
+    - necesito ayuda
+    - qué información tienes
+  ficha_relacionada: null
+  si_falta_entidad: null
+
+- intent: GEN_derivar_humano
+  descripcion: Hablar con humano
+  entidades: []
+  ejemplos:
+    - quiero hablar con alguien
+    - pásame con secretaría
+    - necesito una persona
+    - comunícame con coordinación
+    - hay alguien real
+    - con quién coordino
+    - quiero un humano
+    - atiéndanme por teléfono
+    - no me sirve, quiero hablar con alguien
+    - número de contacto
+  ficha_relacionada: null
+  si_falta_entidad: null
+
+- intent: TES_info_general
+  descripcion: Titulo tesis info
+  entidades: []
+  ejemplos:
+    - quiero mi título por tesis
+    - cómo me titulo con tesis
+    - proceso de titulación
+    - quiero sustentar mi tesis
+    - cómo saco el título profesional
+    - qué pasos hay para titularme
+    - titulación por tesis sistemas
+    - por dónde empiezo para titularme
+    - cuántas fases tiene el proceso
+    - quiero titularme
+    - cómo es el trámite de título
+    - explícame el proceso de tesis
+  ficha_relacionada: [TES_F00]
+  si_falta_entidad: null
+
+- intent: TES_fase
+  descripcion: Titulo tesis fase
+  entidades: [fase]
+  ejemplos:
+    - qué necesito para la fase 4
+    - ya tengo asesor, qué sigue
+    - estoy en pre sustentación
+    - ya declaré apto, y ahora
+    - qué sigue después del informe final
+    - en qué consiste la fase 6
+    - voy por la fase 3
+    - ya aprobaron mi proyecto, qué hago
+    - estoy en la fase de jurados
+    - cuál es la fase 9
+    - qué viene después de la pre sustentación
+    - ya tengo fecha de sustentación, qué falta
+  ficha_relacionada: [TES_F01, TES_F02, TES_F03, TES_F04, TES_F05, TES_F06, TES_F07, TES_F08, TES_F09]
+  si_falta_entidad: ¿En qué fase del proceso se encuentra? (1 a 9)
+
+- intent: TES_requisitos
+  descripcion: Consultar requisitos
+  entidades: [fase]
+  ejemplos:
+    - qué documentos necesito
+    - requisitos para designar asesor
+    - qué papeles piden para declarar apto
+    - qué es el doc objetante
+    - qué es la constancia de originalidad
+    - necesito compromiso de honor
+    - piden DNI en alguna fase
+    - qué piden para fecha y hora
+    - lista de requisitos fase 2
+    - qué adjunto al trámite
+    - requisitos para el título
+  ficha_relacionada: [TES_F01, TES_F02, TES_F03, TES_F04, TES_F05, TES_F06, TES_F07, TES_F08, TES_F09]
+  secciones: [requisitos]
+  si_falta_entidad: ¿En qué fase del proceso se encuentra? (1 a 9)
+
+- intent: TES_costo
+  descripcion: Consultar costo
+  entidades: [fase]
+  ejemplos:
+    - cuánto cuesta la pre sustentación
+    - cuánto se paga en declarar apto
+    - cuánto cuesta el título
+    - hay que pagar en la fase 3
+    - monto de la fase 4
+    - cuánto es el trámite de fecha y hora
+    - qué es la boleta de pago
+    - cuánto pago por optar título
+    - tiene costo designar asesor
+    - cuánto cuesta jurados revisores
+    - precio del trámite
+  ficha_relacionada: [TES_F01, TES_F02, TES_F03, TES_F04, TES_F05, TES_F06, TES_F07, TES_F08, TES_F09]
+  secciones: [pago]
+  si_falta_entidad: ¿En qué fase del proceso se encuentra? (1 a 9)
+
+- intent: TES_plazo
+  descripcion: Consultar plazo
+  entidades: [fase]
+  ejemplos:
+    - cuántos días tengo para subsanar
+    - cuánto demora la aprobación del proyecto
+    - plazo para pedir fecha y hora
+    - cuánto dura la fase 1
+    - cuándo es el Consejo de Facultad
+    - cuánto tarda la entrega del grado
+    - cuántas revisiones me dan
+    - hasta cuándo vale mi asesor
+    - cuántos meses tengo en la fase 3
+    - se anula mi trámite si me demoro
+    - tiempo para levantar observaciones
+  ficha_relacionada: [TES_F01, TES_F02, TES_F03, TES_F04, TES_F05, TES_F06, TES_F07, TES_F08, TES_F09]
+  secciones: [plazo]
+  si_falta_entidad: ¿En qué fase del proceso se encuentra? (1 a 9)
+
+- intent: TES_correo
+  descripcion: Consultar correo
+  entidades: [fase]
+  ejemplos:
+    - dónde mando los papeles
+    - a qué correo envío los requisitos
+    - correo de secretaría
+    - correo del repositorio
+    - a quién le escribo
+    - número para consultar
+    - teléfono de la escuela
+    - dónde queda la facultad
+    - a dónde envío el informe de conformidad
+    - contacto del programa
+  ficha_relacionada: [TES_F01, TES_F02, TES_F03, TES_F04, TES_F05, TES_F06, TES_F07, TES_F08, TES_F09]
+  secciones: [enviar_a]
+  si_falta_entidad: ¿En qué fase del proceso se encuentra? (1 a 9)
+
+- intent: TES_seguimiento
+  descripcion: Consultar estado tramite
+  entidades: []
+  ejemplos:
+    - cómo va mi trámite
+    - dónde veo mi trámite
+    - cómo hago seguimiento
+    - ya salió mi resolución
+    - cómo sé si ya atendieron mi trámite
+    - dónde consulto mi título
+    - trámite seguimiento
+    - cuándo entra mi trámite a Consejo
+    - dónde veo registro de grados y títulos
+    - mi trámite está atendido
+  ficha_relacionada: [TES_F00]
+  si_falta_entidad: null
+
+- intent: TES_modalidad
+  descripcion: Elegir modalidad titulo
+  entidades: []
+  ejemplos:
+    - tesis o TSP
+    - qué modalidad me conviene
+    - me titulo por trabajo de suficiencia
+    - qué modalidades hay
+    - diferencia entre tesis y TSP
+    - quiero por tesis, no por TSP
+    - puedo titularme sin tesis
+    - otras formas de titularme
+    - modalidad de sustentación de tesis
+    - cuál es más rápida
+  ficha_relacionada: null
+  si_falta_entidad: null
+
+- intent: TES_ruta_academica
+  descripcion: Ruta academica
+  entidades: []
+  ejemplos:
+    - qué necesito antes del título
+    - primero PPP, luego bachiller, luego título?
+    - puedo pedir título sin ser bachiller
+    - en qué orden va todo
+    - ya soy bachiller, qué sigue
+    - necesito el curso de conducta responsable
+    - dónde hago el curso de investigación
+    - qué hago antes de la fase 1
+    - grado de bachiller es obligatorio
+    - ruta para titularme
+  ficha_relacionada: [TES_F00]
+  si_falta_entidad: null
