@@ -1,0 +1,110 @@
+<header class="pagina-cabecera">
+  <div>
+    <h1>Resumen</h1>
+    <p>Últimos 30 días de consultas del asistente.</p>
+  </div>
+  <a class="boton secundario" routerLink="/conversaciones">Ver conversaciones</a>
+</header>
+
+@let r = resumen();
+@if (r === undefined) {
+  <p class="tenue">Cargando métricas…</p>
+} @else if (r === null) {
+  <div class="aviso peligro">No se pudieron cargar las métricas.</div>
+} @else {
+  <section class="indicadores">
+    <div class="tarjeta indicador">
+      <span>Consultas</span>
+      <strong>{{ r.total | number }}</strong>
+      <small>{{ r.sesiones | number }} conversaciones</small>
+    </div>
+    <div class="tarjeta indicador">
+      <span>Resueltas sin LLM</span>
+      <strong>{{
+        (r.porcentaje_por_via['determinista'] + r.porcentaje_por_via['aclaracion']) / 100
+          | percent: '1.0-1'
+      }}</strong>
+      <small>vía determinista</small>
+    </div>
+    <div class="tarjeta indicador">
+      <span>Derivadas a Coordinación</span>
+      <strong>{{ r.porcentaje_derivadas / 100 | percent: '1.0-1' }}</strong>
+      <small [class.alerta]="r.fallas_validacion > 0"
+        >{{ r.fallas_validacion }} por validación fallida</small
+      >
+    </div>
+    <div class="tarjeta indicador">
+      <span>Útiles</span>
+      <strong>{{ r.calificadas ? (r.porcentaje_utiles / 100 | percent: '1.0-1') : '—' }}</strong>
+      <small>{{ r.calificadas }} calificadas</small>
+    </div>
+    <div class="tarjeta indicador">
+      <span>Costo del mes (LLM)</span>
+      <strong>{{ r.costo_mes_usd | currency: 'USD' : 'symbol' : '1.2-4' }}</strong>
+      <small>latencia media {{ r.latencia_promedio_ms | number }} ms</small>
+    </div>
+  </section>
+
+  <div class="dos-columnas">
+    <section class="tarjeta">
+      <h2>Consultas por día</h2>
+      @if (r.por_dia.length) {
+        <div class="barras-dia" role="img" aria-label="Consultas por día">
+          @for (d of r.por_dia; track d.fecha) {
+            <div
+              class="barra"
+              [style.height.%]="(100 * d.consultas) / maximoDia()"
+              [title]="d.fecha + ': ' + d.consultas"
+            ></div>
+          }
+        </div>
+        <div class="eje tenue">
+          <span>{{ r.por_dia[0].fecha }}</span><span>{{
+            r.por_dia[r.por_dia.length - 1].fecha
+          }}</span>
+        </div>
+      } @else {
+        <p class="tenue">Sin consultas en el periodo.</p>
+      }
+    </section>
+
+    <section class="tarjeta">
+      <h2>Vía de respuesta</h2>
+      @for (v of vias(); track v.via) {
+        <div class="horizontal">
+          <span>{{ nombresVia[v.via] }}</span>
+          <div class="pista"><div [class]="'relleno ' + v.via" [style.width.%]="v.pct"></div></div>
+          <span class="valor">{{ v.n }}</span>
+        </div>
+      }
+    </section>
+
+    <section class="tarjeta">
+      <h2>Consultas por trámite</h2>
+      @for (p of r.por_proceso; track p.proceso) {
+        <div class="horizontal">
+          <span>{{ p.proceso }}</span>
+          <div class="pista">
+            <div class="relleno" [style.width.%]="(100 * p.consultas) / maximoProceso()"></div>
+          </div>
+          <span class="valor">{{ p.consultas }}</span>
+        </div>
+      } @empty {
+        <p class="tenue">Sin datos.</p>
+      }
+    </section>
+
+    <section class="tarjeta">
+      <h2>Intents más consultados</h2>
+      <ol class="top">
+        @for (i of r.top_intents; track i.intent) {
+          <li>
+            <span class="mono">{{ i.intent }}</span><span class="tenue">{{ i.n }}</span>
+          </li>
+        } @empty {
+          <li class="tenue">Sin datos.</li>
+        }
+      </ol>
+    </section>
+  </div>
+}

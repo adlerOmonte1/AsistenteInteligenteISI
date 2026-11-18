@@ -1,0 +1,108 @@
+<header class="pagina-cabecera">
+  <div>
+    <h1>Fichas de conocimiento</h1>
+    <p>
+      Cada ficha es una fase de un trámite. Los cambios se publican solo después de la revisión.
+    </p>
+  </div>
+  @if (auth.tieneRol('editor')) {
+    <a class="boton" routerLink="/fichas/nueva">Nueva ficha</a>
+  }
+</header>
+
+<div class="filtros">
+  <select (change)="filtrar('proceso', $event)" aria-label="Proceso">
+    <option value="">Todos los procesos</option>
+    @for (p of procesos(); track p.id) {
+      <option [value]="p.clave">{{ p.nombre }}</option>
+    }
+  </select>
+  <select (change)="filtrar('publicacion', $event)" aria-label="Estado de revisión">
+    <option value="">Cualquier estado</option>
+    <option value="borrador">Borrador</option>
+    <option value="en_revision">En revisión</option>
+    <option value="publicada">Publicada</option>
+    <option value="rechazada">Rechazada</option>
+  </select>
+  <select (change)="filtrar('estado', $event)" aria-label="Estado del dato">
+    <option value="">Confirmadas y pendientes</option>
+    <option value="confirmado">Datos confirmados</option>
+    <option value="pendiente">Datos pendientes</option>
+  </select>
+  <input
+    type="search"
+    placeholder="Código o título"
+    (input)="filtrar('q', $event)"
+    aria-label="Buscar"
+  />
+</div>
+
+<div class="tabla-contenedor">
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Título</th>
+        <th>Proceso</th>
+        <th>Dato</th>
+        <th>Revisión</th>
+        <th>Versión</th>
+        <th>Actualizada</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (f of fichas(); track f.id) {
+        <tr>
+          <td class="mono">
+            <a [routerLink]="['/fichas', f.id]">{{ f.codigo }}</a>
+          </td>
+          <td>{{ f.titulo }}</td>
+          <td class="tenue">{{ f.proceso_nombre }}</td>
+          <td>
+            <span
+              class="insignia"
+              [class.alerta]="f.estado_dato === 'pendiente'"
+              [class.exito]="f.estado_dato === 'confirmado'"
+            >
+              {{ f.estado_dato === 'pendiente' ? 'Pendiente' : 'Confirmado' }}
+            </span>
+          </td>
+          <td>
+            <span class="insignia" [class]="estados[f.estado_revision].clase">{{
+              estados[f.estado_revision].texto
+            }}</span>
+          </td>
+          <td>{{ f.version ? 'v' + f.version : '—' }}</td>
+          <td class="tenue">
+            {{ f.actualizada | date: 'dd/MM/yyyy HH:mm'
+            }}{{ f.actualizada_por ? ' · ' + f.actualizada_por : '' }}
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="7" class="vacio">
+            {{ cargando() ? 'Cargando…' : 'No hay fichas con esos filtros.' }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="paginacion">
+  <span>{{ total() }} fichas · página {{ filtros().page }} de {{ paginas() }}</span>
+  <button
+    class="boton secundario chico"
+    (click)="pagina(-1)"
+    [disabled]="(filtros().page ?? 1) <= 1"
+  >
+    Anterior
+  </button>
+  <button
+    class="boton secundario chico"
+    (click)="pagina(1)"
+    [disabled]="(filtros().page ?? 1) >= paginas()"
+  >
+    Siguiente
+  </button>
+</div>

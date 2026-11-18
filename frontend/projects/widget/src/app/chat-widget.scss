@@ -1,0 +1,120 @@
+// Shadow DOM: la paleta se declara aquí porque los estilos de la página no llegan.
+:host {
+  --udh-primario: #0d7a6a;
+  --udh-primario-texto: #ffffff;
+  --udh-verde: #30b8a0;
+  --udh-grafito: #2b2b2b;
+  --udh-borde: #d9dcdb;
+
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483000;
+  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
+}
+
+.lanzador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 20px 0 16px;
+  border: 0;
+  border-radius: 26px;
+  background: var(--udh-primario);
+  color: var(--udh-primario-texto);
+  font: 600 14.5px/1 inherit;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 22%);
+  cursor: pointer;
+
+  &:hover {
+    background: #095a4e;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--udh-grafito);
+    outline-offset: 3px;
+  }
+}
+
+.ventana {
+  display: none;
+  width: 400px;
+  height: min(640px, calc(100vh - 40px));
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--udh-borde);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 22%);
+  background: #fff;
+
+  &.visible {
+    display: flex;
+  }
+
+  udh-chat-panel {
+    flex: 1;
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px 10px 14px;
+  background: #fff;
+  border-bottom: 3px solid var(--udh-verde);
+}
+
+.titulos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+  border-left: 1px solid var(--udh-borde);
+  line-height: 1.25;
+
+  strong {
+    font-size: 14px;
+    color: var(--udh-grafito);
+  }
+
+  span {
+    font-size: 11.5px;
+    color: #5c6361;
+  }
+}
+
+.cerrar {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--udh-grafito);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+
+  &:hover {
+    background: #f0f1f1;
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .ventana.visible {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+    border: 0;
+  }
+
+  .titulos span {
+    display: none;
+  }
+}

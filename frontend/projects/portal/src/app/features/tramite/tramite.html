@@ -1,0 +1,123 @@
+@let e = estado();
+<div class="contenedor">
+  <nav class="migas" aria-label="Ruta de navegación">
+    <a routerLink="/">Trámites</a> <span aria-hidden="true">/</span>
+    <span>{{ detalle()?.proceso?.nombre ?? '…' }}</span>
+  </nav>
+
+  @if (e.cargando) {
+    <p class="tenue">Cargando el trámite…</p>
+  } @else if (!e.detalle) {
+    <div class="aviso peligro">
+      No encontramos este trámite. <a routerLink="/">Volver a la lista de trámites</a>.
+    </div>
+  } @else {
+    @let d = e.detalle;
+    <header class="cabecera">
+      <div>
+        <h1>{{ d.proceso.nombre }}</h1>
+        <p class="tenue">{{ d.proceso.descripcion }}</p>
+      </div>
+      <a class="boton" routerLink="/asistente">Preguntar sobre este trámite</a>
+    </header>
+
+    <div class="disposicion">
+      <section aria-labelledby="titulo-fases">
+        <h2 id="titulo-fases">Fases del trámite</h2>
+        <ol class="linea-tiempo">
+          @for (f of d.fichas; track f.codigo) {
+            <li [class.abierta]="abierta() === f.codigo" [id]="f.codigo">
+              <button
+                type="button"
+                class="fase"
+                (click)="alternar(f)"
+                [attr.aria-expanded]="abierta() === f.codigo"
+                [attr.aria-controls]="'cuerpo-' + f.codigo"
+              >
+                <span class="marca-fase">{{ f.contenido.fase }}</span>
+                <span class="titulo-fase">
+                  <strong>{{ f.contenido.titulo }}</strong>
+                  <small class="mono tenue">{{ f.codigo }}</small>
+                </span>
+                @if (f.contenido.estado_dato === 'pendiente') {
+                  <span
+                    class="insignia alerta"
+                    title="Hay datos que la Coordinación aún no confirma"
+                    >Por confirmar</span
+                  >
+                }
+              </button>
+
+              @if (abierta() === f.codigo) {
+                <div class="cuerpo" [id]="'cuerpo-' + f.codigo">
+                  @if (f.contenido.estado_dato === 'pendiente') {
+                    <p class="aviso alerta">
+                      Parte de esta información aún no ha sido confirmada por la Coordinación.
+                      Verifíquela antes de iniciar el trámite.
+                    </p>
+                  }
+                  <dl>
+                    @for (s of secciones; track s) {
+                      @if (valor(f, s)) {
+                        <dt>{{ titulos[s] }}</dt>
+                        <dd>
+                          @if (s === 'siguiente_fase' && tituloFase(valor(f, s))) {
+                            <a
+                              [routerLink]="[]"
+                              [fragment]="valor(f, s)"
+                              (click)="abierta.set(valor(f, s))"
+                            >
+                              {{ tituloFase(valor(f, s)) }}
+                            </a>
+                          } @else {
+                            <div
+                              class="contenido-markdown"
+                              [innerHTML]="valor(f, s) | markdown"
+                            ></div>
+                          }
+                        </dd>
+                      }
+                    }
+                    @if (f.contenido.informacion_adicional) {
+                      <dt>{{ titulos.informacion_adicional }}</dt>
+                      <dd
+                        class="contenido-markdown"
+                        [innerHTML]="f.contenido.informacion_adicional | markdown"
+                      ></dd>
+                    }
+                  </dl>
+                  <p class="fuente">
+                    <strong>Fuente:</strong> {{ f.contenido.fuente }} · <strong>Vigencia:</strong>
+                    {{ f.contenido.vigencia }} · versión {{ f.version }}
+                  </p>
+                </div>
+              }
+            </li>
+          } @empty {
+            <li class="aviso">Este trámite aún no tiene fases publicadas.</li>
+          }
+        </ol>
+      </section>
+
+      <aside aria-labelledby="titulo-docs">
+        <div class="tarjeta">
+          <h2 id="titulo-docs">Documentos</h2>
+          @for (doc of d.documentos; track doc.id) {
+            <a class="documento" [href]="doc.url" target="_blank" rel="noopener">
+              <span class="insignia info">{{ tipos[doc.tipo] }}</span>
+              <strong>{{ doc.titulo }}</strong>
+              @if (doc.numero) {
+                <small class="tenue">{{ doc.numero }}</small>
+              }
+            </a>
+          } @empty {
+            <p class="tenue">Aún no se han publicado documentos para este trámite.</p>
+          }
+          <a routerLink="/documentos" [queryParams]="{ proceso: d.proceso.clave }"
+            >Ver toda la normativa</a
+          >
+        </div>
+      </aside>
+    </div>
+  }
+</div>

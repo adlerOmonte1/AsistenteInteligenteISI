@@ -1,0 +1,384 @@
+// Sistema visual común del portal y del panel. Cada app lo importa en su styles.scss.
+//
+// Paleta tomada del logotipo oficial de la Universidad de Huánuco (udh.edu.pe/img/logo.png):
+// verde institucional #30B8A0, grafito #303030 y oro del escudo #F8C020. El verde de marca
+// no alcanza contraste AA con texto blanco, así que botones y enlaces usan su tono oscuro.
+
+:root {
+  // Marca
+  --udh-verde: #30b8a0;
+  --udh-verde-oscuro: #0d7a6a;
+  --udh-verde-profundo: #095a4e;
+  --udh-verde-suave: #e5f5f1;
+  --udh-grafito: #2b2b2b;
+  --udh-grafito-claro: #3d3d3d;
+  --udh-oro: #f8c020;
+  --udh-oro-suave: #fdf4d8;
+  --udh-oro-texto: #7a5b00;
+
+  // Roles (los componentes usan estos nombres)
+  --udh-primario: var(--udh-verde-oscuro);
+  --udh-primario-oscuro: var(--udh-verde-profundo);
+  --udh-primario-suave: var(--udh-verde-suave);
+  --udh-primario-texto: #ffffff;
+  --udh-acento: var(--udh-oro);
+  --udh-acento-suave: var(--udh-oro-suave);
+  --udh-fondo: #f4f5f5;
+  --udh-superficie: #ffffff;
+  --udh-superficie-alterna: #f6f7f7;
+  --udh-borde: #d9dcdb;
+  --udh-borde-fuerte: #b9bebc;
+  --udh-texto: #222222;
+  --udh-texto-tenue: #5c6361;
+  --udh-exito: #0d7a4a;
+  --udh-exito-suave: #e3f3ea;
+  --udh-alerta: var(--udh-oro-texto);
+  --udh-alerta-suave: var(--udh-oro-suave);
+  --udh-peligro: #b3261e;
+  --udh-peligro-suave: #fbeceb;
+  --udh-radio: 6px;
+  --udh-sombra: 0 1px 2px rgb(0 0 0 / 6%);
+  --udh-sombra-elevada: 0 6px 20px rgb(0 0 0 / 12%);
+  --udh-fuente: 'Open Sans Variable', 'Open Sans', 'Segoe UI', Arial, sans-serif;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--udh-fondo);
+  color: var(--udh-texto);
+  font: 15px/1.55 var(--udh-fuente);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+  color: var(--udh-grafito);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: 1.9rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+h3 {
+  font-size: 1.08rem;
+}
+
+// Título de sección con la barra verde del logotipo
+.titulo-seccion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+
+  &::before {
+    content: '';
+    flex: none;
+    width: 4px;
+    height: 1.2em;
+    background: var(--udh-verde);
+  }
+}
+
+.antetitulo {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--udh-verde-oscuro);
+}
+
+a {
+  color: var(--udh-primario);
+}
+
+p {
+  margin: 0 0 0.8em;
+}
+
+code,
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--udh-verde-oscuro);
+  outline-offset: 2px;
+}
+
+// ---------------------------------------------------------------- utilidades
+
+.contenedor {
+  width: min(1180px, 100% - 32px);
+  margin-inline: auto;
+}
+
+.tarjeta {
+  background: var(--udh-superficie);
+  border: 1px solid var(--udh-borde);
+  border-radius: var(--udh-radio);
+  box-shadow: var(--udh-sombra);
+  padding: 20px;
+}
+
+.tenue {
+  color: var(--udh-texto-tenue);
+}
+
+.pila {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.espaciador {
+  flex: 1;
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+// ----------------------------------------------------------------- controles
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: var(--udh-radio);
+  border: 1px solid var(--udh-primario);
+  background: var(--udh-primario);
+  color: var(--udh-primario-texto);
+  font: 600 14px/1 var(--udh-fuente);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background: var(--udh-primario-oscuro);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &.secundario {
+    background: var(--udh-superficie);
+    color: var(--udh-primario);
+
+    &:hover:not(:disabled) {
+      background: var(--udh-primario-suave);
+    }
+  }
+
+  &.peligro {
+    background: var(--udh-peligro);
+    border-color: var(--udh-peligro);
+  }
+
+  &.exito {
+    background: var(--udh-exito);
+    border-color: var(--udh-exito);
+  }
+
+  &.chico {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  > span,
+  > label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--udh-texto-tenue);
+  }
+
+  .ayuda {
+    font-size: 12px;
+    color: var(--udh-texto-tenue);
+  }
+
+  .error {
+    font-size: 12.5px;
+    color: var(--udh-peligro);
+  }
+}
+
+input[type='text'],
+input[type='search'],
+input[type='password'],
+input[type='email'],
+input[type='number'],
+input[type='date'],
+select,
+textarea {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 11px;
+  border: 1px solid var(--udh-borde);
+  border-radius: 8px;
+  background: var(--udh-superficie);
+  color: var(--udh-texto);
+  font: inherit;
+
+  &:focus {
+    outline: 2px solid var(--udh-primario);
+    outline-offset: -1px;
+  }
+
+  &.invalido {
+    border-color: var(--udh-peligro);
+  }
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+// --------------------------------------------------------------- indicadores
+
+.insignia {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--udh-superficie-alterna);
+  color: var(--udh-texto-tenue);
+  white-space: nowrap;
+
+  &.exito {
+    background: var(--udh-exito-suave);
+    color: var(--udh-exito);
+  }
+
+  &.alerta {
+    background: var(--udh-alerta-suave);
+    color: var(--udh-alerta);
+  }
+
+  &.peligro {
+    background: var(--udh-peligro-suave);
+    color: var(--udh-peligro);
+  }
+
+  &.info {
+    background: var(--udh-primario-suave);
+    color: var(--udh-primario);
+  }
+}
+
+.aviso {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--udh-borde);
+  background: var(--udh-superficie-alterna);
+
+  &.alerta {
+    background: var(--udh-alerta-suave);
+    border-color: #f0d48a;
+  }
+
+  &.peligro {
+    background: var(--udh-peligro-suave);
+    border-color: #f3b8b2;
+  }
+
+  &.exito {
+    background: var(--udh-exito-suave);
+    border-color: #a8dcbc;
+  }
+}
+
+table.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--udh-superficie);
+
+  th,
+  td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--udh-borde);
+    vertical-align: top;
+  }
+
+  th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--udh-texto-tenue);
+    background: var(--udh-superficie-alterna);
+  }
+
+  tbody tr:hover {
+    background: #fafbfd;
+  }
+}
+
+.contenido-markdown {
+  p,
+  ul,
+  ol {
+    margin: 0 0 8px;
+  }
+
+  ul,
+  ol {
+    padding-left: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,21 @@
+# Base de datos para desarrollo local. El backend y el frontend corren fuera de Docker.
+#   docker compose -f infra/docker-compose.dev.yml up -d
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: asistente-db-dev
+    environment:
+      POSTGRES_DB: asistente
+      POSTGRES_USER: asistente
+      POSTGRES_PASSWORD: asistente
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U asistente -d asistente"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  pgdata-dev:

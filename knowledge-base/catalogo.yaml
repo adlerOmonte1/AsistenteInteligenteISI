@@ -1,0 +1,79 @@
+# Catálogo de procesos que importa `manage.py importar_conocimiento`.
+#
+# Cada entrada relaciona una carpeta de knowledge-base/procesos/ con el proceso
+# que se crea en la base de datos. `clave` es el identificador estable que usan
+# la API, el portal y el contrato de fichas (campo `proceso`).
+#
+# formato:
+#   contrato  → fichas/*.md + intents.yaml + golden_set.csv (contrato de la Fase 2)
+#   json_tesis → 2_fichas_conocimiento.json, el formato original del entregable de título por tesis.
+#                Ya se convirtió al contrato; el original está en docs/02-base-conocimiento/titulo_tesis_entregable/.
+
+facultad:
+  nombre: Facultad de Ingeniería
+  sigla: FI
+programa:
+  nombre: Ingeniería de Sistemas e Informática
+  sigla: ISI
+
+procesos:
+  - clave: ppp
+    carpeta: ppp
+    nombre: Prácticas preprofesionales
+    descripcion: Las 600 horas de prácticas del Plan 2021, en cuatro etapas, desde la carta de presentación hasta el informe final.
+    prefijos: [PPP]
+    orden: 1
+    formato: contrato
+
+  - clave: bachiller_conv_ppp
+    carpeta: bachiller_conv_ppp
+    nombre: Grado de Bachiller
+    descripcion: Trámite virtual para optar el Grado Académico de Bachiller y convalidación de PPP por experiencia.
+    prefijos: [BAC, CPP]
+    orden: 3
+    formato: contrato
+
+  - clave: titulo_tesis
+    carpeta: titulo_tesis
+    nombre: Título profesional por tesis
+    descripcion: Las nueve fases del título por sustentación de tesis, desde la designación del asesor hasta la sustentación.
+    prefijos: [TES]
+    orden: 4
+    formato: contrato
+
+  - clave: titulo_tsp
+    carpeta: titulo_tsp
+    nombre: Título por trabajo de suficiencia profesional
+    descripcion: Titulación con dos años de experiencia profesional acreditada, en ocho fases.
+    prefijos: [TSP]
+    orden: 5
+    formato: contrato
+
+  - clave: traslados
+    carpeta: traslados
+    nombre: Traslado interno y externo
+    descripcion: Cambio de programa dentro de la UDH o ingreso desde otra universidad, con convalidación de cursos.
+    prefijos: [TRA]
+    orden: 6
+    formato: contrato
+
+  # Duplica las fichas CPP_E00–E04 de bachiller_conv_ppp. Se importa después para
+  # que, si hay intents con el mismo nombre, prevalezcan los de bachiller_conv_ppp.
+  # Queda oculto en el portal hasta que el equipo decida qué versión se conserva.
+  - clave: conv_ppp_experiencia
+    carpeta: conv_ppp_experiencia
+    nombre: Convalidación de PPP por experiencia laboral (versión alternativa)
+    descripcion: Reconocimiento de la experiencia laboral en lugar de las prácticas preprofesionales.
+    prefijos: [CPP]
+    orden: 7
+    formato: contrato
+    visible_en_portal: false
+
+  - clave: general
+    carpeta: general
+    nombre: Consultas generales
+    descripcion: Saludo, ayuda, cierre y derivación a una persona.
+    prefijos: [GEN]
+    orden: 99
+    formato: contrato
+    visible_en_portal: false

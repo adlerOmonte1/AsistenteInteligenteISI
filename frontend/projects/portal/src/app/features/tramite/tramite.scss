@@ -1,0 +1,166 @@
+:host {
+  display: block;
+  padding-top: 20px;
+}
+
+.migas {
+  font-size: 13.5px;
+  color: var(--udh-texto-tenue);
+  margin-bottom: 16px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+
+  p {
+    max-width: 720px;
+  }
+}
+
+.disposicion {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+aside {
+  position: sticky;
+  top: 84px;
+
+  .tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.documento {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--udh-borde);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    border-color: var(--udh-primario);
+  }
+}
+
+.linea-tiempo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  > li {
+    background: var(--udh-superficie);
+    border: 1px solid var(--udh-borde);
+    border-radius: var(--udh-radio);
+    overflow: hidden;
+
+    &.abierta {
+      border-color: var(--udh-primario);
+      box-shadow: var(--udh-sombra);
+    }
+  }
+}
+
+.fase {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.marca-fase {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--udh-primario);
+  color: #fff;
+  font-weight: 700;
+}
+
+.titulo-fase {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cuerpo {
+  padding: 0 16px 16px 62px;
+
+  dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 10px 16px;
+  }
+
+  dt {
+    font-weight: 700;
+    color: var(--udh-texto-tenue);
+    font-size: 13.5px;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.fuente {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--udh-borde);
+  font-size: 12.5px;
+  color: var(--udh-texto-tenue);
+}
+
+@media (max-width: 900px) {
+  .disposicion {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: static;
+  }
+
+  .cuerpo {
+    padding-left: 16px;
+
+    dl {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    dd {
+      margin-bottom: 8px;
+    }
+  }
+}

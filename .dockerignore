@@ -1,0 +1,14 @@
+**/.git
+**/node_modules
+**/.angular
+**/dist
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+backend/media
+backend/.media-pruebas
+backend/staticfiles
+docs
+.env
+backend/.env

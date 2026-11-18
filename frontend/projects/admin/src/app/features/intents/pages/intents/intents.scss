@@ -1,0 +1,29 @@
+.inactivo {
+  opacity: 0.55;
+}
+
+.total {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+dialog.ancho {
+  width: min(720px, calc(100vw - 32px));
+  max-height: calc(100vh - 40px);
+}
+
+.secciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  border: 1px solid var(--udh-borde);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+
+  legend {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--udh-texto-tenue);
+  }
+}

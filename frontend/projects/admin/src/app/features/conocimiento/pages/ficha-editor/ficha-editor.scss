@@ -1,0 +1,81 @@
+.volver {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.35rem !important;
+}
+
+.estado {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.observaciones {
+  margin-bottom: 16px;
+}
+
+.disposicion {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  h2 {
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  > p {
+    margin: -6px 0 0;
+    font-size: 13.5px;
+  }
+}
+
+aside {
+  position: sticky;
+  top: 16px;
+}
+
+.version {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--udh-borde);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.ayuda-ciclo ol {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+}
+
+@media (max-width: 1080px) {
+  .disposicion {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: static;
+  }
+}

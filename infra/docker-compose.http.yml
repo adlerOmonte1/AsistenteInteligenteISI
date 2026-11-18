@@ -1,0 +1,9 @@
+# Superposición para demostraciones sin HTTPS:
+#   docker compose -f infra/docker-compose.yml -f infra/docker-compose.http.yml --env-file .env up -d --build
+services:
+  web:
+    ports: !override
+      - "80:80"
+    volumes:
+      - media:/app/media:ro
+      - ./nginx/http-only.conf.template:/etc/nginx/templates/default.conf.template:ro

@@ -1,0 +1,285 @@
+// La diagonal de la portada retoma la del escudo universitario (verde y oro).
+.portada {
+  position: relative;
+  overflow: hidden;
+  background: var(--udh-grafito);
+  color: #fff;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  &::before {
+    width: 34%;
+    background: var(--udh-verde);
+    clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 0.92;
+  }
+
+  &::after {
+    width: 34%;
+    background: var(--udh-oro);
+    clip-path: polygon(36.5% 0, 38% 0, 1.5% 100%, 0 100%);
+  }
+}
+
+.portada-interior {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  padding: 56px 0 60px;
+}
+
+.portada-texto {
+  .antetitulo {
+    color: var(--udh-oro);
+  }
+
+  h1 {
+    color: #fff;
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+    margin-bottom: 12px;
+  }
+}
+
+.bajada {
+  max-width: 620px;
+  font-size: 1.05rem;
+  color: #dcdcdc;
+}
+
+.buscador {
+  display: flex;
+  align-items: center;
+  max-width: 620px;
+  margin-top: 26px;
+  background: #fff;
+  border-radius: var(--udh-radio);
+  padding: 4px 4px 4px 14px;
+
+  svg {
+    flex: none;
+    color: var(--udh-texto-tenue);
+  }
+
+  input {
+    flex: 1;
+    border: 0;
+    height: 46px;
+    font-size: 15.5px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 3px var(--udh-verde);
+  }
+
+  .boton {
+    height: 44px;
+    padding: 0 22px;
+  }
+}
+
+.portada-ayuda {
+  background: #fff;
+  color: var(--udh-texto);
+  border-radius: var(--udh-radio);
+  padding: 24px;
+  border-top: 4px solid var(--udh-oro);
+  box-shadow: var(--udh-sombra-elevada);
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--udh-texto-tenue);
+  }
+}
+
+// --------------------------------------------------------------- trámites
+
+.seccion {
+  margin-top: 48px;
+}
+
+.encabezado-seccion {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  a {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.tramite {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 18px;
+  background: #fff;
+  border: 1px solid var(--udh-borde);
+  border-top: 3px solid var(--udh-verde);
+  border-radius: var(--udh-radio);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--udh-verde-oscuro);
+    border-top-color: var(--udh-verde-oscuro);
+
+    .ver {
+      text-decoration: underline;
+    }
+  }
+
+  h3 {
+    margin: 6px 0 6px;
+    font-size: 1.05rem;
+  }
+
+  p {
+    flex: 1;
+    margin: 0 0 14px;
+    font-size: 14px;
+    color: var(--udh-texto-tenue);
+  }
+}
+
+.fases {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--udh-verde-oscuro);
+}
+
+.ver {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--udh-verde-oscuro);
+
+  &::after {
+    content: ' →';
+  }
+}
+
+.esqueleto {
+  height: 168px;
+  background: linear-gradient(90deg, #eceeed 25%, #f6f7f7 50%, #eceeed 75%);
+  background-size: 200% 100%;
+  animation: brillo 1.4s infinite;
+}
+
+@keyframes brillo {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+// ------------------------------------------------------------------ pasos
+
+.pasos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--udh-borde);
+  border-radius: var(--udh-radio);
+  background: #fff;
+
+  li {
+    display: flex;
+    gap: 14px;
+    padding: 22px;
+
+    & + li {
+      border-left: 1px solid var(--udh-borde);
+    }
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--udh-texto-tenue);
+  }
+}
+
+.numero {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--udh-grafito);
+  color: var(--udh-oro);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .portada::before,
+  .portada::after {
+    display: none;
+  }
+
+  .portada-interior {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 36px 0 40px;
+  }
+
+  .pasos {
+    grid-template-columns: 1fr;
+
+    li + li {
+      border-left: 0;
+      border-top: 1px solid var(--udh-borde);
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .buscador {
+    flex-wrap: wrap;
+    padding: 8px;
+
+    input {
+      flex-basis: calc(100% - 30px);
+    }
+
+    .boton {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+:host {
+  display: block;
+  padding-top: 28px;
+}
+
+.cabecera p {
+  max-width: 760px;
+}
+
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr 200px 1.3fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.total {
+  font-size: 13px;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .tarjeta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 1.05rem;
+    margin: 8px 0 2px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.info {
+  flex: 1;
+}
+
+.meta {
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .filtros {
+    grid-template-columns: 1fr;
+  }
+
+  .lista .tarjeta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

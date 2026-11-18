@@ -1,0 +1,7 @@
+id,pregunta,intent_esperado,ficha_esperada,respuesta_clave
+GEN_TES_Q01,hola,GEN_saludo,NO_APLICA,¡Hola! Te ayudo con el proceso de título por tesis (9 fases). ¿Quieres empezar o ya estás en alguna fase?
+GEN_TES_Q02,qué puedes hacer,GEN_ayuda,NO_APLICA,"Te oriento sobre requisitos, pasos, plazos, correos y seguimiento del título por tesis de Ing. de Sistemas e Informática. ¿Por dónde empezamos?"
+GEN_TES_Q03,gracias,GEN_agradecimiento,NO_APLICA,"¡De nada! Si necesitas la siguiente fase, solo dime."
+GEN_TES_Q04,chau,GEN_agradecimiento,NO_APLICA,¡Hasta luego! Éxitos con tu titulación.
+GEN_TES_Q05,quiero hablar con una persona,GEN_derivar_humano,NO_APLICA,Escribe a secretaria.sistemas.hco@udh.edu.pe o llama al 952 068 664.
+GEN_TES_Q06,cuánto cuesta la pensión,GEN_derivar_humano,NO_APLICA,Eso está fuera de mi alcance; solo manejo el proceso de título por tesis. Para otros temas escribe a secretaria.sistemas.hco@udh.edu.pe.

@@ -1,0 +1,77 @@
+<div class="contenedor">
+  <header class="cabecera">
+    <h1>Documentos y normativa</h1>
+    <p class="tenue">
+      Resoluciones, reglamentos, formatos y guías oficiales de los trámites del programa. Descargue
+      siempre la versión publicada aquí o en los canales oficiales de la universidad.
+    </p>
+  </header>
+
+  <form class="filtros tarjeta" role="search" (submit)="$event.preventDefault()">
+    <label class="campo">
+      <span>Trámite</span>
+      <select (change)="cambiarProceso($event)">
+        <option value="">Todos</option>
+        @for (p of procesos(); track p.id) {
+          <option [value]="p.clave" [selected]="p.clave === proceso()">{{ p.nombre }}</option>
+        }
+      </select>
+    </label>
+    <label class="campo">
+      <span>Tipo</span>
+      <select (change)="cambiarTipo($event)">
+        <option value="">Todos</option>
+        @for (t of tipos; track t[0]) {
+          <option [value]="t[0]">{{ t[1] }}</option>
+        }
+      </select>
+    </label>
+    <label class="campo texto">
+      <span>Buscar</span>
+      <input
+        type="search"
+        placeholder="Título o número de resolución"
+        (input)="cambiarTexto($event)"
+      />
+    </label>
+  </form>
+
+  @if (error()) {
+    <div class="aviso peligro">No se pudieron cargar los documentos.</div>
+  } @else if (cargando()) {
+    <p class="tenue">Cargando…</p>
+  } @else {
+    <p class="tenue total">{{ total() }} {{ total() === 1 ? 'documento' : 'documentos' }}</p>
+    <ul class="lista">
+      @for (d of documentos(); track d.id) {
+        <li class="tarjeta">
+          <div class="info">
+            <div class="fila">
+              <span class="insignia info">{{ nombresTipo[d.tipo] }}</span>
+              @if (d.proceso_nombre) {
+                <span class="insignia">{{ d.proceso_nombre }}</span>
+              }
+            </div>
+            <h2>{{ d.titulo }}</h2>
+            @if (d.numero || d.fecha_emision) {
+              <p class="tenue meta">
+                {{ d.numero }}{{ d.numero && d.fecha_emision ? ' · ' : '' }}{{ d.fecha_emision }}
+              </p>
+            }
+            @if (d.descripcion) {
+              <p>{{ d.descripcion }}</p>
+            }
+          </div>
+          @if (d.url) {
+            <a class="boton secundario" [href]="d.url" target="_blank" rel="noopener">Abrir</a>
+          }
+        </li>
+      } @empty {
+        <li class="aviso">
+          No hay documentos con esos filtros. La Coordinación irá publicando aquí la normativa de
+          cada trámite.
+        </li>
+      }
+    </ul>
+  }
+</div>
