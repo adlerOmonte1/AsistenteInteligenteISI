@@ -1,0 +1,3548 @@
+openapi: 3.0.3
+info:
+  title: API del Asistente Virtual UDH
+  version: 1.0.0
+  description: Consultas de trámites del P.A. de Ingeniería de Sistemas e Informática.
+paths:
+  /api/v1/admin/documentos/:
+    get:
+      operationId: admin_documentos_list
+      description: Biblioteca normativa del portal.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDocumentoList'
+          description: ''
+    post:
+      operationId: admin_documentos_create
+      description: Biblioteca normativa del portal.
+      tags:
+      - admin
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Documento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Documento'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Documento'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Documento'
+          description: ''
+  /api/v1/admin/documentos/{id}/:
+    get:
+      operationId: admin_documentos_retrieve
+      description: Biblioteca normativa del portal.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este documento.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Documento'
+          description: ''
+    put:
+      operationId: admin_documentos_update
+      description: Biblioteca normativa del portal.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este documento.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Documento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Documento'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Documento'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Documento'
+          description: ''
+    patch:
+      operationId: admin_documentos_partial_update
+      description: Biblioteca normativa del portal.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este documento.
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumento'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumento'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Documento'
+          description: ''
+    delete:
+      operationId: admin_documentos_destroy
+      description: Biblioteca normativa del portal.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este documento.
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/admin/procesos/:
+    get:
+      operationId: admin_procesos_list
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Proceso'
+          description: ''
+    post:
+      operationId: admin_procesos_create
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Proceso'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Proceso'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Proceso'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proceso'
+          description: ''
+  /api/v1/admin/procesos/{id}/:
+    get:
+      operationId: admin_procesos_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proceso'
+          description: ''
+    patch:
+      operationId: admin_procesos_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProceso'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProceso'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProceso'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proceso'
+          description: ''
+  /api/v1/auth/login/:
+    post:
+      operationId: auth_login_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/auth/logout/:
+    post:
+      operationId: auth_logout_create
+      tags:
+      - auth
+      security:
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/v1/auth/me/:
+    get:
+      operationId: auth_me_retrieve
+      tags:
+      - auth
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsuarioActual'
+          description: ''
+  /api/v1/auth/refresh/:
+    post:
+      operationId: auth_refresh_create
+      description: Renueva el access leyendo el refresh de la cookie HttpOnly; rota
+        el refresh.
+      tags:
+      - auth
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/buscar/:
+    get:
+      operationId: buscar_retrieve
+      description: Búsqueda por palabras en las fichas publicadas, para el buscador
+        del portal.
+      tags:
+      - buscar
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/cargas/:
+    get:
+      operationId: cargas_list
+      description: Sube un .docx o .pdf y propone fichas en borrador (proceso en segundo
+        plano).
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - cargas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCargaDocumentoList'
+          description: ''
+    post:
+      operationId: cargas_create
+      description: Sube un .docx o .pdf y propone fichas en borrador (proceso en segundo
+        plano).
+      tags:
+      - cargas
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CargaDocumento'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CargaDocumento'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CargaDocumento'
+          description: ''
+  /api/v1/cargas/{id}/:
+    get:
+      operationId: cargas_retrieve
+      description: Sube un .docx o .pdf y propone fichas en borrador (proceso en segundo
+        plano).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este carga de documento.
+        required: true
+      tags:
+      - cargas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CargaDocumento'
+          description: ''
+  /api/v1/casos-evaluacion/:
+    get:
+      operationId: casos_evaluacion_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - casos-evaluacion
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCasoList'
+          description: ''
+    post:
+      operationId: casos_evaluacion_create
+      tags:
+      - casos-evaluacion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Caso'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Caso'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Caso'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Caso'
+          description: ''
+  /api/v1/casos-evaluacion/{id}/:
+    get:
+      operationId: casos_evaluacion_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este caso de evaluación.
+        required: true
+      tags:
+      - casos-evaluacion
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Caso'
+          description: ''
+    patch:
+      operationId: casos_evaluacion_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este caso de evaluación.
+        required: true
+      tags:
+      - casos-evaluacion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCaso'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCaso'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCaso'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Caso'
+          description: ''
+  /api/v1/chat/:
+    post:
+      operationId: chat_create
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - sse
+      tags:
+      - chat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mensaje'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Mensaje'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Mensaje'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            text/event-stream:
+              schema:
+                type: string
+          description: ''
+  /api/v1/chat/{consulta_id}/feedback/:
+    post:
+      operationId: chat_feedback_create
+      parameters:
+      - in: path
+        name: consulta_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - chat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+        required: true
+      security:
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/v1/configuracion/:
+    get:
+      operationId: configuracion_retrieve
+      tags:
+      - configuracion
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Configuracion'
+          description: ''
+    patch:
+      operationId: configuracion_partial_update
+      tags:
+      - configuracion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedConfiguracion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedConfiguracion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedConfiguracion'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Configuracion'
+          description: ''
+  /api/v1/configuracion/publica/:
+    get:
+      operationId: configuracion_publica_retrieve
+      description: Textos que el widget necesita al abrirse (sin login).
+      tags:
+      - configuracion
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/conversaciones/:
+    get:
+      operationId: conversaciones_list
+      description: Historial anonimizado de conversaciones para revisar la calidad
+        de las respuestas.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - conversaciones
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedConsultaList'
+          description: ''
+  /api/v1/conversaciones/{id}/:
+    get:
+      operationId: conversaciones_retrieve
+      description: Historial anonimizado de conversaciones para revisar la calidad
+        de las respuestas.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este consulta.
+        required: true
+      tags:
+      - conversaciones
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Consulta'
+          description: ''
+  /api/v1/documentos/:
+    get:
+      operationId: documentos_list
+      description: 'Biblioteca normativa: resoluciones, reglamentos, formatos y guías.'
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - documentos
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDocumentoList'
+          description: ''
+  /api/v1/evaluaciones/:
+    get:
+      operationId: evaluaciones_list
+      description: POST encola la ejecución del golden set de un proceso (o de todos).
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - evaluaciones
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEvaluacionList'
+          description: ''
+    post:
+      operationId: evaluaciones_create
+      description: POST encola la ejecución del golden set de un proceso (o de todos).
+      tags:
+      - evaluaciones
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Evaluacion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Evaluacion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Evaluacion'
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Evaluacion'
+          description: ''
+  /api/v1/evaluaciones/{id}/:
+    get:
+      operationId: evaluaciones_retrieve
+      description: POST encola la ejecución del golden set de un proceso (o de todos).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este evaluación.
+        required: true
+      tags:
+      - evaluaciones
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluacionDetalle'
+          description: ''
+  /api/v1/facultades/:
+    get:
+      operationId: facultades_list
+      tags:
+      - facultades
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Facultad'
+          description: ''
+    post:
+      operationId: facultades_create
+      tags:
+      - facultades
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Facultad'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Facultad'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Facultad'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facultad'
+          description: ''
+  /api/v1/facultades/{id}/:
+    get:
+      operationId: facultades_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este facultad.
+        required: true
+      tags:
+      - facultades
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facultad'
+          description: ''
+    patch:
+      operationId: facultades_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este facultad.
+        required: true
+      tags:
+      - facultades
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFacultad'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFacultad'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFacultad'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facultad'
+          description: ''
+  /api/v1/fichas/:
+    get:
+      operationId: fichas_list
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - fichas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedFichaListaList'
+          description: ''
+    post:
+      operationId: fichas_create
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      tags:
+      - fichas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ficha'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ficha'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ficha'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ficha'
+          description: ''
+  /api/v1/fichas/{id}/:
+    get:
+      operationId: fichas_retrieve
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - fichas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ficha'
+          description: ''
+    patch:
+      operationId: fichas_partial_update
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - fichas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFicha'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFicha'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFicha'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ficha'
+          description: ''
+  /api/v1/fichas/{id}/aprobar/:
+    post:
+      operationId: fichas_aprobar_create
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - fichas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Observaciones'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Observaciones'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Observaciones'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ficha'
+          description: ''
+  /api/v1/fichas/{id}/enviar-revision/:
+    post:
+      operationId: fichas_enviar_revision_create
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - fichas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ficha'
+          description: ''
+  /api/v1/fichas/{id}/historial/:
+    get:
+      operationId: fichas_historial_list
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - fichas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedVersionFichaList'
+          description: ''
+  /api/v1/fichas/{id}/rechazar/:
+    post:
+      operationId: fichas_rechazar_create
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - fichas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Observaciones'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Observaciones'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Observaciones'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ficha'
+          description: ''
+  /api/v1/fichas/{id}/revertir/:
+    post:
+      operationId: fichas_revertir_create
+      description: |-
+        Fichas en borrador y su ciclo de revisión.
+
+        Guardar deja la ficha en borrador; nada cambia en el asistente hasta que un
+        revisor la aprueba.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - fichas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Revertir'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Revertir'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Revertir'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ficha'
+          description: ''
+  /api/v1/health/:
+    get:
+      operationId: health_retrieve
+      tags:
+      - health
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/intents/:
+    get:
+      operationId: intents_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - intents
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedIntentList'
+          description: ''
+    post:
+      operationId: intents_create
+      tags:
+      - intents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Intent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Intent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Intent'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Intent'
+          description: ''
+  /api/v1/intents/{id}/:
+    get:
+      operationId: intents_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - intents
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Intent'
+          description: ''
+    patch:
+      operationId: intents_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - intents
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedIntent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedIntent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedIntent'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Intent'
+          description: ''
+  /api/v1/metricas/resumen/:
+    get:
+      operationId: metricas_resumen_retrieve
+      parameters:
+      - in: query
+        name: desde
+        schema:
+          type: string
+      - in: query
+        name: hasta
+        schema:
+          type: string
+      tags:
+      - metricas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/pendientes/:
+    get:
+      operationId: pendientes_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - pendientes
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPendienteList'
+          description: ''
+    post:
+      operationId: pendientes_create
+      tags:
+      - pendientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pendiente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pendiente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pendiente'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pendiente'
+          description: ''
+  /api/v1/pendientes/{id}/:
+    get:
+      operationId: pendientes_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - pendientes
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pendiente'
+          description: ''
+    patch:
+      operationId: pendientes_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - pendientes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPendiente'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPendiente'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPendiente'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pendiente'
+          description: ''
+  /api/v1/plantillas/:
+    get:
+      operationId: plantillas_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - plantillas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPlantillaList'
+          description: ''
+    post:
+      operationId: plantillas_create
+      tags:
+      - plantillas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plantilla'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Plantilla'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Plantilla'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plantilla'
+          description: ''
+  /api/v1/plantillas/{id}/:
+    get:
+      operationId: plantillas_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este plantilla.
+        required: true
+      tags:
+      - plantillas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plantilla'
+          description: ''
+    patch:
+      operationId: plantillas_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este plantilla.
+        required: true
+      tags:
+      - plantillas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPlantilla'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPlantilla'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPlantilla'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plantilla'
+          description: ''
+  /api/v1/probador/:
+    post:
+      operationId: probador_create
+      description: 'Pregunta de prueba desde el panel: devuelve la respuesta con su
+        traza y no la registra.'
+      tags:
+      - probador
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Probador'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Probador'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Probador'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/procesos/:
+    get:
+      operationId: procesos_list
+      tags:
+      - procesos
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Proceso'
+          description: ''
+  /api/v1/procesos/{clave}/:
+    get:
+      operationId: procesos_retrieve
+      description: 'Un trámite completo: sus fases publicadas y sus documentos.'
+      parameters:
+      - in: path
+        name: clave
+        schema:
+          type: string
+        required: true
+      tags:
+      - procesos
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/procesos/{clave}/fichas/{codigo}/:
+    get:
+      operationId: procesos_fichas_retrieve
+      parameters:
+      - in: path
+        name: clave
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: codigo
+        schema:
+          type: string
+        required: true
+      tags:
+      - procesos
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/programas/:
+    get:
+      operationId: programas_list
+      tags:
+      - programas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Programa'
+          description: ''
+    post:
+      operationId: programas_create
+      tags:
+      - programas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Programa'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Programa'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Programa'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Programa'
+          description: ''
+  /api/v1/programas/{id}/:
+    get:
+      operationId: programas_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este programa académico.
+        required: true
+      tags:
+      - programas
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Programa'
+          description: ''
+    patch:
+      operationId: programas_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este programa académico.
+        required: true
+      tags:
+      - programas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPrograma'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPrograma'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPrograma'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Programa'
+          description: ''
+  /api/v1/usuarios/:
+    get:
+      operationId: usuarios_list
+      description: Cuentas del panel. Solo el Centro de Cómputo las crea; no se borran,
+        se desactivan.
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: tamano
+        required: false
+        in: query
+        description: Número de resultados a devolver por página.
+        schema:
+          type: integer
+      tags:
+      - usuarios
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUsuarioList'
+          description: ''
+    post:
+      operationId: usuarios_create
+      description: Cuentas del panel. Solo el Centro de Cómputo las crea; no se borran,
+        se desactivan.
+      tags:
+      - usuarios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+          description: ''
+  /api/v1/usuarios/{id}/:
+    get:
+      operationId: usuarios_retrieve
+      description: Cuentas del panel. Solo el Centro de Cómputo las crea; no se borran,
+        se desactivan.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este usuario.
+        required: true
+      tags:
+      - usuarios
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+          description: ''
+    patch:
+      operationId: usuarios_partial_update
+      description: Cuentas del panel. Solo el Centro de Cómputo las crea; no se borran,
+        se desactivan.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este usuario.
+        required: true
+      tags:
+      - usuarios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUsuario'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUsuario'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUsuario'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+          description: ''
+components:
+  schemas:
+    CargaDocumento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+        archivo:
+          type: string
+          format: uri
+          writeOnly: true
+        nombre_original:
+          type: string
+          readOnly: true
+        estado:
+          allOf:
+          - $ref: '#/components/schemas/CargaDocumentoEstadoEnum'
+          readOnly: true
+        mensaje:
+          type: string
+          readOnly: true
+        fichas_propuestas:
+          type: array
+          items:
+            $ref: '#/components/schemas/FichaLista'
+          readOnly: true
+        creada:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - archivo
+      - creada
+      - estado
+      - fichas_propuestas
+      - id
+      - mensaje
+      - nombre_original
+      - proceso
+    CargaDocumentoEstadoEnum:
+      enum:
+      - procesando
+      - completada
+      - error
+      type: string
+      description: |-
+        * `procesando` - Procesando
+        * `completada` - Completada
+        * `error` - Error
+    Caso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso_clave:
+          type: string
+          readOnly: true
+        codigo:
+          type: string
+          maxLength: 40
+        pregunta:
+          type: string
+        intent_esperado:
+          type: string
+          maxLength: 80
+        ficha_esperada:
+          type: string
+          maxLength: 30
+        respuesta_clave:
+          type: string
+          description: Dato que la respuesta debe contener.
+        tipo:
+          type: string
+          description: normal, parafraseo, fuera_de_tema...
+          maxLength: 30
+        activo:
+          type: boolean
+        proceso:
+          type: integer
+      required:
+      - codigo
+      - id
+      - pregunta
+      - proceso
+      - proceso_clave
+    Configuracion:
+      type: object
+      properties:
+        proveedor_llm:
+          type: string
+          readOnly: true
+        modelo_llm:
+          type: string
+          readOnly: true
+        proveedor_embeddings:
+          type: string
+          readOnly: true
+        umbral_determinista:
+          type: number
+          format: double
+        umbral_desambiguacion:
+          type: number
+          format: double
+        intentos_antes_de_derivar:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        limite_usd_mes:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        llm_habilitado:
+          type: boolean
+          description: Apagarlo deja solo la vía determinista y la derivación.
+        mensaje_bienvenida:
+          type: string
+        contacto_derivacion:
+          type: string
+          description: Texto que se muestra al derivar a una persona. Solo datos oficiales.
+        aviso_legal:
+          type: string
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - actualizado
+      - modelo_llm
+      - proveedor_embeddings
+      - proveedor_llm
+    Consulta:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        sesion:
+          type: string
+          format: uuid
+        pregunta:
+          type: string
+        respuesta:
+          type: string
+        intent:
+          type: string
+          maxLength: 80
+        confianza:
+          type: number
+          format: double
+        via:
+          $ref: '#/components/schemas/ViaEnum'
+        fichas_citadas: {}
+        derivada:
+          type: boolean
+        validacion_fallida:
+          type: boolean
+        datos_no_respaldados: {}
+        motivo:
+          type: string
+          description: Por qué se tomó la vía (p. ej. limite_de_gasto).
+          maxLength: 40
+        tokens_entrada:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        tokens_salida:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        tokens_embedding:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        costo_usd:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,6})?$
+        latencia_ms:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        util:
+          type: boolean
+          nullable: true
+        creada:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - creada
+      - id
+      - pregunta
+      - proceso_nombre
+      - sesion
+      - via
+    Documento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+          nullable: true
+        proceso_clave:
+          type: string
+          readOnly: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        titulo:
+          type: string
+          maxLength: 300
+        tipo:
+          $ref: '#/components/schemas/TipoEnum'
+        numero:
+          type: string
+          description: 'Ej.: Res. N.° 2367-2025-R-CU-UDH'
+          maxLength: 120
+        fecha_emision:
+          type: string
+          format: date
+          nullable: true
+        descripcion:
+          type: string
+        archivo:
+          type: string
+          format: uri
+          nullable: true
+          writeOnly: true
+        url_externa:
+          oneOf:
+          - type: string
+            format: uri
+            maxLength: 200
+          - type: string
+            maxLength: 0
+        url:
+          type: string
+          readOnly: true
+        publico:
+          type: boolean
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - creado
+      - id
+      - proceso_clave
+      - proceso_nombre
+      - titulo
+      - url
+    Ejemplo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        texto:
+          type: string
+          maxLength: 500
+      required:
+      - id
+      - texto
+    EstadoDatoEnum:
+      enum:
+      - confirmado
+      - pendiente
+      type: string
+      description: |-
+        * `confirmado` - Confirmado
+        * `pendiente` - Pendiente de confirmar
+    EstadoE9dEnum:
+      enum:
+      - pendiente
+      - ejecutando
+      - completada
+      - error
+      type: string
+      description: |-
+        * `pendiente` - Pendiente
+        * `ejecutando` - Ejecutando
+        * `completada` - Completada
+        * `error` - Error
+    EstadoRevisionEnum:
+      enum:
+      - borrador
+      - en_revision
+      - publicada
+      - rechazada
+      type: string
+      description: |-
+        * `borrador` - Borrador
+        * `en_revision` - En revisión
+        * `publicada` - Publicada
+        * `rechazada` - Rechazada
+    Evaluacion:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: string
+          nullable: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        estado:
+          allOf:
+          - $ref: '#/components/schemas/EstadoE9dEnum'
+          readOnly: true
+        motivo:
+          allOf:
+          - $ref: '#/components/schemas/MotivoEnum'
+          readOnly: true
+        limite_casos:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+        metricas:
+          readOnly: true
+        mensaje:
+          type: string
+          readOnly: true
+        creada:
+          type: string
+          format: date-time
+          readOnly: true
+        finalizada:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+      required:
+      - creada
+      - estado
+      - finalizada
+      - id
+      - mensaje
+      - metricas
+      - motivo
+      - proceso_nombre
+    EvaluacionDetalle:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: string
+          nullable: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        estado:
+          allOf:
+          - $ref: '#/components/schemas/EstadoE9dEnum'
+          readOnly: true
+        motivo:
+          allOf:
+          - $ref: '#/components/schemas/MotivoEnum'
+          readOnly: true
+        limite_casos:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+        metricas:
+          readOnly: true
+        mensaje:
+          type: string
+          readOnly: true
+        creada:
+          type: string
+          format: date-time
+          readOnly: true
+        finalizada:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        resultados:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resultado'
+          readOnly: true
+      required:
+      - creada
+      - estado
+      - finalizada
+      - id
+      - mensaje
+      - metricas
+      - motivo
+      - proceso_nombre
+      - resultados
+    Facultad:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 150
+        sigla:
+          type: string
+          maxLength: 20
+        activa:
+          type: boolean
+      required:
+      - id
+      - nombre
+    Feedback:
+      type: object
+      properties:
+        sesion:
+          type: string
+          format: uuid
+        util:
+          type: boolean
+      required:
+      - sesion
+      - util
+    Ficha:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+        proceso_clave:
+          type: string
+          readOnly: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        codigo:
+          type: string
+          description: Identificador del contrato, p. ej. BAC_P02.
+          maxLength: 30
+        fase:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        titulo:
+          type: string
+          maxLength: 300
+        fuente:
+          type: string
+          description: Norma o documento oficial que respalda la ficha.
+        vigencia:
+          type: string
+          format: date
+          nullable: true
+        vigencia_texto:
+          type: string
+          description: Se usa cuando no hay fecha exacta.
+          maxLength: 100
+        estado_dato:
+          $ref: '#/components/schemas/EstadoDatoEnum'
+        requisitos:
+          type: string
+        pasos:
+          type: string
+        pago:
+          type: string
+        plazo:
+          type: string
+        enviar_a:
+          type: string
+        siguiente_fase:
+          type: string
+        informacion_adicional:
+          type: string
+        palabras_clave: {}
+        estado_revision:
+          allOf:
+          - $ref: '#/components/schemas/EstadoRevisionEnum'
+          readOnly: true
+        observaciones:
+          type: string
+          readOnly: true
+          description: Observaciones del revisor al rechazar.
+        version:
+          type: integer
+          readOnly: true
+        tiene_cambios_sin_publicar:
+          type: boolean
+          readOnly: true
+        reemplazada_por:
+          type: integer
+          nullable: true
+        creada:
+          type: string
+          format: date-time
+          readOnly: true
+        actualizada:
+          type: string
+          format: date-time
+          readOnly: true
+        actualizada_por:
+          type: string
+          readOnly: true
+      required:
+      - actualizada
+      - actualizada_por
+      - codigo
+      - creada
+      - estado_revision
+      - fuente
+      - id
+      - observaciones
+      - proceso
+      - proceso_clave
+      - proceso_nombre
+      - tiene_cambios_sin_publicar
+      - titulo
+      - version
+    FichaLista:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        codigo:
+          type: string
+          description: Identificador del contrato, p. ej. BAC_P02.
+          maxLength: 30
+        proceso:
+          type: integer
+        proceso_clave:
+          type: string
+          readOnly: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        fase:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        titulo:
+          type: string
+          maxLength: 300
+        estado_dato:
+          $ref: '#/components/schemas/EstadoDatoEnum'
+        estado_revision:
+          $ref: '#/components/schemas/EstadoRevisionEnum'
+        version:
+          type: integer
+          readOnly: true
+        actualizada:
+          type: string
+          format: date-time
+          readOnly: true
+        actualizada_por:
+          type: string
+          readOnly: true
+      required:
+      - actualizada
+      - actualizada_por
+      - codigo
+      - id
+      - proceso
+      - proceso_clave
+      - proceso_nombre
+      - titulo
+      - version
+    Intent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+        proceso_clave:
+          type: string
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 80
+        descripcion:
+          type: string
+        fichas:
+          type: array
+          items:
+            type: string
+            description: Identificador del contrato, p. ej. BAC_P02.
+        secciones: {}
+        entidades: {}
+        si_falta_entidad:
+          type: string
+        respuesta_fija:
+          type: string
+          description: 'Para intents sin ficha (saludo, cierre): texto que se responde
+            tal cual.'
+        activo:
+          type: boolean
+        ejemplos:
+          type: array
+          items:
+            type: string
+            maxLength: 500
+          writeOnly: true
+        lista_ejemplos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ejemplo'
+          readOnly: true
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - actualizado
+      - id
+      - lista_ejemplos
+      - nombre
+      - proceso
+      - proceso_clave
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+          maxLength: 150
+        password:
+          type: string
+          maxLength: 128
+      required:
+      - password
+      - username
+    Mensaje:
+      type: object
+      properties:
+        sesion:
+          type: string
+          format: uuid
+        mensaje:
+          type: string
+          maxLength: 500
+        intent:
+          type: string
+          maxLength: 80
+        ficha:
+          type: string
+          maxLength: 30
+      required:
+      - mensaje
+      - sesion
+    MotivoEnum:
+      enum:
+      - manual
+      - revision
+      - humo
+      type: string
+      description: |-
+        * `manual` - Ejecución manual
+        * `revision` - Envío a revisión
+        * `humo` - Prueba de humo tras publicar
+    Observaciones:
+      type: object
+      properties:
+        observaciones:
+          type: string
+          maxLength: 2000
+    PaginatedCargaDocumentoList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CargaDocumento'
+    PaginatedCasoList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Caso'
+    PaginatedConsultaList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Consulta'
+    PaginatedDocumentoList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Documento'
+    PaginatedEvaluacionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Evaluacion'
+    PaginatedFichaListaList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FichaLista'
+    PaginatedIntentList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Intent'
+    PaginatedPendienteList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pendiente'
+    PaginatedPlantillaList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plantilla'
+    PaginatedUsuarioList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Usuario'
+    PaginatedVersionFichaList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionFicha'
+    PatchedCaso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso_clave:
+          type: string
+          readOnly: true
+        codigo:
+          type: string
+          maxLength: 40
+        pregunta:
+          type: string
+        intent_esperado:
+          type: string
+          maxLength: 80
+        ficha_esperada:
+          type: string
+          maxLength: 30
+        respuesta_clave:
+          type: string
+          description: Dato que la respuesta debe contener.
+        tipo:
+          type: string
+          description: normal, parafraseo, fuera_de_tema...
+          maxLength: 30
+        activo:
+          type: boolean
+        proceso:
+          type: integer
+    PatchedConfiguracion:
+      type: object
+      properties:
+        proveedor_llm:
+          type: string
+          readOnly: true
+        modelo_llm:
+          type: string
+          readOnly: true
+        proveedor_embeddings:
+          type: string
+          readOnly: true
+        umbral_determinista:
+          type: number
+          format: double
+        umbral_desambiguacion:
+          type: number
+          format: double
+        intentos_antes_de_derivar:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        limite_usd_mes:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        llm_habilitado:
+          type: boolean
+          description: Apagarlo deja solo la vía determinista y la derivación.
+        mensaje_bienvenida:
+          type: string
+        contacto_derivacion:
+          type: string
+          description: Texto que se muestra al derivar a una persona. Solo datos oficiales.
+        aviso_legal:
+          type: string
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedDocumento:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+          nullable: true
+        proceso_clave:
+          type: string
+          readOnly: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        titulo:
+          type: string
+          maxLength: 300
+        tipo:
+          $ref: '#/components/schemas/TipoEnum'
+        numero:
+          type: string
+          description: 'Ej.: Res. N.° 2367-2025-R-CU-UDH'
+          maxLength: 120
+        fecha_emision:
+          type: string
+          format: date
+          nullable: true
+        descripcion:
+          type: string
+        archivo:
+          type: string
+          format: uri
+          nullable: true
+          writeOnly: true
+        url_externa:
+          oneOf:
+          - type: string
+            format: uri
+            maxLength: 200
+          - type: string
+            maxLength: 0
+        url:
+          type: string
+          readOnly: true
+        publico:
+          type: boolean
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedFacultad:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 150
+        sigla:
+          type: string
+          maxLength: 20
+        activa:
+          type: boolean
+    PatchedFicha:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+        proceso_clave:
+          type: string
+          readOnly: true
+        proceso_nombre:
+          type: string
+          readOnly: true
+        codigo:
+          type: string
+          description: Identificador del contrato, p. ej. BAC_P02.
+          maxLength: 30
+        fase:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        titulo:
+          type: string
+          maxLength: 300
+        fuente:
+          type: string
+          description: Norma o documento oficial que respalda la ficha.
+        vigencia:
+          type: string
+          format: date
+          nullable: true
+        vigencia_texto:
+          type: string
+          description: Se usa cuando no hay fecha exacta.
+          maxLength: 100
+        estado_dato:
+          $ref: '#/components/schemas/EstadoDatoEnum'
+        requisitos:
+          type: string
+        pasos:
+          type: string
+        pago:
+          type: string
+        plazo:
+          type: string
+        enviar_a:
+          type: string
+        siguiente_fase:
+          type: string
+        informacion_adicional:
+          type: string
+        palabras_clave: {}
+        estado_revision:
+          allOf:
+          - $ref: '#/components/schemas/EstadoRevisionEnum'
+          readOnly: true
+        observaciones:
+          type: string
+          readOnly: true
+          description: Observaciones del revisor al rechazar.
+        version:
+          type: integer
+          readOnly: true
+        tiene_cambios_sin_publicar:
+          type: boolean
+          readOnly: true
+        reemplazada_por:
+          type: integer
+          nullable: true
+        creada:
+          type: string
+          format: date-time
+          readOnly: true
+        actualizada:
+          type: string
+          format: date-time
+          readOnly: true
+        actualizada_por:
+          type: string
+          readOnly: true
+    PatchedIntent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+        proceso_clave:
+          type: string
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 80
+        descripcion:
+          type: string
+        fichas:
+          type: array
+          items:
+            type: string
+            description: Identificador del contrato, p. ej. BAC_P02.
+        secciones: {}
+        entidades: {}
+        si_falta_entidad:
+          type: string
+        respuesta_fija:
+          type: string
+          description: 'Para intents sin ficha (saludo, cierre): texto que se responde
+            tal cual.'
+        activo:
+          type: boolean
+        ejemplos:
+          type: array
+          items:
+            type: string
+            maxLength: 500
+          writeOnly: true
+        lista_ejemplos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ejemplo'
+          readOnly: true
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedPendiente:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+        proceso_clave:
+          type: string
+          readOnly: true
+        codigo:
+          type: string
+          maxLength: 40
+        descripcion:
+          type: string
+        pregunta:
+          type: string
+          description: Pregunta concreta para Coordinación.
+        fichas:
+          type: array
+          items:
+            type: string
+            description: Identificador del contrato, p. ej. BAC_P02.
+        resuelto:
+          type: boolean
+        resolucion:
+          type: string
+        resuelto_en:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedPlantilla:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+          nullable: true
+        clave:
+          type: string
+          maxLength: 80
+        texto:
+          type: string
+    PatchedProceso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        programa:
+          type: integer
+        programa_nombre:
+          type: string
+          readOnly: true
+        clave:
+          type: string
+          maxLength: 60
+          pattern: ^[-a-zA-Z0-9_]+$
+        nombre:
+          type: string
+          maxLength: 200
+        descripcion:
+          type: string
+        prefijos: {}
+        orden:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        activo:
+          type: boolean
+        visible_en_portal:
+          type: boolean
+        total_fichas:
+          type: integer
+          readOnly: true
+          default: 0
+        fichas_publicadas:
+          type: integer
+          readOnly: true
+          default: 0
+    PatchedPrograma:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        facultad:
+          type: integer
+        facultad_nombre:
+          type: string
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 200
+        sigla:
+          type: string
+          maxLength: 20
+        activo:
+          type: boolean
+    PatchedUsuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          title: Nombre de usuario
+          description: 'Requerido. 150 carácteres como máximo. Únicamente letras,
+            dígitos y @/./+/-/_ '
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          title: Nombre
+          maxLength: 150
+        last_name:
+          type: string
+          title: Apellidos
+          maxLength: 150
+        email:
+          title: Dirección de correo electrónico
+          oneOf:
+          - type: string
+            format: email
+            maxLength: 254
+          - type: string
+            maxLength: 0
+        rol:
+          $ref: '#/components/schemas/RolEnum'
+        facultad:
+          type: integer
+          nullable: true
+          description: 'Vacío: puede operar en todas las facultades.'
+        is_active:
+          type: boolean
+          title: Activo
+          description: Indica si el usuario debe ser tratado como activo. Desmarque
+            esta opción en lugar de borrar la cuenta.
+        last_login:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Último inicio de sesión
+        password:
+          type: string
+          writeOnly: true
+    Pendiente:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+        proceso_clave:
+          type: string
+          readOnly: true
+        codigo:
+          type: string
+          maxLength: 40
+        descripcion:
+          type: string
+        pregunta:
+          type: string
+          description: Pregunta concreta para Coordinación.
+        fichas:
+          type: array
+          items:
+            type: string
+            description: Identificador del contrato, p. ej. BAC_P02.
+        resuelto:
+          type: boolean
+        resolucion:
+          type: string
+        resuelto_en:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - codigo
+      - creado
+      - descripcion
+      - id
+      - proceso
+      - proceso_clave
+      - resuelto_en
+    Plantilla:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        proceso:
+          type: integer
+          nullable: true
+        clave:
+          type: string
+          maxLength: 80
+        texto:
+          type: string
+      required:
+      - clave
+      - id
+      - texto
+    Probador:
+      type: object
+      properties:
+        mensaje:
+          type: string
+          maxLength: 500
+        sesion:
+          type: string
+          format: uuid
+      required:
+      - mensaje
+    Proceso:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        programa:
+          type: integer
+        programa_nombre:
+          type: string
+          readOnly: true
+        clave:
+          type: string
+          maxLength: 60
+          pattern: ^[-a-zA-Z0-9_]+$
+        nombre:
+          type: string
+          maxLength: 200
+        descripcion:
+          type: string
+        prefijos: {}
+        orden:
+          type: integer
+          maximum: 32767
+          minimum: 0
+        activo:
+          type: boolean
+        visible_en_portal:
+          type: boolean
+        total_fichas:
+          type: integer
+          readOnly: true
+          default: 0
+        fichas_publicadas:
+          type: integer
+          readOnly: true
+          default: 0
+      required:
+      - clave
+      - fichas_publicadas
+      - id
+      - nombre
+      - programa
+      - programa_nombre
+      - total_fichas
+    Programa:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        facultad:
+          type: integer
+        facultad_nombre:
+          type: string
+          readOnly: true
+        nombre:
+          type: string
+          maxLength: 200
+        sigla:
+          type: string
+          maxLength: 20
+        activo:
+          type: boolean
+      required:
+      - facultad
+      - facultad_nombre
+      - id
+      - nombre
+    Resultado:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        codigo:
+          type: string
+          readOnly: true
+        pregunta:
+          type: string
+          readOnly: true
+        intent_esperado:
+          type: string
+          readOnly: true
+        ficha_esperada:
+          type: string
+          readOnly: true
+        respuesta_clave:
+          type: string
+          readOnly: true
+        intent_obtenido:
+          type: string
+          maxLength: 80
+        confianza:
+          type: number
+          format: double
+        fichas_obtenidas: {}
+        via:
+          type: string
+          maxLength: 20
+        respuesta:
+          type: string
+        acierto_intent:
+          type: boolean
+          nullable: true
+        acierto_ficha:
+          type: boolean
+          nullable: true
+        clave_contenida:
+          type: boolean
+          nullable: true
+        dato_inventado:
+          type: boolean
+      required:
+      - codigo
+      - ficha_esperada
+      - id
+      - intent_esperado
+      - pregunta
+      - respuesta_clave
+      - via
+    Revertir:
+      type: object
+      properties:
+        numero:
+          type: integer
+          minimum: 1
+      required:
+      - numero
+    RolEnum:
+      enum:
+      - superadmin
+      - revisor
+      - editor
+      - lector
+      type: string
+      description: |-
+        * `superadmin` - Centro de Cómputo
+        * `revisor` - Revisor (Coordinación)
+        * `editor` - Editor
+        * `lector` - Lector
+    TipoEnum:
+      enum:
+      - resolucion
+      - reglamento
+      - formato
+      - flujograma
+      - guia
+      - otro
+      type: string
+      description: |-
+        * `resolucion` - Resolución
+        * `reglamento` - Reglamento
+        * `formato` - Formato o anexo
+        * `flujograma` - Flujograma
+        * `guia` - Guía
+        * `otro` - Otro
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          title: Nombre de usuario
+          description: 'Requerido. 150 carácteres como máximo. Únicamente letras,
+            dígitos y @/./+/-/_ '
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          title: Nombre
+          maxLength: 150
+        last_name:
+          type: string
+          title: Apellidos
+          maxLength: 150
+        email:
+          title: Dirección de correo electrónico
+          oneOf:
+          - type: string
+            format: email
+            maxLength: 254
+          - type: string
+            maxLength: 0
+        rol:
+          $ref: '#/components/schemas/RolEnum'
+        facultad:
+          type: integer
+          nullable: true
+          description: 'Vacío: puede operar en todas las facultades.'
+        is_active:
+          type: boolean
+          title: Activo
+          description: Indica si el usuario debe ser tratado como activo. Desmarque
+            esta opción en lugar de borrar la cuenta.
+        last_login:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+          title: Último inicio de sesión
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - id
+      - last_login
+      - username
+    UsuarioActual:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          readOnly: true
+          title: Nombre de usuario
+          description: 'Requerido. 150 carácteres como máximo. Únicamente letras,
+            dígitos y @/./+/-/_ '
+        first_name:
+          type: string
+          readOnly: true
+          title: Nombre
+        last_name:
+          type: string
+          readOnly: true
+          title: Apellidos
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Dirección de correo electrónico
+        rol:
+          allOf:
+          - $ref: '#/components/schemas/RolEnum'
+          readOnly: true
+        facultad:
+          type: integer
+          readOnly: true
+          nullable: true
+          description: 'Vacío: puede operar en todas las facultades.'
+        facultad_nombre:
+          type: string
+          readOnly: true
+      required:
+      - email
+      - facultad
+      - facultad_nombre
+      - first_name
+      - id
+      - last_name
+      - rol
+      - username
+    VersionFicha:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        numero:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        contenido: {}
+        nota:
+          type: string
+          maxLength: 300
+        publicada_en:
+          type: string
+          format: date-time
+          readOnly: true
+        publicada_por:
+          type: string
+          readOnly: true
+      required:
+      - contenido
+      - id
+      - numero
+      - publicada_en
+      - publicada_por
+    ViaEnum:
+      enum:
+      - determinista
+      - desambiguacion
+      - rag
+      - derivacion
+      - aclaracion
+      type: string
+      description: |-
+        * `determinista` - Determinista
+        * `desambiguacion` - Desambiguación
+        * `rag` - RAG
+        * `derivacion` - Derivación
+        * `aclaracion` - Aclaración de entidad
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
